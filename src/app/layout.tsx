@@ -12,10 +12,6 @@ const SatoshiLights = localFont({
   src: "/fonts/Satoshi-Light.woff",
   display: "swap",
 });
-const SatoshiRegular = localFont({
-  src: "/fonts/satoshi-regular.woff",
-  display: "swap",
-});
 
 const SatoshiMedium = localFont({
   src: "/fonts/Satoshi-Medium.woff",
@@ -35,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${SatoshiRegular.className} ${SatoshiLights.className} ${SatoshiBold.className}   ${SatoshiMedium.className} antialiased`}
+        className={` ${SatoshiLights.className} ${SatoshiBold.className}   ${SatoshiMedium.className} antialiased`}
       >
         <Navbar />
         {children}
