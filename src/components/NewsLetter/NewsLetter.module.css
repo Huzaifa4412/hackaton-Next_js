@@ -1,0 +1,19 @@
+@font-face {
+  font-family: Integral-Bold;
+  src: url("/localFonts/Integral-CF-Bold.otf");
+}
+.heading {
+  font-family: Integral-Bold;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+
+@media screen and (max-width: 700px) {
+  .heading {
+    font-family: Integral-Bold;
+    font-size: 20px !important;
+    font-weight: bold;
+    text-align: center;
+  }
+}

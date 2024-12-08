@@ -1,0 +1,31 @@
+@font-face {
+  font-family: Integral-Bold;
+  src: url("/localFonts/Integral-CF-Bold.otf");
+}
+.Navbar {
+  padding: 0px;
+
+  .logo {
+    font-family: Integral-Bold;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .nav_items ul li {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .searchBar {
+    display: none;
+  }
+  .updatePart {
+    font-size: 12px;
+    gap: 5px;
+
+    & img {
+      display: none;
+    }
+  }
+}

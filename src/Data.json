@@ -1,0 +1,38 @@
+[
+  {
+    "image": "/products/img1.png",
+    "title": "T-SHIRT WITH TAPE DETAILS",
+    "rating": "4.5/5",
+    "discount": false,
+    "price": "$120",
+    "actualPrice": "$120",
+    "discountTag": "-20%"
+  },
+  {
+    "image": "/products/img2.png",
+    "title": "SKINNY FIT JEANS",
+    "rating": "4.5/5",
+    "discount": true,
+    "price": "$120",
+    "actualPrice": "$260",
+    "discountTag": "-20%"
+  },
+  {
+    "image": "/products/img3.png",
+    "title": "T-SHIRT WITH TAPE DETAILS",
+    "rating": "4.5/5",
+    "discount": false,
+    "price": "$120",
+    "actualPrice": "$120",
+    "discountTag": "-20%"
+  },
+  {
+    "image": "/products/img4.png",
+    "title": "T-SHIRT WITH TAPE DETAILS",
+    "rating": "4.5/5",
+    "discount": true,
+    "price": "$120",
+    "actualPrice": "$160",
+    "discountTag": "-20%"
+  }
+]
