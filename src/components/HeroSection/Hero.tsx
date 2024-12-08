@@ -22,7 +22,7 @@ const Hero = () => {
           designed to bring out your individuality and cater to your sense of
           style.
         </p>
-        <div className="button lg:w-[210px] w-screen">
+        <div className="button lg:w-[210px] w-full">
           <Button text="Shop Now" dark_variant={true} />
         </div>
 
