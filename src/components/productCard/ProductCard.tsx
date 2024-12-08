@@ -2,7 +2,19 @@ import React from "react";
 import Styles from "./ProductCard.module.css";
 import Image from "next/image";
 
-function ProductCard({ item }) {
+function ProductCard({
+  item,
+}: {
+  item: {
+    image: string;
+    title: string;
+    rating: string;
+    price: string;
+    actualPrice: string;
+    discount: boolean;
+    discountTag: string;
+  };
+}) {
   const { image, title, rating, price, actualPrice, discount, discountTag } =
     item;
   return (
