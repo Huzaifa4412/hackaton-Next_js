@@ -1,17 +1,21 @@
 import Link from "next/link";
 import Styles from "./Footer.module.css";
 import Image from "next/image";
+import NewsLetter from "../NewsLetter/NewsLetter";
 
 export function Footer() {
   return (
     <footer
-      className="w-full px-6 pt-16 pb-8"
+      className="w-full px-6 pb-8"
       style={{ backgroundColor: "var(--light-gray)" }}
     >
+      <div className="relative top-[0%] -translate-y-1/2">
+        <NewsLetter />
+      </div>
       <div className="max-w-[1240px] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-[1.5fr,1fr,1fr,1fr,1fr] gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-[1.5fr,1fr,1fr,1fr,1fr] gap-8">
           {/* Brand Column */}
-          <div>
+          <div className="col-span-2 md:col-span-1">
             <h2 className={`${Styles.heading} text-xl font-medium mb-4`}>
               SHOP.CO
             </h2>

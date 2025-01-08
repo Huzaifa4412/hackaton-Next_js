@@ -5,30 +5,32 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <div className={` ${Styles.Navbar} container`}>
+    <div className={` ${Styles.Navbar} `}>
       <div
-        className={`${Styles.updatePart} w-full  relative h-[38px] flex items-center justify-center`}
+        className={`${Styles.updatePart}  w-full   h-[38px] `}
         style={{
           backgroundColor: "var(--foreground)",
           color: "var(--background)",
         }}
       >
-        <p className="font-light">
-          Sign up and get 20% off to your first order.{" "}
-          <span className="underline">Sign Up Now</span>
-        </p>
-        <Image
-          src={"cross.svg"}
-          className="absolute right-10"
-          alt="Cross Icon"
-          width={20}
-          height={20}
-        />
+        <div className="flex items-center relative justify-center h-full max-w-[1440px] mx-auto">
+          <p className="font-light">
+            Sign up and get 20% off to your first order.{" "}
+            <span className="underline">Sign Up Now</span>
+          </p>
+          <Image
+            src={"cross.svg"}
+            className="absolute right-3"
+            alt="Cross Icon"
+            width={20}
+            height={20}
+          />
+        </div>
       </div>
-      <nav className="lg:w-[1024px] xl:w-[1240px] h-[41px] md:px-3 lg:gap-[40px] mx-auto my-5 flex items-center justify-evenly md:justify-center  gap-[20px]">
+      <nav className="lg:w-[1024px] xl:w-[1240px] h-[41px] xl:gap-[40px] mx-auto my-5 flex items-center justify-evenly md:justify-center  gap-[20px]">
         <div className={`${Styles.logo} text-[32px] font-bold`}>SHOP.CO</div>
         <div className={`${Styles.nav_items}`}>
-          <ul className=" hidden md:flex gap-[24px] items-center">
+          <ul className=" hidden md:flex text-[16px]  gap-[22px] items-center font-medium">
             <li>
               <Link href={"/"} className="flex items-center gap-1">
                 Shop{" "}
@@ -41,19 +43,13 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link href={"/"} className="font-medium">
-                On Sale
-              </Link>
+              <Link href={"/"}>On Sale</Link>
             </li>
             <li>
-              <Link href={"/"} className="font-medium">
-                New Arrival
-              </Link>
+              <Link href={"/"}>New Arrival</Link>
             </li>
             <li>
-              <Link href={"/"} className="font-medium">
-                Brands
-              </Link>
+              <Link href={"/"}>Brands</Link>
             </li>
           </ul>
           <Image

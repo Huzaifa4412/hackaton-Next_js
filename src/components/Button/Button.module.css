@@ -1,5 +1,5 @@
 .button {
-  width: full;
+  width: 100%;
   font-size: 16px;
   border-radius: 62px;
   padding: 16px 64px;
@@ -9,6 +9,7 @@
   background-color: var(--foreground);
   color: var(--background);
 }
+
 .light_variant {
   background-color: var(--background);
   color: var(--foreground);

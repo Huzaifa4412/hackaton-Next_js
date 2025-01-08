@@ -11,18 +11,18 @@ const Hero = () => {
         className={`${Styles.leftPart} w-1/2 flex flex-col relative  gap-10`}
       >
         <h1
-          className={`xl:text-[64px] lg:text-[48px] lg:leading-[50px]  text-[40px]  leading-[42px] font-extrabold lxl:leading-[64px] `}
+          className={`xl:text-[64px] text-left lg:w-full lg:text-[48px] lg:leading-[50px]  text-[40px]  leading-[42px] font-extrabold xl:leading-[64px] `}
         >
           FIND CLOTHES THAT MATCHES YOUR STYLE
         </h1>
         <p
-          className={`${Styles.paragraphs} text-[16px] font-medium text-[#000000]/60`}
+          className={`${Styles.paragraphs}  text-[16px] font-medium text-[#000000]/60`}
         >
           Browse through our diverse range of meticulously crafted garments,
           designed to bring out your individuality and cater to your sense of
           style.
         </p>
-        <div className="button lg:w-[210px] w-full">
+        <div className="button lg:w-[210px] w-full md:w-max mx-auto ">
           <Button text="Shop Now" dark_variant={true} />
         </div>
 
