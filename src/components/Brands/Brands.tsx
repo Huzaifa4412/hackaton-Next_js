@@ -27,7 +27,7 @@ const brands = [
 export default function Brands() {
   return (
     <div
-      className="container p-0 flex items-center gap-[40px] justify-center lg:justify-evenly flex-wrap md:h-max"
+      className=" p-5 flex items-center gap-[40px] justify-center lg:justify-evenly flex-wrap md:h-max"
       style={{ backgroundColor: "var(--foreground)" }}
     >
       {brands.map((item, index) => {
