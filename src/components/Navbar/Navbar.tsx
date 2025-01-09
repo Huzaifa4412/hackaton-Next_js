@@ -28,7 +28,7 @@ const Navbar = () => {
           />
         </div>
       </div>
-      <nav className="lg:w-[1024px] pb-5 border-b border-[#000000/10]  xl:w-[1240px] h-[48px] xl:gap-[40px] mx-auto my-5 flex items-center justify-evenly md:justify-center  gap-[20px]">
+      <nav className="lg:w-[1024px] border-b border-[#000000/10]  xl:w-[1240px] h-[48px] xl:gap-[40px] mx-auto my-5 flex items-center justify-evenly md:justify-center  gap-[20px]">
         <div className={`${Styles.logo} text-[32px] font-bold`}>SHOP.CO</div>
         <div className={`${Styles.nav_items}`}>
           <ul className=" hidden md:flex text-[16px]  gap-[22px] items-center font-medium">
