@@ -6,7 +6,7 @@ const HeroFeatureText = (props: { text: string; number: string }) => {
       <div className="number font-extrabold text-[18px]  md:text-[24px]">
         {props.number}
       </div>
-      <div className="quality text-[#000000]/60 text-[12px] font-light">
+      <div className="quality text-[#000000]/60 text-[14px] font-medium">
         {props.text}
       </div>
     </div>

@@ -42,7 +42,7 @@ const testimonials = [
 export default function Testimonials() {
   return (
     <div className="container">
-      <div className="heading text-start mb-10 flex justify-between">
+      <div className="heading text-start mb-10 flex flex-col sm:flex-row items-center gap-5 justify-between">
         <Heading text="OUR HAPPY CUSTOMERS" />
         <div className="arrows flex gap-2">
           <Image
@@ -62,66 +62,20 @@ export default function Testimonials() {
         </div>
       </div>
       <div className="testimonialsContainer flex gap-4">
-        {/* {testimonials.map((item, idx) => {
-          return item.blur ? (
-            <div
-              key={idx}
-              className="testimonial blur-[2px] flex-shrink-0 flex flex-col gap-2 px-[32px] py-[24px] w-[400px] h-[240px] border-2 rounded-[20px]"
-            >
-              <Image
-                src={"/Testimonials/startsFrame.svg"}
-                alt="Rating"
-                width={139}
-                height={23}
-              />
-              <div className="intro flex gap-2">
-                <div className="name">{item.name}</div>
-                <Image
-                  src={"/Testimonials/verify.svg"}
-                  alt="Verify"
-                  width={24}
-                  height={24}
-                />
-              </div>
-              <div className="content text-[#000000]/60 text-[16px] font-light">
-                {item.desc}
-              </div>
-            </div>
-          ) : (
-            <div
-              key={idx}
-              className="testimonial flex-shrink-0 flex flex-col gap-2 px-3 lg:px-[32px] py-[24px] w-[400px] h-[240px] border-2 rounded-[20px]"
-            >
-              <Image
-                src={"/Testimonials/startsFrame.svg"}
-                alt="Rating"
-                width={139}
-                height={23}
-              />
-              <div className="intro flex gap-2">
-                <div className="name">{item.name}</div>
-                <Image
-                  src={"/Testimonials/verify.svg"}
-                  alt="Verify"
-                  width={24}
-                  height={24}
-                />
-              </div>
-              <div className="content text-[#000000]/60 text-[16px] font-light">
-                {item.desc}
-              </div>
-            </div>
-          );
-        })} */}
         <Swiper
           spaceBetween={20}
-          slidesPerView={
-            typeof window !== "undefined" && window.innerWidth > 1050
-              ? 3
-              : typeof window !== "undefined" && window.innerWidth < 770
-              ? 1
-              : 2
-          }
+          breakpoints={{
+            // Configure breakpoints for different screen sizes
+            420: {
+              slidesPerView: 1, // 1 slide for screens >= 320px
+            },
+            950: {
+              slidesPerView: 2, // 2 slides for screens >= 640px
+            },
+            1380: {
+              slidesPerView: 3, // 3 slides for screens >= 1024px
+            },
+          }}
           pagination={{
             clickable: true,
           }}

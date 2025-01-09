@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Styles from "./Navbar.module.css";
 import Image from "next/image";
@@ -7,14 +8,14 @@ const Navbar = () => {
   return (
     <div className={` ${Styles.Navbar} `}>
       <div
-        className={`${Styles.updatePart}  w-full   h-[38px] `}
+        className={`${Styles.updatePart}  w-full h-[38px] `}
         style={{
           backgroundColor: "var(--foreground)",
           color: "var(--background)",
         }}
       >
         <div className="flex items-center relative justify-center h-full max-w-[1440px] mx-auto">
-          <p className="font-light">
+          <p className="font-medium">
             Sign up and get 20% off to your first order.{" "}
             <span className="underline">Sign Up Now</span>
           </p>
@@ -27,7 +28,7 @@ const Navbar = () => {
           />
         </div>
       </div>
-      <nav className="lg:w-[1024px] xl:w-[1240px] h-[41px] xl:gap-[40px] mx-auto my-5 flex items-center justify-evenly md:justify-center  gap-[20px]">
+      <nav className="lg:w-[1024px] pb-5 border-b border-[#000000/10]  xl:w-[1240px] h-[48px] xl:gap-[40px] mx-auto my-5 flex items-center justify-evenly md:justify-center  gap-[20px]">
         <div className={`${Styles.logo} text-[32px] font-bold`}>SHOP.CO</div>
         <div className={`${Styles.nav_items}`}>
           <ul className=" hidden md:flex text-[16px]  gap-[22px] items-center font-medium">
