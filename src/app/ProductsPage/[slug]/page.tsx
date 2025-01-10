@@ -112,7 +112,7 @@ const Page = ({
           </div>
           <div className="mainImage order-1 sm:h-[530px] overflow-hidden w-[330px] h-[290px] sm:w-[444px] bg-[#F0EEED] rounded-[20px]">
             <Image
-              src={otherImages ? subImage : image ?? ""}
+              src={subImage ?? image ?? ""}
               alt="Product"
               width={444}
               height={530}

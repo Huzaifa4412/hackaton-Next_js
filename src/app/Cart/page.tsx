@@ -88,7 +88,7 @@ const CartItems = ({ item }: { item: Product }) => {
         <div className="wrapper w-full flex flex-col sm:flex-row items-center gap-4 sm:gap-5">
           <div className="image w-full sm:w-[124px] h-[124px]">
             <Image
-              src={item.image}
+              src={item.image ?? ""}
               className="w-full h-full object-cover object-center"
               width={124}
               height={124}
