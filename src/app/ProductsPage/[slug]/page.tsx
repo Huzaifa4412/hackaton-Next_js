@@ -1,15 +1,40 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
-
-const page = ({
+import Heading from "@/components/Heading/Heading";
+import Button from "@/components/Button/Button";
+import Data from "@/Data.json";
+import { Product } from "../../../../Typing";
+import Review from "@/components/Review/Review";
+const Page = ({
   params,
 }: {
   params: {
     slug: string;
   };
 }) => {
+  const { slug } = params;
+  const productData: Product =
+    Data.find((data) => data.title === slug.replace(/_/g, " ")) ??
+    ({} as Product);
+  const {
+    image,
+    title,
+    actualPrice,
+    otherImages,
+    category,
+    description,
+    discount,
+    discountTag,
+    price,
+    colors,
+    sizes,
+    rating,
+  } = productData;
+  const [subImage, setSubImage] = useState(otherImages?.[0]);
+
   return (
-    <div className="!pt-0 container ">
+    <div className="!pt-0 max-w-[1440px] px-4 mx-auto py-[40] ">
       <div className="breadCrams py-4 flex items-center">
         <h3>Home</h3>
         <Image src={"/arrow.svg"} alt="Arrow" width={16} height={16} />
@@ -17,20 +42,190 @@ const page = ({
         <Image src={"/arrow.svg"} alt="Arrow" width={16} height={16} />
         <h3>Men</h3>
         <Image src={"/arrow.svg"} alt="Arrow" width={16} height={16} />
-        <h3 className="font-semibold">{params.slug}</h3>
+        <h3 className="font-semibold">{category}</h3>
       </div>
-      <div className="productDetails">
-        <div className="productImages">
-          <div className="subImages  flex flex-col gap-2">
-            <div className="subImage h-[167px] w-[152px] border-[#000000] hover:border rounded-[20px] bg-[#F0EEED]"></div>
-            <div className="subImage h-[167px] w-[152px] border-[#000000] hover:border rounded-[20px] bg-[#F0EEED]"></div>
-            <div className="subImage h-[167px] w-[152px] border-[#000000] hover:border rounded-[20px] bg-[#F0EEED]"></div>
+      <div className="productDetails flex lg:flex-row flex-col  gap-8">
+        <div className="productImages flex flex-col items-center lg:flex-row gap-4">
+          <div className="subImages order-2 lg:order-1 flex flex-row lg:flex-col justify-center gap-2">
+            {otherImages ? (
+              <>
+                <div className="subImage  order-2 lg:order-1 overflow-hidden h-[111px] w-[106px] md:h-[167px] md:w-[152px] border-[#000000] hover:border rounded-[20px] bg-[#F0EEED]">
+                  <Image
+                    src={otherImages[1]}
+                    onClick={() => setSubImage(otherImages[1])}
+                    alt="Product"
+                    width={152}
+                    height={167}
+                  />
+                </div>
+                <div className="subImage overflow-hidden h-[111px] w-[106px] md:h-[167px] md:w-[152px] border-[#000000] hover:border rounded-[20px] bg-[#F0EEED]">
+                  <Image
+                    src={otherImages[2]}
+                    onClick={() => {
+                      setSubImage(otherImages[2]);
+                    }}
+                    alt="Product"
+                    width={152}
+                    height={167}
+                  />
+                </div>
+                <div className="subImage overflow-hidden h-[111px] w-[106px] md:h-[167px] md:w-[152px] border-[#000000] hover:border rounded-[20px] bg-[#F0EEED]">
+                  <Image
+                    src={otherImages[3]}
+                    onClick={() => {
+                      setSubImage(otherImages[3]);
+                    }}
+                    alt="Product"
+                    width={152}
+                    height={167}
+                  />
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="subImage overflow-hidden order-2 lg:order-1 h-[111px] w-[106px] md:h-[167px] md:w-[152px] border-[#000000] hover:border rounded-[20px] bg-[#F0EEED]">
+                  <Image
+                    src={"/products/product_page/img3.png"}
+                    alt="Product"
+                    width={152}
+                    height={167}
+                  />
+                </div>
+                <div className="subImage overflow-hidden h-[111px] w-[106px] md:h-[167px] md:w-[152px] border-[#000000] hover:border rounded-[20px] bg-[#F0EEED]">
+                  <Image
+                    src={"/products/product_page/img2.png"}
+                    alt="Product"
+                    width={152}
+                    height={167}
+                  />
+                </div>
+                <div className="subImage overflow-hidden h-[111px] w-[106px] md:h-[167px] md:w-[152px] border-[#000000] hover:border rounded-[20px] bg-[#F0EEED]">
+                  <Image
+                    src={"/products/product_page/img1.png"}
+                    alt="Product"
+                    width={152}
+                    height={167}
+                  />
+                </div>
+              </>
+            )}
           </div>
-          <div className="mainImage"></div>
+          <div className="mainImage order-1 sm:h-[530px] overflow-hidden w-[330px] h-[290px] sm:w-[444px] bg-[#F0EEED] rounded-[20px]">
+            <Image
+              src={otherImages ? subImage : image ?? ""}
+              alt="Product"
+              width={444}
+              height={530}
+              className="object-cover overflow-hidden w-full h-full"
+            />
+          </div>
+        </div>
+        <div className="details flex flex-col gap-4">
+          <div>
+            <Heading text={title} />
+          </div>
+          <Rating rating={parseInt(rating)} maxRating={5} />
+          <div className="price text-[32px] font-bold gap-2 flex items-center">
+            <h2>{price}</h2>
+            <h2 className="line-through text-slate-400">{actualPrice}</h2>
+            {discount && (
+              <div className="tag w-[72px] h-[34px] rounded-[62px] bg-red-200 text-red-500 text-xl flex items-center justify-center font-medium">
+                {discountTag}
+              </div>
+            )}
+          </div>
+          <div className="description">
+            <p className="text-slate-500 text-[16px] font-medium">
+              {description}
+            </p>
+          </div>
+          <div>
+            <hr />
+          </div>
+          <div className="selectedColors flex flex-col my-2 gap-2">
+            <h3 className="font-medium text-xl">Select Colors</h3>
+            <div className="colors_container flex gap-2">
+              {colors.map((color, index) => (
+                <div
+                  key={index}
+                  className={`color w-[37px] h-[37px] rounded-full `}
+                  style={{
+                    backgroundColor: color,
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+          <div>
+            <hr />
+          </div>
+          <div className="chooseSize flex flex-col gap-2">
+            <h3 className="font-medium text-xl">Select Size</h3>
+            <div className="sizes_container grid grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4  w-max gap-2">
+              {sizes.map((size, index) => (
+                <div className="w-max flex-shrink-0" key={index}>
+                  <Button dark_variant={false} text={size} />
+                </div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <hr />
+          </div>
+          <div className="flex gap-5">
+            <div className="q_btns bg-[#F0F0F0] w-[170px] hover:bg-slate-200 rounded-[62px] py-[12px] px-[20px] flex items-center justify-between">
+              <Image src="/incr.svg" alt="increment" width={24} height={24} />
+              <span className="text-black text-2xl font-bold">1</span>
+              <Image src="/desc.svg" alt="decrement" width={24} height={24} />
+            </div>
+            <div className="lg:w-full flex items-center w-[50%]">
+              <Button dark_variant={true} text="Add to Cart" />
+            </div>
+          </div>
         </div>
       </div>
+      <Review />
     </div>
   );
 };
 
-export default page;
+interface RatingProps {
+  rating: number; // e.g., 4.5
+  maxRating?: number; // Default to 5
+}
+
+function Rating({ rating, maxRating }: RatingProps) {
+  const fullStar = Math.floor(rating);
+  const halfStar = rating % 1 !== 0;
+  return (
+    <div className="flex gap-3">
+      <div className="star active flex items-center gap-1">
+        {Array.from({ length: fullStar }, (_, index) => (
+          <div key={index} className="">
+            <Image
+              src={"/products/rating.svg"}
+              alt="Star"
+              width={25}
+              height={25}
+            />
+          </div>
+        ))}
+        {halfStar && <div className="star half active" />}
+        {Array.from({ length: halfStar ? 1 : 0 }, (_, index) => (
+          <div key={index}>
+            <Image
+              src={"/products/ratingHalf.svg"}
+              alt="Star"
+              width={12}
+              height={12}
+            />
+          </div>
+        ))}
+      </div>
+      <div>
+        <span className="text-black text-xl">{rating}</span>/{maxRating || 5}
+      </div>
+    </div>
+  );
+}
+export default Page;

@@ -5,9 +5,8 @@
 
 .heading {
   font-family: Integral-Bold;
-  font-size: 48px;
+  font-size: 40px;
   font-weight: bold;
-  text-align: center;
 }
 
 @media screen and (max-width: 1240px) {

@@ -20,7 +20,7 @@ const Navbar = () => {
             <span className="underline">Sign Up Now</span>
           </p>
           <Image
-            src={"cross.svg"}
+            src={"/cross.svg"}
             className="absolute right-3"
             alt="Cross Icon"
             width={20}
@@ -28,15 +28,18 @@ const Navbar = () => {
           />
         </div>
       </div>
-      <nav className="lg:w-[1024px] border-b border-[#000000/10]  xl:w-[1240px] h-[48px] xl:gap-[40px] mx-auto my-5 flex items-center justify-evenly md:justify-center  gap-[20px]">
-        <div className={`${Styles.logo} text-[32px] font-bold`}>SHOP.CO</div>
+      <nav className="lg:w-[1024px]  xl:w-[1240px] h-[48px] xl:gap-[40px] mx-auto my-5 flex items-center justify-evenly md:justify-center  gap-[20px]">
+        <Link href={"/"}>
+          <div className={`${Styles.logo} text-[32px] font-ld`}>SHOP.CO</div>
+        </Link>
+
         <div className={`${Styles.nav_items}`}>
           <ul className=" hidden md:flex text-[16px]  gap-[22px] items-center font-medium">
             <li>
               <Link href={"/"} className="flex items-center gap-1">
                 Shop{" "}
                 <Image
-                  src={"dropDown.svg"}
+                  src={"/dropDown.svg"}
                   alt="Drop Down Icon"
                   width={15}
                   height={15}
@@ -54,7 +57,7 @@ const Navbar = () => {
             </li>
           </ul>
           <Image
-            src={"Menu.svg"}
+            src={"/Menu.svg"}
             alt="Menu Icon"
             width={28}
             height={28}
@@ -66,7 +69,7 @@ const Navbar = () => {
           style={{ backgroundColor: "var(--light-gray)" }}
         >
           <Image
-            src={"searchIcon.svg"}
+            src={"/searchIcon.svg"}
             alt="Search Icon"
             width={20}
             height={20}
@@ -78,10 +81,11 @@ const Navbar = () => {
           />
         </div>
         <div className="icons flex gap-2">
-          <Image src={"card.svg"} alt="Card" width={25} height={25} />
-          <Image src={"account.svg"} alt="Account" width={25} height={25} />
+          <Image src={"/card.svg"} alt="Card" width={25} height={25} />
+          <Image src={"/account.svg"} alt="Account" width={25} height={25} />
         </div>
       </nav>
+      <hr className=" h-[1px] mx-auto max-w-[1440px]" />
     </div>
   );
 };

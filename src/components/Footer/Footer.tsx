@@ -6,10 +6,10 @@ import NewsLetter from "../NewsLetter/NewsLetter";
 export function Footer() {
   return (
     <footer
-      className="w-full px-6 pb-8"
+      className="w-full h-max px-6"
       style={{ backgroundColor: "var(--light-gray)" }}
     >
-      <div className="relative top-[0%] -translate-y-1/2">
+      <div className="relative top-[0%] md:-translate-y-1/2 -translate-y-[30%]">
         <NewsLetter />
       </div>
       <div className="max-w-[1240px] mx-auto">
@@ -221,7 +221,7 @@ export function Footer() {
         </div>
 
         {/* Footer Bottom */}
-        <div className="flex flex-col md:flex-row justify-between items-center pt-12 mt-12 border-t border-[#E4E7E9]">
+        <div className="flex flex-col md:flex-row justify-between items-center mt-12 border-t border-[#E4E7E9]">
           <p className="text-sm text-[#000000]/60 mb-4 md:mb-0">
             Shop.co © 2000-2023, All Rights Reserved
           </p>

@@ -4,6 +4,7 @@ import ProductCard from "../productCard/ProductCard";
 import data from "@/Data.json";
 import Button from "../Button/Button";
 import Heading from "../Heading/Heading";
+import Link from "next/link";
 
 export default function NewArrivals() {
   return (
@@ -13,7 +14,14 @@ export default function NewArrivals() {
       <Heading text="New Arrivals" />
       <div className="productsContainer flex flex-wrap justify-center  flex-shrink-0  gap-[8px]">
         {data.map((item, ind) => {
-          return <ProductCard item={item} key={ind} />;
+          return (
+            <Link
+              key={ind}
+              href={`/ProductsPage/${item.title.replace(/ /g, "_")}`}
+            >
+              <ProductCard item={item} key={ind} />
+            </Link>
+          );
         })}
       </div>
       <div className="button border-2  w-max h-[max] px-[54px]   rounded-full">

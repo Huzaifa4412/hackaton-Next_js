@@ -1,12 +1,23 @@
 [
   {
     "image": "/products/img1.png",
+    "otherImages": [
+      "/products/img1.png",
+      "/products/product_page/product1/NA4I39176-HERO.webp",
+      "/products/product_page/product1/img2.jpeg",
+      "/products/product_page/product1/img3.jpg",
+      "/products/product_page/product1/img4.jpg"
+    ],
     "title": "T-SHIRT WITH TAPE DETAILS",
     "rating": "4.5/5",
     "discount": false,
     "price": "$120",
-    "actualPrice": "$120",
-    "discountTag": "-20%"
+    "actualPrice": "$180",
+    "discountTag": "-20%",
+    "category": "T-Shirts",
+    "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
+    "colors": ["#4F4631", "#314F4A", "#31344F"],
+    "sizes": ["Small", "Medium", "Large", "X-Large"]
   },
   {
     "image": "/products/img2.png",
@@ -15,24 +26,36 @@
     "discount": true,
     "price": "$120",
     "actualPrice": "$260",
-    "discountTag": "-20%"
+    "discountTag": "-20%",
+    "category": "Jeans",
+    "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
+    "colors": ["#4F4631", "#314F4A", "#31344F"],
+    "sizes": ["Small", "Medium", "Large", "X-Large"]
   },
   {
     "image": "/products/img3.png",
-    "title": "T-SHIRT WITH TAPE DETAILS",
+    "title": "CHECKERED SHIRT",
     "rating": "4.5/5",
     "discount": false,
     "price": "$120",
-    "actualPrice": "$120",
-    "discountTag": "-20%"
+    "actualPrice": "$140",
+    "discountTag": "-20%",
+    "category": "SHIRT",
+    "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
+    "colors": ["#4F4631", "#314F4A", "#31344F"],
+    "sizes": ["Small", "Medium", "Large", "X-Large"]
   },
   {
     "image": "/products/img4.png",
-    "title": "T-SHIRT WITH TAPE DETAILS",
+    "title": "SLEEVE STRIPED T-SHIRT",
     "rating": "4.5/5",
     "discount": true,
     "price": "$120",
     "actualPrice": "$160",
-    "discountTag": "-20%"
+    "discountTag": "-20%",
+    "category": "T-SHIRT",
+    "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
+    "colors": ["#4F4631", "#314F4A", "#31344F"],
+    "sizes": ["Small", "Medium", "Large", "X-Large"]
   }
 ]
