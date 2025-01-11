@@ -81,7 +81,9 @@ const Navbar = () => {
           />
         </div>
         <div className="icons flex gap-2">
-          <Image src={"/card.svg"} alt="Card" width={25} height={25} />
+          <Link href={"/Cart"}>
+            <Image src={"/card.svg"} alt="Card" width={25} height={25} />
+          </Link>
           <Image src={"/account.svg"} alt="Account" width={25} height={25} />
         </div>
       </nav>
