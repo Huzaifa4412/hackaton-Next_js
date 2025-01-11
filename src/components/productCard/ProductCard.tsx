@@ -1,26 +1,16 @@
 import React from "react";
 import Styles from "./ProductCard.module.css";
 import Image from "next/image";
+import { Product } from "../../../Typing";
 
-function ProductCard({
-  item,
-}: {
-  item: {
-    image: string;
-    title: string;
-    rating: string;
-    price: string;
-    actualPrice: string;
-    discount: boolean;
-    discountTag: string;
-  };
-}) {
+function ProductCard({ item }: { item: Product }) {
   const { image, title, rating, price, actualPrice, discount, discountTag } =
     item;
+  const id = `${title.replace(/-/g, "_")}${new Date().getMilliseconds()}`;
   return (
-    <div className={`${Styles.card} grid justify-between `}>
+    <div id={id} className={`${Styles.card} grid justify-between `}>
       <Image
-        src={image}
+        src={image ?? ""}
         alt="Product 1"
         width={290}
         height={298}

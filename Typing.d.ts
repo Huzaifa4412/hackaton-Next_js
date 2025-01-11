@@ -11,4 +11,6 @@ export interface Product {
     description: string;
     colors: string[];
     sizes: string[];
+    qty?: number;
+    id?: string;
 }

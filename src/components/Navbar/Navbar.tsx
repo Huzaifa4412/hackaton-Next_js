@@ -1,10 +1,23 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Styles from "./Navbar.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
 const Navbar = () => {
+  const [isMenuOpen, setMenuOpen] = React.useState(false);
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMenuOpen]);
+
   return (
     <div className={` ${Styles.Navbar} `}>
       <div
@@ -29,12 +42,25 @@ const Navbar = () => {
         </div>
       </div>
       <nav className="lg:w-[1024px]  xl:w-[1240px] h-[48px] xl:gap-[40px] mx-auto my-5 flex items-center justify-evenly md:justify-center  gap-[20px]">
-        <Link href={"/"}>
-          <div className={`${Styles.logo} text-[32px] font-ld`}>SHOP.CO</div>
+        <Link href={"/"} className="order-1 sm:order-2">
+          <div className={`${Styles.logo} text-[32px] font-ld `}>SHOP.CO</div>
         </Link>
-
-        <div className={`${Styles.nav_items}`}>
-          <ul className=" hidden md:flex text-[16px]  gap-[22px] items-center font-medium">
+        <Image
+          src={"/Menu.svg"}
+          alt="Menu Icon"
+          width={28}
+          height={28}
+          className={`${Styles.menu} block relative  md:hidden order-1 sm:order-2`}
+          onClick={() => {
+            setMenuOpen(!isMenuOpen);
+          }}
+        />
+        <div className={`${Styles.nav_items} order-1 sm:order-2`}>
+          <ul
+            className={`hidden ${Styles.nav_list} duration-500 relative ${
+              isMenuOpen ? `${Styles.active}` : ""
+            } md:flex text-[16px]  gap-[22px] items-center font-medium`}
+          >
             <li>
               <Link href={"/"} className="flex items-center gap-1">
                 Shop{" "}
@@ -55,17 +81,20 @@ const Navbar = () => {
             <li>
               <Link href={"/"}>Brands</Link>
             </li>
+            <Image
+              src={"/cross.svg"}
+              alt="Cross Icon"
+              width={30}
+              height={30}
+              className="invert block md:hidden absolute top-8 right-8"
+              onClick={() => {
+                setMenuOpen(false);
+              }}
+            />
           </ul>
-          <Image
-            src={"/Menu.svg"}
-            alt="Menu Icon"
-            width={28}
-            height={28}
-            className={"block relative md:hidden"}
-          />
         </div>
         <div
-          className={`${Styles.searchBar} px-[16px] py-[12px] rounded-[62px] xl:w-[577px] h-[full] flex items-center gap-[6px]`}
+          className={`${Styles.searchBar} order-3 px-[16px] py-[12px] rounded-[62px] xl:w-[577px] h-[full] flex items-center gap-[6px]`}
           style={{ backgroundColor: "var(--light-gray)" }}
         >
           <Image
@@ -80,9 +109,12 @@ const Navbar = () => {
             placeholder={` Search For Products...`}
           />
         </div>
-        <div className="icons flex gap-2">
-          <Link href={"/Cart"}>
+        <div className="icons flex gap-4 order-4">
+          <Link href={"/Cart"} className="flex relative">
             <Image src={"/card.svg"} alt="Card" width={25} height={25} />
+            <div className="w-5 absolute -bottom-2 -right-2 text-[10px] h-5 rounded-full bg-black text-white flex items-center justify-center">
+              {0}
+            </div>
           </Link>
           <Image src={"/account.svg"} alt="Account" width={25} height={25} />
         </div>

@@ -6,6 +6,8 @@ import Button from "@/components/Button/Button";
 import Data from "@/Data.json";
 import { Product } from "../../../../Typing";
 import Review from "@/components/Review/Review";
+import Link from "next/link";
+import MightLike from "@/components/MightLike/MightLike";
 const Page = ({
   params,
 }: {
@@ -14,6 +16,7 @@ const Page = ({
   };
 }) => {
   const { slug } = params;
+
   const productData: Product =
     Data.find((data) => data.title === slug.replace(/_/g, " ")) ??
     ({} as Product);
@@ -29,14 +32,18 @@ const Page = ({
     price,
     colors,
     sizes,
+    qty,
     rating,
+    id,
   } = productData;
   const [subImage, setSubImage] = useState(otherImages?.[0]);
 
   return (
     <div className="!pt-0 max-w-[1440px] px-4 mx-auto py-[40] ">
       <div className="breadCrams py-4 flex items-center">
-        <h3>Home</h3>
+        <Link href={"/"}>
+          <h3>Home</h3>
+        </Link>
         <Image src={"/arrow.svg"} alt="Arrow" width={16} height={16} />
         <h3>Shop</h3>
         <Image src={"/arrow.svg"} alt="Arrow" width={16} height={16} />
@@ -47,10 +54,11 @@ const Page = ({
       <div className="productDetails flex lg:flex-row flex-col  gap-8">
         <div className="productImages flex flex-col items-center lg:flex-row gap-4">
           <div className="subImages order-2 lg:order-1 flex flex-row lg:flex-col justify-center gap-2">
-            {otherImages ? (
+            {otherImages && (
               <>
-                <div className="subImage  order-2 lg:order-1 overflow-hidden h-[111px] w-[106px] md:h-[167px] md:w-[152px] border-[#000000] hover:border rounded-[20px] bg-[#F0EEED]">
+                <div className="subImage bg-cover order-2 lg:order-1 overflow-hidden h-[111px] w-[106px] md:h-[167px] md:w-[152px] border-[#000000] hover:border rounded-[20px] bg-[#F0EEED]">
                   <Image
+                    className="w-full h-full object-cover"
                     src={otherImages[1]}
                     onClick={() => setSubImage(otherImages[1])}
                     alt="Product"
@@ -58,8 +66,9 @@ const Page = ({
                     height={167}
                   />
                 </div>
-                <div className="subImage overflow-hidden h-[111px] w-[106px] md:h-[167px] md:w-[152px] border-[#000000] hover:border rounded-[20px] bg-[#F0EEED]">
+                <div className="subImage bg-cover overflow-hidden h-[111px] w-[106px] md:h-[167px] md:w-[152px] border-[#000000] hover:border rounded-[20px] bg-[#F0EEED]">
                   <Image
+                    className="w-full h-full object-cover"
                     src={otherImages[2]}
                     onClick={() => {
                       setSubImage(otherImages[2]);
@@ -69,39 +78,13 @@ const Page = ({
                     height={167}
                   />
                 </div>
-                <div className="subImage overflow-hidden h-[111px] w-[106px] md:h-[167px] md:w-[152px] border-[#000000] hover:border rounded-[20px] bg-[#F0EEED]">
+                <div className="subImage bg-cover overflow-hidden h-[111px] w-[106px] md:h-[167px] md:w-[152px] border-[#000000] hover:border rounded-[20px] bg-[#F0EEED]">
                   <Image
+                    className="w-full h-full object-cover"
                     src={otherImages[3]}
                     onClick={() => {
                       setSubImage(otherImages[3]);
                     }}
-                    alt="Product"
-                    width={152}
-                    height={167}
-                  />
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="subImage overflow-hidden order-2 lg:order-1 h-[111px] w-[106px] md:h-[167px] md:w-[152px] border-[#000000] hover:border rounded-[20px] bg-[#F0EEED]">
-                  <Image
-                    src={"/products/product_page/img3.png"}
-                    alt="Product"
-                    width={152}
-                    height={167}
-                  />
-                </div>
-                <div className="subImage overflow-hidden h-[111px] w-[106px] md:h-[167px] md:w-[152px] border-[#000000] hover:border rounded-[20px] bg-[#F0EEED]">
-                  <Image
-                    src={"/products/product_page/img2.png"}
-                    alt="Product"
-                    width={152}
-                    height={167}
-                  />
-                </div>
-                <div className="subImage overflow-hidden h-[111px] w-[106px] md:h-[167px] md:w-[152px] border-[#000000] hover:border rounded-[20px] bg-[#F0EEED]">
-                  <Image
-                    src={"/products/product_page/img1.png"}
                     alt="Product"
                     width={152}
                     height={167}
@@ -145,7 +128,7 @@ const Page = ({
           <div className="selectedColors flex flex-col my-2 gap-2">
             <h3 className="font-medium text-xl">Select Colors</h3>
             <div className="colors_container flex gap-2">
-              {colors.map((color, index) => (
+              {colors?.map((color, index) => (
                 <div
                   key={index}
                   className={`color w-[37px] h-[37px] rounded-full `}
@@ -179,12 +162,15 @@ const Page = ({
               <Image src="/desc.svg" alt="decrement" width={24} height={24} />
             </div>
             <div className="lg:w-full flex items-center w-[50%]">
-              <Button dark_variant={true} text="Add to Cart" />
+              <div>
+                <Button dark_variant={true} text="Add to Cart" />
+              </div>
             </div>
           </div>
         </div>
       </div>
       <Review />
+      <MightLike />
     </div>
   );
 };

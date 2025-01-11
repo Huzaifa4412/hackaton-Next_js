@@ -2,11 +2,9 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Data from "@/Data.json";
-import { Product } from "../../../Typing";
 import Heading from "@/components/Heading/Heading";
+import Data from "@/Data.json";
 
-const item = Data[0];
 const Page = () => {
   return (
     <div className="cart max-w-[1440px] mx-auto my-4 sm:my-8 px-4">
@@ -26,7 +24,7 @@ const Page = () => {
       <Heading text="Your cart" />
       <div className="content flex flex-col lg:flex-row w-full gap-5 my-4 sm:my-8">
         <div className="cart_item_container w-full lg:max-w-[715px] border rounded-[20px] px-4 sm:px-[24px] py-[20px] h-max">
-          <CartItems item={item} />
+          <CartItems item={Data[0]} />
         </div>
         <div className="order_summary px-4 sm:px-6 py-5 border rounded-[20px] w-full lg:w-[505px] flex flex-col gap-4 sm:gap-6 h-max">
           <div className="subtotal font-bold text-xl sm:text-[24px]">
@@ -77,11 +75,30 @@ const Page = () => {
           </div>
         </div>
       </div>
+
+      <>
+        <h2 className="font-semibold text-center text-lg">
+          No Item Added to Cart Yet!
+        </h2>
+        <br />
+        <h3 className="text-center text-sm font-medium">
+          Please Go And Add some Data{" "}
+        </h3>
+      </>
     </div>
   );
 };
 
-const CartItems = ({ item }: { item: Product }) => {
+const CartItems = ({
+  item,
+}: {
+  item: {
+    image: string;
+    title: string;
+    price: string;
+    qty: number;
+  };
+}) => {
   return (
     <>
       <div className="w-full my-4 sm:my-8">
@@ -122,7 +139,9 @@ const CartItems = ({ item }: { item: Product }) => {
                   width={20}
                   height={20}
                 />
-                <span className="text-black text-2xl font-bold">{1}</span>
+                <span className="text-black text-2xl font-bold">
+                  {item.qty}
+                </span>
                 <Image
                   src="/incr.svg"
                   alt="increment"
