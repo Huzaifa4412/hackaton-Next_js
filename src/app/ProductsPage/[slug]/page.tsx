@@ -4,10 +4,12 @@ import Image from "next/image";
 import Heading from "@/components/Heading/Heading";
 import Button from "@/components/Button/Button";
 import Data from "@/Data.json";
-import { Product } from "../../../../Typing";
+import { Product, Cart } from "../../../../Typing";
 import Review from "@/components/Review/Review";
 import Link from "next/link";
 import MightLike from "@/components/MightLike/MightLike";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/store/features/cartSlice";
 const Page = ({
   params,
 }: {
@@ -16,6 +18,9 @@ const Page = ({
   };
 }) => {
   const { slug } = params;
+  const dispatch = useDispatch();
+  const [p_size, setP_Size] = useState<string>();
+  const [p_color, setP_Color] = useState<string>();
 
   const productData: Product =
     Data.find((data) => data.title === slug.replace(/_/g, " ")) ??
@@ -32,11 +37,16 @@ const Page = ({
     price,
     colors,
     sizes,
-    qty,
     rating,
     id,
+    qty,
   } = productData;
   const [subImage, setSubImage] = useState(otherImages?.[0]);
+
+  // ? Functions
+  function AddToCartHandler(data: Cart) {
+    dispatch(addToCart(data));
+  }
 
   return (
     <div className="!pt-0 max-w-[1440px] px-4 mx-auto py-[40] ">
@@ -131,7 +141,12 @@ const Page = ({
               {colors?.map((color, index) => (
                 <div
                   key={index}
-                  className={`color w-[37px] h-[37px] rounded-full `}
+                  onClick={() => {
+                    setP_Color(color);
+                  }}
+                  className={`color w-[37px] ${
+                    p_color === color && "border-2 border-black p-1 scale-110"
+                  } h-[37px] rounded-full border-2 hover:border-black hover:bg-black focus:border-2 focus:border-black`}
                   style={{
                     backgroundColor: color,
                   }}
@@ -146,7 +161,15 @@ const Page = ({
             <h3 className="font-medium text-xl">Select Size</h3>
             <div className="sizes_container grid grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4  w-max gap-2">
               {sizes.map((size, index) => (
-                <div className="w-max flex-shrink-0" key={index}>
+                <div
+                  className={`w-max flex-shrink-0 ${
+                    p_size === size && "invert"
+                  }`}
+                  key={index}
+                  onClick={() => {
+                    setP_Size(size);
+                  }}
+                >
                   <Button dark_variant={false} text={size} />
                 </div>
               ))}
@@ -162,7 +185,19 @@ const Page = ({
               <Image src="/desc.svg" alt="decrement" width={24} height={24} />
             </div>
             <div className="lg:w-full flex items-center w-[50%]">
-              <div>
+              <div
+                onClick={() => {
+                  AddToCartHandler({
+                    id,
+                    title,
+                    image,
+                    qty: qty || 0,
+                    price,
+                    p_color: p_color || "Random",
+                    p_size: p_size || "Random",
+                  });
+                }}
+              >
                 <Button dark_variant={true} text="Add to Cart" />
               </div>
             </div>

@@ -3,8 +3,11 @@ import React, { useEffect } from "react";
 import Styles from "./Navbar.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/app/store";
 
 const Navbar = () => {
+  const { cart } = useSelector((state: RootState) => state.cartReducer);
   const [isMenuOpen, setMenuOpen] = React.useState(false);
   useEffect(() => {
     if (isMenuOpen) {
@@ -113,7 +116,7 @@ const Navbar = () => {
           <Link href={"/Cart"} className="flex relative">
             <Image src={"/card.svg"} alt="Card" width={25} height={25} />
             <div className="w-5 absolute -bottom-2 -right-2 text-[10px] h-5 rounded-full bg-black text-white flex items-center justify-center">
-              {0}
+              {cart.length}
             </div>
           </Link>
           <Image src={"/account.svg"} alt="Account" width={25} height={25} />

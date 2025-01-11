@@ -18,7 +18,8 @@
     "category": "T-Shirts",
     "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
     "colors": ["#4F4631", "#314F4A", "#31344F"],
-    "sizes": ["Small", "Medium", "Large", "X-Large"]
+    "sizes": ["Small", "Medium", "Large", "X-Large"],
+    "qty": 0
   },
   {
     "id": "prod-jeans-skinny-002",
@@ -38,7 +39,8 @@
     "category": "Jeans",
     "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
     "colors": ["#4F4631", "#314F4A", "#31344F"],
-    "sizes": ["Small", "Medium", "Large", "X-Large"]
+    "sizes": ["Small", "Medium", "Large", "X-Large"],
+    "qty": 0
   },
   {
     "id": "prod-shirt-checkered-003",
@@ -58,7 +60,8 @@
     ],
     "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
     "colors": ["#4F4631", "#314F4A", "#31344F"],
-    "sizes": ["Small", "Medium", "Large", "X-Large"]
+    "sizes": ["Small", "Medium", "Large", "X-Large"],
+    "qty": 0
   },
   {
     "id": "prod-tshirt-striped-004",
@@ -78,6 +81,8 @@
     "category": "T-SHIRT",
     "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
     "colors": ["#4F4631", "#314F4A", "#31344F"],
-    "sizes": ["Small", "Medium", "Large", "X-Large"]
+    "sizes": ["Small", "Medium", "Large", "X-Large"],
+
+    "qty": 0
   }
 ]

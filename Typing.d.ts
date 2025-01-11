@@ -1,5 +1,5 @@
 export interface Product {
-    image?: string;
+    image: string;
     title: string;
     rating: string;
     discount: boolean;
@@ -12,5 +12,16 @@ export interface Product {
     colors: string[];
     sizes: string[];
     qty?: number;
-    id?: string;
+    id: string;
+    qty: number
+}
+
+export type Cart = {
+    id: string
+    title: string,
+    image: string,
+    price: string,
+    p_color: string,
+    p_size: string,
+    qty: number
 }

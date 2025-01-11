@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import { Footer } from "@/components/Footer/Footer";
 import { Urbanist } from "next/font/google";
+import CartProvider from "./CartProvider";
 
 export const metadata: Metadata = {
   title: "Shop.co",
@@ -22,9 +23,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={` ${urbanist.className} antialiased`}>
-        <Navbar />
-        {children}
-        <Footer />
+        <CartProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );
