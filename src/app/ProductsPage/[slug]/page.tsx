@@ -47,6 +47,9 @@ const Page = ({
   function AddToCartHandler(data: Cart) {
     dispatch(addToCart(data));
   }
+  // const descHandler = (id: string) => {
+  //   dispatch(descQty(id));
+  // };
 
   return (
     <div className="!pt-0 max-w-[1440px] px-4 mx-auto py-[40] ">
@@ -183,7 +186,7 @@ const Page = ({
               <Image
                 src="/incr.svg"
                 onClick={() => {
-                  setP_qty((prev) => prev + 1);
+                  setP_qty((prev) => prev - 1);
                 }}
                 alt="decrement"
                 width={24}

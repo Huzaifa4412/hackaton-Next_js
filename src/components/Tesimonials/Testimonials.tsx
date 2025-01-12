@@ -91,7 +91,7 @@ export default function Testimonials() {
               <SwiperSlide key={idx}>
                 <div
                   key={idx}
-                  className="testimonial cursor-grab items-center justify-center flex-shrink-0 mx-auto flex flex-col gap-2 px-[32px] py-[24px] w-[395px] h-[240px] border-2 rounded-[20px]"
+                  className="testimonial cursor-grab items-center justify-center flex-shrink-0 mx-auto flex flex-col gap-2 px-[32px] py-[24px] w-[355px] h-[240px] border-2 rounded-[20px]"
                 >
                   <Image
                     src={"/Testimonials/startsFrame.svg"}
