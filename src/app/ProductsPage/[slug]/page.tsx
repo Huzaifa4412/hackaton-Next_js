@@ -21,6 +21,7 @@ const Page = ({
   const dispatch = useDispatch();
   const [p_size, setP_Size] = useState<string>();
   const [p_color, setP_Color] = useState<string>();
+  const [p_qty, setP_qty] = useState<number>(1);
 
   const productData: Product =
     Data.find((data) => data.title === slug.replace(/_/g, " ")) ??
@@ -39,7 +40,6 @@ const Page = ({
     sizes,
     rating,
     id,
-    qty,
   } = productData;
   const [subImage, setSubImage] = useState(otherImages?.[0]);
 
@@ -180,9 +180,25 @@ const Page = ({
           </div>
           <div className="flex gap-5">
             <div className="q_btns bg-[#F0F0F0] w-[170px] hover:bg-slate-200 rounded-[62px] py-[12px] px-[20px] flex items-center justify-between">
-              <Image src="/incr.svg" alt="increment" width={24} height={24} />
-              <span className="text-black text-2xl font-bold">1</span>
-              <Image src="/desc.svg" alt="decrement" width={24} height={24} />
+              <Image
+                src="/incr.svg"
+                onClick={() => {
+                  setP_qty((prev) => prev + 1);
+                }}
+                alt="decrement"
+                width={24}
+                height={24}
+              />
+              <span className="text-black text-2xl font-bold">{p_qty}</span>
+              <Image
+                src="/desc.svg"
+                alt="increment"
+                onClick={() => {
+                  setP_qty((prev) => prev + 1);
+                }}
+                width={24}
+                height={24}
+              />
             </div>
             <div className="lg:w-full flex items-center w-[50%]">
               <div
@@ -191,7 +207,7 @@ const Page = ({
                     id,
                     title,
                     image,
-                    qty: qty || 0,
+                    qty: p_qty || 0,
                     price,
                     p_color: p_color || "Random",
                     p_size: p_size || "Random",

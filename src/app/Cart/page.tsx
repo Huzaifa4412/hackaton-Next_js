@@ -3,9 +3,10 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Heading from "@/components/Heading/Heading";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/app/store";
 import { Cart } from "../../../Typing";
+import { addToCart, delFromCart, descQty } from "@/store/features/cartSlice";
 
 const Page = () => {
   const { cart } = useSelector((state: RootState) => state.cartReducer);
@@ -98,6 +99,18 @@ const Page = () => {
 };
 
 const CartItems = ({ item }: { item: Cart }) => {
+  const dispatch = useDispatch();
+
+  const addToCartHandler = (item: Cart) => {
+    dispatch(addToCart(item));
+  };
+  const delCartHandler = (id: string) => {
+    dispatch(delFromCart(id));
+  };
+
+  const descHandler = (id: string) => {
+    dispatch(descQty(id));
+  };
   return (
     <>
       <div className="w-full my-4 sm:my-8">
@@ -135,21 +148,34 @@ const CartItems = ({ item }: { item: Cart }) => {
                   className="hover:cursor-pointer w-6 h-6"
                   width={24}
                   height={24}
+                  onClick={() => {
+                    delCartHandler(item.id);
+                  }}
                 />
               </div>
               <div className="q_btns h-[44px] w-[126px] bg-[#F0F0F0] hover:bg-slate-400 rounded-[62px] py-[12px] px-[20px] flex items-center justify-between">
                 <Image
-                  src="/desc.svg"
+                  src="/incr.svg"
                   alt="decrement"
                   className="w-5 h-5"
                   width={20}
                   height={20}
+                  onClick={() => {
+                    if (item.qty > 1) {
+                      descHandler(item.id);
+                    } else {
+                      delCartHandler(item.id);
+                    }
+                  }}
                 />
                 <span className="text-black text-2xl font-bold">
                   {item.qty}
                 </span>
                 <Image
-                  src="/incr.svg"
+                  onClick={() => {
+                    addToCartHandler(item);
+                  }}
+                  src="/desc.svg"
                   alt="increment"
                   className="w-5 h-5"
                   width={20}
