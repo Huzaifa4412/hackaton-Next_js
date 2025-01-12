@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import { Footer } from "@/components/Footer/Footer";
 import { Urbanist } from "next/font/google";
 import CartProvider from "./CartProvider";
+import { Flip, ToastContainer } from "react-toastify";
 
 export const metadata: Metadata = {
   title: "Shop.co",
@@ -23,6 +24,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={` ${urbanist.className} antialiased`}>
+        <ToastContainer
+          position="top-center"
+          autoClose={1200}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+          transition={Flip}
+        />
         <CartProvider>
           <Navbar />
           {children}

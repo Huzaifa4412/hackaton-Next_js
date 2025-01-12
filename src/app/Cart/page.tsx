@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Heading from "@/components/Heading/Heading";
@@ -10,6 +10,16 @@ import { addToCart, delFromCart, descQty } from "@/store/features/cartSlice";
 
 const Page = () => {
   const { cart } = useSelector((state: RootState) => state.cartReducer);
+  const [total, setTotal] = useState<number>();
+
+  useEffect(() => {
+    let newTotal = 0;
+    cart.forEach((item) => {
+      newTotal += parseInt(item.price.slice(1)) * item.qty;
+      console.log(newTotal);
+    });
+    setTotal(newTotal);
+  }, [cart]);
 
   return (
     <div className="cart max-w-[1440px] mx-auto my-4 sm:my-8 px-4">
@@ -42,45 +52,46 @@ const Page = () => {
               <div className="text-[#000000]/60 text-lg sm:text-2xl">
                 Sub Total
               </div>
-              <div className="font-bold text-lg sm:text-2xl">${1500}</div>
+              <div className="font-bold text-lg sm:text-2xl">${total}</div>
             </div>
             <div className="discount w-full flex items-center justify-between">
               <div className="text-[#000000]/60 text-lg sm:text-2xl">
-                Discount (-20%)
+                Delivery Fee
               </div>
 
               <div className="font-bold text-base sm:text-lg text-red-500">
                 -${15}
               </div>
             </div>
-            <div className="Delivery_Fee w-full flex items-center justify-between">
+            {/* <div className="Delivery_Fee w-full flex items-center justify-between">
               <div className="text-[#000000]/60 text-lg sm:text-2xl">
                 Delivery Fee
               </div>
 
               <div className="font-medium text-slate-300 text-base sm:text-lg">
                 ${15}
-              </div>
+              </div> */}
+          </div>
+          <hr className="text-[#000000/60]" />
+          <div className="total w-full flex items-center justify-between">
+            <div className="text-[#000000]/60 text-lg sm:text-2xl">Total</div>
+            <div className="font-bold text-lg sm:text-2xl">
+              ${total ? total - 15 : 0}
             </div>
-            <hr className="text-[#000000/60]" />
-            <div className="total w-full flex items-center justify-between">
-              <div className="text-[#000000]/60 text-lg sm:text-2xl">Total</div>
-              <div className="font-bold text-lg sm:text-2xl">${1500}</div>
-            </div>
-            <div className="checkout_btn">
-              <Link href={"/CheckOut"}>
-                <button className="button flex items-center justify-center gap-3 w-full px-4 sm:px-[24px] py-2 sm:py-[12px] text-lg sm:text-xl rounded-[62px] text-white  bg-[#000000]">
-                  Go to Checkout
-                  <Image
-                    src="/Cart/arrow.svg"
-                    alt="arrow"
-                    width={20}
-                    height={20}
-                    className="w-4 h-4 sm:w-5 sm:h-5"
-                  />
-                </button>
-              </Link>
-            </div>
+          </div>
+          <div className="checkout_btn">
+            <Link href={"/CheckOut"}>
+              <button className="button flex items-center justify-center gap-3 w-full px-4 sm:px-[24px] py-2 sm:py-[12px] text-lg sm:text-xl rounded-[62px] text-white  bg-[#000000]">
+                Go to Checkout
+                <Image
+                  src="/Cart/arrow.svg"
+                  alt="arrow"
+                  width={20}
+                  height={20}
+                  className="w-4 h-4 sm:w-5 sm:h-5"
+                />
+              </button>
+            </Link>
           </div>
         </div>
       ) : (

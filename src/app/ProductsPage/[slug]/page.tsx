@@ -10,6 +10,7 @@ import Link from "next/link";
 import MightLike from "@/components/MightLike/MightLike";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/store/features/cartSlice";
+import { Flip, toast } from "react-toastify";
 const Page = ({
   params,
 }: {
@@ -214,6 +215,17 @@ const Page = ({
                     price,
                     p_color: p_color || "Random",
                     p_size: p_size || "Random",
+                  });
+                  toast("🎉 Item Add to the Cart", {
+                    position: "top-center",
+                    autoClose: 1200,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    transition: Flip,
                   });
                 }}
               >
