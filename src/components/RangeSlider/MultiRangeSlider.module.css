@@ -1,0 +1,11 @@
+.thumbLeft {
+    background-color: black !important;
+}
+
+.thumbRight {
+    background-color: black !important;
+}
+
+.thumb {
+    box-shadow: none !important;
+}

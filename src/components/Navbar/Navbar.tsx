@@ -24,13 +24,13 @@ const Navbar = () => {
   return (
     <div className={` ${Styles.Navbar} `}>
       <div
-        className={`${Styles.updatePart}  w-full h-[38px] `}
+        className={`${Styles.updatePart} remove w-full h-[38px] `}
         style={{
           backgroundColor: "var(--foreground)",
           color: "var(--background)",
         }}
       >
-        <div className="flex items-center relative justify-center h-full max-w-[1440px] mx-auto">
+        <div className="flex items-center md:text-[14px] text-[11px] relative justify-center h-full max-w-[1440px] mx-auto">
           <p className="font-medium">
             Sign up and get 20% off to your first order.{" "}
             <span className="underline">Sign Up Now</span>
@@ -41,13 +41,13 @@ const Navbar = () => {
             alt="Cross Icon"
             width={20}
             height={20}
+            onClick={() => {
+              document.querySelector(".remove")?.remove();
+            }}
           />
         </div>
       </div>
-      <nav className="lg:w-[1024px]  xl:w-[1240px] h-[48px] xl:gap-[40px] mx-auto my-5 flex items-center justify-evenly md:justify-center  gap-[20px]">
-        <Link href={"/"} className="order-1 sm:order-2">
-          <div className={`${Styles.logo} text-[32px] font-ld `}>SHOP.CO</div>
-        </Link>
+      <nav className="lg:w-[1024px] xl:w-[1240px] h-[48px] xl:gap-[40px] mx-auto my-5 flex items-center justify-evenly md:justify-center  gap-[20px]">
         <Image
           src={"/Menu.svg"}
           alt="Menu Icon"
@@ -58,6 +58,9 @@ const Navbar = () => {
             setMenuOpen(!isMenuOpen);
           }}
         />
+        <Link href={"/"} className="order-1 sm:order-2">
+          <div className={`${Styles.logo} text-[32px] font-ld `}>SHOP.CO</div>
+        </Link>
         <div className={`${Styles.nav_items} order-1 sm:order-2`}>
           <ul
             className={`hidden ${Styles.nav_list} duration-500 relative ${

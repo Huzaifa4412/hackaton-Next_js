@@ -9,6 +9,10 @@
   --light-gray: #f0f0f0;
 }
 
+.multi-range-slider .thumb {
+  box-shadow: none !important;
+}
+
 .container {
   max-width: 1440px;
   margin: 0 auto;
@@ -22,7 +26,6 @@
     padding: 50px 80px;
   }
 }
-
 
 @media screen and (max-width: 1024px) {
   .container {

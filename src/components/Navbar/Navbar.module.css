@@ -26,9 +26,6 @@
     font-size: 12px;
     gap: 5px;
 
-    & img {
-      display: none;
-    }
   }
 }
 
