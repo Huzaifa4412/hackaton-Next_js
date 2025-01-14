@@ -9,3 +9,21 @@
 .thumb {
     box-shadow: none !important;
 }
+
+.multi_range_slider .thumb {
+    box-shadow: none !important;
+}
+
+.multi_range_slider .thumb::before {
+    content: '';
+    background-color: inherit;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: solid 1px black;
+    /* box-shadow: 0px 0px 3px black, inset 0px 0px 5px gray; */
+    border-radius: 50%;
+    z-index: 1;
+    margin: -8px -12px;
+    cursor: pointer;
+}

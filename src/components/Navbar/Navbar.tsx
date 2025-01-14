@@ -68,7 +68,7 @@ const Navbar = () => {
             } md:flex text-[16px]  gap-[22px] items-center font-medium`}
           >
             <li>
-              <Link href={"/"} className="flex items-center gap-1">
+              <Link href={"/ProductsPage"} className="flex items-center gap-1">
                 Shop{" "}
                 <Image
                   src={"/dropDown.svg"}
