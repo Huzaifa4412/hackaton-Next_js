@@ -8,13 +8,16 @@ function ProductCard({ item }: { item: Product }) {
     item;
   const id = `${title.replace(/-/g, "_")}${new Date().getMilliseconds()}`;
   return (
-    <div id={id} className={`${Styles.card} grid justify-between `}>
+    <div
+      id={id}
+      className={`${Styles.card} hover:shadow-xl p-3 grid justify-between `}
+    >
       <Image
         src={image ?? ""}
         alt="Product 1"
         width={290}
         height={298}
-        className="mb-[5px] hover:shadow-2xl"
+        className="mb-[5px] "
       />
       <h3 className="font-bold text-[20px] capitalize">{title}</h3>
       <div className="rating flex gap-[8px]">

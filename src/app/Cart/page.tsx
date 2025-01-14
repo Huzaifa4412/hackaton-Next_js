@@ -71,27 +71,27 @@ const Page = () => {
               <div className="font-medium text-slate-300 text-base sm:text-lg">
                 ${15}
               </div> */}
-          </div>
-          <hr className="text-[#000000/60]" />
-          <div className="total w-full flex items-center justify-between">
-            <div className="text-[#000000]/60 text-lg sm:text-2xl">Total</div>
-            <div className="font-bold text-lg sm:text-2xl">
-              ${total ? total - 15 : 0}
+            <hr className="text-[#000000/60]" />
+            <div className="total w-full flex items-center justify-between">
+              <div className="text-[#000000]/60 text-lg sm:text-2xl">Total</div>
+              <div className="font-bold text-lg sm:text-2xl">
+                ${total ? total - 15 : 0}
+              </div>
             </div>
-          </div>
-          <div className="checkout_btn">
-            <Link href={"/CheckOut"}>
-              <button className="button flex items-center justify-center gap-3 w-full px-4 sm:px-[24px] py-2 sm:py-[12px] text-lg sm:text-xl rounded-[62px] text-white  bg-[#000000]">
-                Go to Checkout
-                <Image
-                  src="/Cart/arrow.svg"
-                  alt="arrow"
-                  width={20}
-                  height={20}
-                  className="w-4 h-4 sm:w-5 sm:h-5"
-                />
-              </button>
-            </Link>
+            <div className="checkout_btn">
+              <Link href={"/CheckOut"}>
+                <button className="button flex items-center justify-center gap-3 w-full px-4 sm:px-[24px] py-2 sm:py-[12px] text-lg sm:text-xl rounded-[62px] text-white  bg-[#000000]">
+                  Go to Checkout
+                  <Image
+                    src="/Cart/arrow.svg"
+                    alt="arrow"
+                    width={20}
+                    height={20}
+                    className="w-4 h-4 sm:w-5 sm:h-5"
+                  />
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       ) : (

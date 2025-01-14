@@ -11,6 +11,7 @@ import MightLike from "@/components/MightLike/MightLike";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/store/features/cartSlice";
 import { Flip, toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 const Page = ({
   params,
 }: {
@@ -18,6 +19,7 @@ const Page = ({
     slug: string;
   };
 }) => {
+  const router = useRouter();
   const { slug } = params;
   const dispatch = useDispatch();
   const [p_size, setP_Size] = useState<string>();
@@ -226,6 +228,12 @@ const Page = ({
                     progress: undefined,
                     theme: "dark",
                     transition: Flip,
+                    onClick: () => {
+                      router.push("/Cart");
+                    },
+                    style: {
+                      cursor: "pointer",
+                    },
                   });
                 }}
               >
