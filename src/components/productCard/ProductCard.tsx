@@ -14,7 +14,7 @@ function ProductCard({ item }: { item: Product }) {
         alt="Product 1"
         width={290}
         height={298}
-        className="mb-[5px]"
+        className="mb-[5px] hover:shadow-2xl"
       />
       <h3 className="font-bold text-[20px] capitalize">{title}</h3>
       <div className="rating flex gap-[8px]">

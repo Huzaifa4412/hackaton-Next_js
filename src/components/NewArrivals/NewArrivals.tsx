@@ -24,8 +24,11 @@ export default function NewArrivals() {
           );
         })}
       </div>
-      <div className="button border-2  w-max h-[max] px-[54px]   rounded-full">
-        <Button text="View All" dark_variant={false} />
+
+      <div className="w-max">
+        <Link href={"/ProductsPage"}>
+          <Button text="View All" dark_variant={false} />
+        </Link>
       </div>
     </div>
   );
