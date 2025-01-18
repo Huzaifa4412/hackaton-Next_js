@@ -1,58 +1,48 @@
 import React from "react";
-import Styles from "./ProductCard.module.css";
 import Image from "next/image";
-import { Product } from "../../../Typing";
+import { ProductCard_type } from "../../../Typing";
+// import { Rating } from "../../app/ProductsPage/[slug]/page";
+import Link from "next/link";
+import { Rating } from "@/app/ProductsPage/[slug]/page";
 
-function ProductCard({ item }: { item: Product }) {
-  const { image, title, rating, price, actualPrice, discount, discountTag } =
+function ProductCard({ item }: { item: ProductCard_type }) {
+  const { image, name, rating, _id, price, discountPercent, discountedPrice } =
     item;
-  const id = `${title.replace(/-/g, "_")}${new Date().getMilliseconds()}`;
+  // const id = `${title.replace(/-/g, "_")}${new Date().getMilliseconds()}`;
   return (
-    <div
-      id={id}
-      className={`${Styles.card} hover:shadow-xl p-3 grid justify-between `}
-    >
-      <Image
-        src={image ?? ""}
-        alt="Product 1"
-        width={290}
-        height={298}
-        className="mb-[5px] "
-      />
-      <h3 className="font-bold text-[20px] capitalize">{title}</h3>
-      <div className="rating flex gap-[8px]">
-        <div className="stars flex gap-[5px] items-center ">
-          <Image
-            src={"/products/rating.svg"}
-            alt="Rating"
-            width={18}
-            height={18}
-          />
-          <Image
-            src={"/products/halfRating.svg"}
-            alt="Rating Half"
-            width={8.79}
-            height={16.72}
-          />
+    <Link href={`/ProductsPage/${_id}`}>
+      <div
+        id={_id}
+        className={`hover:shadow-xl p-3 grid w-[290px] justify-between  overflow-hidden] `}
+      >
+        <Image
+          src={image}
+          alt="Product 1"
+          width={290}
+          height={298}
+          className="mb-[5px] w-[290px] h-[298px] object-cover rounded-[20px] object-center"
+        />
+        <h3 className="font-bold text-[20px] capitalize">{name}</h3>
+        <div className="rating flex gap-[8px]">
+          {<Rating rating={rating} maxRating={5} />}
         </div>
-        <div className="rating_number ml-[5px]">{rating}</div>
-      </div>
-      <div className="price flex gap-[10px]">
-        <h3 className="text-[24px] font-bold">{price}</h3>
-        {discount && (
-          <div className="discount">
-            <div className="DiscountPrice flex gap-[10px]">
-              <h3 className="text-[24px] font-bold text-[#000000]/40">
-                {actualPrice}
-              </h3>
-              <div className="discountTag bg-[#FF3333]/10 py-[6px] px-[14px] text-[#FF3333] rounded-[62px]">
-                {discountTag}
+        <div className="price flex gap-[10px]">
+          <h3 className="text-[24px] font-bold">${price}</h3>
+          {discountPercent > 0 && (
+            <div className="discount">
+              <div className="DiscountPrice flex gap-[10px]">
+                <h3 className="text-[24px] font-bold text-[#000000]/40">
+                  ${discountedPrice}
+                </h3>
+                <div className="discountTag bg-[#FF3333]/10 py-[6px] px-[14px] text-[#FF3333] rounded-[62px]">
+                  {discountPercent}%
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

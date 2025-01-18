@@ -1,27 +1,33 @@
 export interface Product {
-    image: string;
-    title: string;
-    rating: string;
-    discount: boolean;
-    price: string;
-    otherImages?: string[]
-    actualPrice: string;
-    discountTag: string;
-    category: string;
-    description: string;
+    _id: string;
+    name: string;
+    rating: number;
+    discountPercent: number;
     colors: string[];
+    image: string;
+    category: string;
+    price: string;
     sizes: string[];
-    qty?: number;
-    id: string;
-    qty: number
+    description: string;
+    discountedPrice: string;
 }
 
-export type Cart = {
-    id: string
-    title: string,
+export type ProductCard_type = {
     image: string,
-    price: string,
-    p_color: string,
-    p_size: string,
-    qty: number
+    name: string,
+    rating: number,
+    price: number,
+    discountPercent: number,
+    discountedPrice: number,
+    _id: string,
+
+}
+export interface Cart {
+    id: string;
+    title: string;
+    image: string;
+    qty: number;
+    price: string;
+    p_color: string;
+    p_size: string;
 }

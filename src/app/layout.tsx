@@ -23,7 +23,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={` ${urbanist.className} antialiased`}>
+      <body
+        suppressHydrationWarning
+        className={` ${urbanist.className} antialiased`}
+      >
         <ToastContainer
           position="top-center"
           autoClose={1200}

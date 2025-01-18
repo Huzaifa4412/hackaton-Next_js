@@ -11,6 +11,7 @@ const nextConfig = {
       "media.istockphoto.com",
       "images.unsplash.com",
       "cdn.pixabay.com",
+      "cdn.sanity.io",
     ], // Add your image domain here
   },
 };

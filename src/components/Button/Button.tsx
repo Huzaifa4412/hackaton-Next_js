@@ -1,7 +1,11 @@
 import React from "react";
 import Styles from "./Button.module.css";
 
-export default function Button(props: { text: string; dark_variant: boolean }) {
+export default function Button(props: {
+  text: string;
+  dark_variant: boolean;
+  onClick?: () => void;
+}) {
   return (
     <button
       className={`${

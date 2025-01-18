@@ -223,7 +223,7 @@ export function Footer() {
         {/* Footer Bottom */}
         <div className="flex flex-col md:flex-row justify-between items-center mt-12 border-t border-[#E4E7E9]">
           <p className="text-sm text-[#000000]/60 mb-4 md:mb-0">
-            Shop.co © 2000-2023, All Rights Reserved
+            Shop.co © 2000-{new Date().getFullYear()}, All Rights Reserved
           </p>
           <div className="flex items-center gap-4">
             <Image
