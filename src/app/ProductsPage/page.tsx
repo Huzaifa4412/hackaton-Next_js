@@ -1,29 +1,36 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Heading from "@/components/Heading/Heading";
 import RangeSlider from "@/components/RangeSlider/RangeSelector";
 import Button from "@/components/Button/Button";
 import ProductCard from "@/components/productCard/ProductCard";
-import { client } from "@/sanity/lib/client";
 import { ProductCard_type } from "../../../Typing";
 import Link from "next/link";
+import { getProducts } from "@/sanity/lib/data";
 
 const Page = () => {
-  const [products, setProducts] = useState([]);
-  const getProduct = async () => {
-    try {
-      const quary = `*[_type == "product"]{name,"image":image.asset -> url,rating, price, discountPercent,_id, discountedPrice }`;
-      const product = await client.fetch(quary);
-      setProducts(product);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const [products, setProducts] = useState([]);
+  const fetchProductRef = useRef<ProductCard_type[]>([]);
+  const [products, setProducts] = useState<ProductCard_type[]>([]);
+
+  const getProduct = useCallback(async () => {
+    // try {
+    //   const quary = `*[_type == "product"]{name,"image":image.asset -> url,rating, price, discountPercent,_id, discountedPrice }`;
+    //   const product = await client.fetch(quary);
+    //   setProducts(product);
+    //   await getProducts();
+    // } catch (error) {
+    //   console.log(error);
+    // }
+    const products = await getProducts();
+    fetchProductRef.current = products;
+    setProducts(products);
+  }, []);
 
   useEffect(() => {
     getProduct();
-  }, []);
+  }, [getProduct]);
   const colors = ["red", "yellow", "green", "pink", "blue", "purple", "black"];
   const sizes = [
     "smaller",
@@ -275,9 +282,10 @@ const Page = () => {
           )}
         </div>
         <div className="products_container flex justify-center flex-wrap gap-5">
-          {products.map((item: ProductCard_type) => {
-            return <ProductCard key={item._id} item={item} />;
-          })}
+          {products.length > 0 &&
+            products.map((item: ProductCard_type) => {
+              return <ProductCard key={item._id} item={item} />;
+            })}
         </div>
       </div>
     </div>

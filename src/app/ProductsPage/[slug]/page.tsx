@@ -1,17 +1,18 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { Watch } from "react-loader-spinner";
 import Image from "next/image";
 import Heading from "@/components/Heading/Heading";
 import Button from "@/components/Button/Button";
 import { Cart } from "../../../../Typing";
 import Review from "@/components/Review/Review";
 import Link from "next/link";
-import MightLike from "@/components/MightLike/MightLike";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/store/features/cartSlice";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { client } from "@/sanity/lib/client";
+// import MightLike from "@/components/MightLike/MightLike";
 
 // Define proper types
 interface ProductResponse {
@@ -27,24 +28,21 @@ interface ProductResponse {
   discountedPrice: string;
   _id: string;
 }
-
-export async function getSingleProduct(slug: string) {
-  // Using your original query since you verified it works in Vision
-  const query = `*[_type == "product" && _id == $slug][0]{
-    name, 
-    rating, 
-    discountPercent, 
-    colors, 
-    "image":image.asset->url,
-    category,
-    price,
-    sizes,
-    description,
-    discountedPrice, 
-    _id
-  }`;
-
+async function getSingleProduct(slug: string): Promise<ProductResponse | null> {
   try {
+    const query = `*[_type == "product" && _id == $slug][0]{
+      name, 
+      rating, 
+      discountPercent, 
+      colors, 
+      "image":image.asset->url,
+      category,
+      price,
+      sizes,
+      description,
+      discountedPrice, 
+      _id
+    }`;
     const product = await client.fetch<ProductResponse>(query, { slug });
     return product;
   } catch (error) {
@@ -52,14 +50,7 @@ export async function getSingleProduct(slug: string) {
     return null;
   }
 }
-
-const Page = ({
-  params,
-}: {
-  params: {
-    slug: string;
-  };
-}) => {
+const Page = ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
   const router = useRouter();
   const dispatch = useDispatch();
@@ -69,7 +60,6 @@ const Page = ({
   const [product, setProduct] = useState<ProductResponse | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -87,14 +77,27 @@ const Page = ({
         setIsLoading(false);
       }
     };
-
     fetchProduct();
   }, [slug]);
-
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        {" "}
+        <Watch
+          height="80"
+          width="80"
+          radius="48"
+          color="#111"
+          ariaLabel="watch-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+        />{" "}
+      </div>
+    );
+  }
   if (error) return <div>Error: {error}</div>;
   if (!product) return <div>Product not found</div>;
-
   const {
     name,
     price,
@@ -108,7 +111,6 @@ const Page = ({
     sizes,
     colors,
   } = product;
-
   const AddToCartHandler = (data: Cart) => {
     try {
       dispatch(addToCart(data));
@@ -119,7 +121,7 @@ const Page = ({
         closeOnClick: false,
         pauseOnHover: true,
         onClick: () => {
-          router.push("/cart");
+          router.push("/Cart");
         },
       });
     } catch (error) {
@@ -127,7 +129,6 @@ const Page = ({
       toast.error("Failed to add item to cart");
     }
   };
-
   return (
     <div className="!pt-0 max-w-[1440px] px-4 mx-auto py-[40]">
       <div className="breadCrams py-4 flex items-center">
@@ -161,8 +162,8 @@ const Page = ({
           </div>
           {rating && <Rating rating={rating} maxRating={5} />}
           <div className="price text-[32px] font-bold gap-2 flex items-center">
-            <h2>{discountedPrice}</h2>
-            <h2 className="line-through text-slate-400">{price}</h2>
+            <h2>Rs {discountedPrice}</h2>
+            <h2 className="line-through text-slate-400">Rs {price}</h2>
             {discountPercent > 0 && (
               <div className="tag w-[72px] h-[34px] rounded-[62px] bg-red-200 text-red-500 text-xl flex items-center justify-center font-medium">
                 {discountPercent}%
@@ -246,7 +247,7 @@ const Page = ({
                   title: name,
                   image: image,
                   qty: p_qty,
-                  price: price?.toString(),
+                  price: discountedPrice?.toString() || price?.toString(),
                   p_color: p_color || "Random",
                   p_size: p_size || "Random",
                 })
@@ -257,6 +258,8 @@ const Page = ({
           </div>
         </div>
       </div>
+      <Review />
+      {/* <MightLike /> */}
     </div>
   );
 };

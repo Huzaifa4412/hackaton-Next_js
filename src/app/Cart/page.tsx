@@ -15,7 +15,7 @@ const Page = () => {
   useEffect(() => {
     let newTotal = 0;
     cart.forEach((item) => {
-      newTotal += parseInt(item.price.slice(1)) * item.qty;
+      newTotal += parseInt(item.price) * item.qty;
       console.log(newTotal);
     });
     setTotal(newTotal);
@@ -52,7 +52,7 @@ const Page = () => {
               <div className="text-[#000000]/60 text-lg sm:text-2xl">
                 Sub Total
               </div>
-              <div className="font-bold text-lg sm:text-2xl">${total}</div>
+              <div className="font-bold text-lg sm:text-2xl">Rs {total}</div>
             </div>
             <div className="discount w-full flex items-center justify-between">
               <div className="text-[#000000]/60 text-lg sm:text-2xl">
@@ -60,7 +60,7 @@ const Page = () => {
               </div>
 
               <div className="font-bold text-base sm:text-lg text-red-500">
-                -${15}
+                -Rs {15}
               </div>
             </div>
             {/* <div className="Delivery_Fee w-full flex items-center justify-between">
@@ -69,13 +69,13 @@ const Page = () => {
               </div>
 
               <div className="font-medium text-slate-300 text-base sm:text-lg">
-                ${15}
+                Rs {15}
               </div> */}
             <hr className="text-[#000000/60]" />
             <div className="total w-full flex items-center justify-between">
               <div className="text-[#000000]/60 text-lg sm:text-2xl">Total</div>
               <div className="font-bold text-lg sm:text-2xl">
-                ${total ? total - 15 : 0}
+                Rs {total ? total - 15 : 0}
               </div>
             </div>
             <div className="checkout_btn">

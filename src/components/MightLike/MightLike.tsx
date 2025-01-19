@@ -6,9 +6,9 @@ import { client } from "@/sanity/lib/client";
 
 const getProduct = async () => {
   try {
-    const quary = `*[_type == "product"]{name,"image":image.asset -> url,rating, price, discountPercent,_id, discountedPrice }`;
+    const quary = `*[_type == "product"]{name,"image":image.asset -> url,rating, price, discountPercent,_id, discountedPrice }[0..3]`;
 
-    const product = client.fetch(quary);
+    const product = await client.fetch(quary);
     return product;
   } catch (error) {
     console.log(error);

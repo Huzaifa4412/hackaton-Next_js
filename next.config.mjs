@@ -3,9 +3,6 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   images: {
     domains: [
       "media.istockphoto.com",
