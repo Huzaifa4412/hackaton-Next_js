@@ -8,7 +8,8 @@ import { Flip, ToastContainer } from "react-toastify";
 
 export const metadata: Metadata = {
   title: "Shop.co",
-  description: "Created by Huzaifa Mukhtar",
+  description: "Created by Huzaifa Mukhtar ",
+  keywords: ["e-commerce", "shop", "nextjs", "typescript"],
 };
 
 const urbanist = Urbanist({

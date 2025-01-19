@@ -122,6 +122,7 @@ const Navbar = () => {
               {cart.length}
             </div>
           </Link>
+
           <Image src={"/account.svg"} alt="Account" width={25} height={25} />
         </div>
       </nav>
