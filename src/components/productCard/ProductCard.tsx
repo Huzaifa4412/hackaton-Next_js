@@ -3,7 +3,7 @@ import Image from "next/image";
 import { ProductCard_type } from "../../../Typing";
 // import { Rating } from "../../app/ProductsPage/[slug]/page";
 import Link from "next/link";
-import { Rating } from "@/app/ProductsPage/[slug]/page";
+import Rating from "../Rating/Rating";
 
 function ProductCard({ item }: { item: ProductCard_type }) {
   const { image, name, rating, _id, price, discountPercent, discountedPrice } =
