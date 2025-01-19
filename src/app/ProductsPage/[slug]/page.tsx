@@ -160,7 +160,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
           <div>
             <Heading text={name ?? ""} />
           </div>
-          {rating && <Rating rating={rating} maxRating={5} />}
+          {rating && <Rating rating={rating} />}
           <div className="price text-[32px] font-bold gap-2 flex items-center">
             <h2>Rs {discountedPrice}</h2>
             <h2 className="line-through text-slate-400">Rs {price}</h2>
