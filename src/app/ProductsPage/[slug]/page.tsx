@@ -265,13 +265,11 @@ const Page = ({ params }: { params: { slug: string } }) => {
 };
 
 export default Page;
-
-export interface RatingProps {
+interface RatingProps {
   rating: number; // e.g., 4.5
-  maxRating?: number; // Default to 5
 }
 
-export function Rating({ rating, maxRating }: RatingProps) {
+export function Rating({ rating }: RatingProps) {
   const fullStar = Math.floor(rating);
   const halfStar = rating % 1 !== 0;
   return (
@@ -300,7 +298,7 @@ export function Rating({ rating, maxRating }: RatingProps) {
         ))}
       </div>
       <div>
-        <span className="text-black text-xl">{rating}</span>/{maxRating || 5}
+        <span className="text-black text-xl">{rating}</span>/{5}
       </div>
     </div>
   );

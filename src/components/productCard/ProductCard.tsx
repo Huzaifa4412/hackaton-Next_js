@@ -24,7 +24,7 @@ function ProductCard({ item }: { item: ProductCard_type }) {
         />
         <h3 className="font-bold text-[20px] capitalize">{name}</h3>
         <div className="rating flex gap-[8px]">
-          {<Rating rating={rating} maxRating={5} />}
+          {<Rating rating={rating} />}
         </div>
         <div className="price flex gap-[10px]">
           <h3 className="text-[24px] font-bold">${price}</h3>
