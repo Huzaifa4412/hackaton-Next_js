@@ -1,11 +1,11 @@
 import React from "react";
 import Image from "next/image";
-import { ProductCard_type } from "../../../Typing";
+import { Product } from "../../../Typing";
 // import { Rating } from "../../app/ProductsPage/[slug]/page";
 import Link from "next/link";
 import Rating from "../Rating/Rating";
 
-function ProductCard({ item }: { item: ProductCard_type }) {
+function ProductCard({ item }: { item: Product }) {
   const { image, name, rating, _id, price, discountPercent, discountedPrice } =
     item;
   // const id = `${title.replace(/-/g, "_")}${new Date().getMilliseconds()}`;

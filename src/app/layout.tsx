@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer/Footer";
 import { Urbanist } from "next/font/google";
 import CartProvider from "./CartProvider";
 import { Flip, ToastContainer } from "react-toastify";
+import DataProvider from "./context/ProductContext";
 
 export const metadata: Metadata = {
   title: "Shop.co",
@@ -41,11 +42,13 @@ export default function RootLayout({
           theme="dark"
           transition={Flip}
         />
-        <CartProvider>
-          <Navbar />
-          {children}
-          <Footer />
-        </CartProvider>
+        <DataProvider>
+          <CartProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </CartProvider>
+        </DataProvider>
       </body>
     </html>
   );
