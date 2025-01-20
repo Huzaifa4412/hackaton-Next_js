@@ -6,7 +6,7 @@ import { ContextType, DataContext } from "@/app/context/ProductContext";
 
 const MightLike = () => {
   const { data } = useContext(DataContext) as ContextType;
-  data.splice(3);
+  data.splice(4);
 
   return (
     <div>
