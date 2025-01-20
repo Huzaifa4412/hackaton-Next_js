@@ -9,7 +9,8 @@ import DataProvider from "./context/ProductContext";
 
 export const metadata: Metadata = {
   title: "Shop.co",
-  description: "Created by Huzaifa Mukhtar ",
+  description:
+    "Created by Huzaifa Mukhtar Roll number 499351 github: Huzaifa4412",
   keywords: ["e-commerce", "shop", "nextjs", "typescript"],
 };
 
