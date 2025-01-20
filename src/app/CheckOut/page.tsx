@@ -44,6 +44,16 @@ export default function CheckoutPage() {
           className="space-y-8"
           onSubmit={(e) => {
             e.preventDefault();
+            setFormData({
+              firstName: "",
+              lastName: "",
+              email: "",
+              address: "",
+              city: "",
+              phone: "",
+              postalCode: "",
+              country: "",
+            });
           }}
         >
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-16">

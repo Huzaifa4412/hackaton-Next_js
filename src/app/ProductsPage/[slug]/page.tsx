@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { client } from "@/sanity/lib/client";
 import Rating from "@/components/Rating/Rating";
+import MightLike from "@/components/MightLike/MightLike";
 // import MightLike from "@/components/MightLike/MightLike";
 
 // Define proper types
@@ -265,7 +266,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
         </div>
       </div>
       <Review />
-      {/* <MightLike /> */}
+      <MightLike />
     </div>
   );
 };
