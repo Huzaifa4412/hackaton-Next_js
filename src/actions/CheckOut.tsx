@@ -40,7 +40,11 @@ const createOrderInSanity = async (cartData: Cart[], customerId: string) => {
           product_quantity: item.qty,
         };
       }),
-      order_created: new Date().toISOString(),
+      order_created: new Date().toLocaleString("en-US", { timeZone: "UTC" }),
+      order_total_price: cartData.reduce(
+        (acc, curr) => acc + curr.qty * Number(curr.price),
+        0
+      ),
     };
     const sanityResponse = await client.create(customerObject);
     console.log("Customer Created in Sanity Successfully");
