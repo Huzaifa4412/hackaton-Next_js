@@ -2,8 +2,8 @@ import React from "react";
 import Image from "next/image";
 import { Product } from "../../../Typing";
 // import { Rating } from "../../app/ProductsPage/[slug]/page";
-import Link from "next/link";
 import Rating from "../Rating/Rating";
+import Link from "next/link";
 
 function ProductCard({ item }: { item: Product }) {
   const { image, name, rating, _id, price, discountPercent, discountedPrice } =

@@ -97,7 +97,12 @@ const Page = ({ params }: { params: { slug: string } }) => {
       </div>
     );
   }
-  if (error) return <div>Error: {error}</div>;
+  if (error)
+    return (
+      <div className="text-center font-bold w-full h-screen text-2xl flex items-center justify-center">
+        Error: {error}
+      </div>
+    );
   if (!product) return <div>Product not found</div>;
   const {
     name,

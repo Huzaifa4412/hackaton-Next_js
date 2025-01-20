@@ -1,7 +1,7 @@
 import { defineType } from "sanity"
 
 export default defineType({
-    name: 'products',
+    name: 'product',
     title: 'Products',
     type: 'document',
     fields: [

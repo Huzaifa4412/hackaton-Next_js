@@ -16,7 +16,6 @@ const persistConfig = {
     key: 'root',
     storage,
     timeout: 10000,
-    serialize: false,
 }
 
 const rootReducer = combineReducers({

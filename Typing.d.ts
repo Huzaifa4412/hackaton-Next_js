@@ -10,6 +10,7 @@ export interface Product {
     sizes: string[];
     description: string;
     discountedPrice: string;
+    isNew: boolean
 }
 
 export type ProductCard_type = {
@@ -31,3 +32,14 @@ export interface Cart {
     p_color: string;
     p_size: string;
 }
+
+export interface customerInfo {
+    firstName: string,
+    lastName: string,
+    email: string,
+    phone: string,
+    address: string,
+    city: string,
+    country: string,
+    postalCode: string
+} 

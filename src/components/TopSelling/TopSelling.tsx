@@ -5,7 +5,7 @@ import Button from "../Button/Button";
 import Heading from "../Heading/Heading";
 import Link from "next/link";
 import { client } from "@/sanity/lib/client";
-import { ProductCard_type } from "../../../Typing";
+import { Product } from "../../../Typing";
 
 const getProduct = async () => {
   try {
@@ -27,15 +27,8 @@ export default async function TopSelling() {
     >
       <Heading text="Top Selling" />
       <div className="productsContainer flex flex-wrap flex-shrink-0 justify-center  gap-[8px]">
-        {data.map((item: ProductCard_type) => {
-          return (
-            <Link
-              key={item._id}
-              href={`/ProductsPage/${item.name.replace(/ /g, "_")}${item._id}`}
-            >
-              <ProductCard item={item} key={item._id} />
-            </Link>
-          );
+        {data.map((item: Product) => {
+          return <ProductCard item={item} key={item._id} />;
         })}
       </div>
       <div className="w-max">

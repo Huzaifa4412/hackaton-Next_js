@@ -15,7 +15,7 @@ export async function getProducts() {
 
 export async function getAllProducts() {
     try {
-        const quary = `*[_type == "product"]{name,"image":image.asset -> url,rating, price, discountPercent, discountedPrice, _id, category,colors, sizes}`;
+        const quary = `*[_type == "product"]{name,"image":image.asset -> url,rating, price, isNew ,discountPercent, discountedPrice, _id, category,colors, sizes}`;
         const products = await client.fetch(quary)
         return products
     }
