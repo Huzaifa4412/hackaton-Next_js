@@ -55,7 +55,7 @@ This hackathon was my first experience working under a tight deadline to solve r
 - Optimized API requests to reduce response times.
 - Used static generation and server-side rendering (SSR) for better performance.
 
-![Lighthouse Report Screenshot](/public/screenShots/light_performance.png)
+![Lighthouse Report Screenshot](/public/screenshots/light_performance.png)
 ![Lighthouse Report Screenshot](/public/screenShots/light_practises.png)
 ![Lighthouse Report Screenshot](/public/screenShots/light_seo.png)
 ![Lighthouse Report Screenshot](/public/screenShots/lighthouseAss.png)
