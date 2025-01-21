@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Shop.co Marketplace
 
-## Getting Started
+### **Project Overview**
 
-First, run the development server:
+This project is a fully functional, responsive e-commerce marketplace website built during a 7-day hackathon. The website is powered by **Next.js** for the frontend and **Sanity** as the backend/headless CMS. It features seamless data fetching, a dynamic user interface, and optimized performance.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This was my first hackathon, and the experience was invaluable. I faced real-world challenges, such as handling complex data-fetching workflows, debugging issues, and implementing scalable solutions—all while adhering to a strict deadline.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### **Core Features**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Responsive Design**: Works flawlessly on all devices.
+- **Data Fetching**: Products and user data are fetched and managed through **Sanity** CMS.
+- **Search Functionality**: Includes dynamic suggestions to improve user experience.
+- **Product Details Page**: Displays detailed information about each product.
+- **All Products Page**: Showcases the full product catalog.
+- **New Arrivals Section**: Highlights the latest products.
+- **Add-to-Cart Functionality**: Fully functional cart with item management.
+- **Checkout Page**: Collects user data and sends it back to Sanity CMS.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+### **Challenges Overcome**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Debugging issues when fetching data from **Sanity** and rendering it dynamically on the frontend, especially for the Product Details page.
+- Ensuring data integrity between the frontend and backend.
+- Optimizing performance and code structure within the time constraints.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+### **Technologies Used**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Next.js**: Framework for building the frontend.
+- **Sanity**: Headless CMS for data management.
+- **Redux**: State management across the application.
+- _(Include any other libraries or frameworks you used, e.g., Tailwind CSS, Axios, etc.)_
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+### **Future Enhancements**
+
+- Adding smooth page transitions and animations for a better user experience.
+- Integrating a secure payment gateway.
+- Implementing advanced filters for products (e.g., price range, categories).
+
+---
+
+### **How to Run This Project Locally**
+
+1. **Clone the Repository**:
+
+   ```bash
+   git clone <your-repository-url>
+   ```
+
+2. **Navigate to the Project Directory**:
+
+   ```bash
+   cd <your-project-folder>
+   ```
+
+3. **Install Dependencies**:
+
+   ```bash
+   bun install
+   ```
+
+4. **Run the Development Server**:
+
+   ```bash
+   bun dev
+   ```
+
+5. **Configure Sanity CMS**:
+
+   - Update the **Sanity API keys** and dataset settings in the `.env` file.
+
+6. Open the application in your browser at:
+   ```bash
+   http://localhost:3000
+   ```
+
+---
+
+### **Lessons Learned**
+
+Participating in this hackathon was an incredible learning experience. I discovered how to:
+
+- Tackle real-world problems under tight deadlines.
+- Debug complex issues and implement optimized solutions.
+- Collaborate effectively within a constrained timeframe.
