@@ -266,7 +266,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
         </div>
       </div>
       <Review />
-      <MightLike />
+      <MightLike category={category} />
     </div>
   );
 };
