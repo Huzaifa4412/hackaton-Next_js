@@ -6,7 +6,7 @@ NextShop Marketplace is a fully functional and responsive e-commerce website des
 
 This hackathon was my first experience working under a tight deadline to solve real-world problems. It taught me how to overcome technical challenges, debug complex issues, and implement efficient solutions.
 
-![Hackathon Giphy](https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif)
+![Hackathon Giphy](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExb2UzMTg3czZ1M2NuaTJ2cnI4dW51dWtlMDNtM2Rhbjd0eDVsd3JvaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/h408T6Y5GfmXBKW62l/giphy.gif)
 
 ---
 
@@ -24,17 +24,19 @@ This hackathon was my first experience working under a tight deadline to solve r
 
 ---
 
-### **Project Architecture**
+### **Screenshots**
 
-- **Pages Directory**: Contains the main routes and components of the application.
-- **Components Directory**: Contains reusable components used throughout the application.
-- **Utils Directory**: Contains utility functions and helpers.
-- **Styles Directory**: Contains global styles and custom Tailwind CSS classes.
-- **Context Directory**: Manages global application state using Redux.
-- **Sanity Directory**: Contains Sanity API client and GROQ queries.
-- **bun.config.js**: Configuration file for Bun.
+#### Homepage
 
-![Structure Screenshot](/public/screenshots/structure.png)
+![Homepage Screenshot](/public/screenshots/homepage.png)
+
+#### Product Details Page
+
+![Product Details Screenshot](/public/screenshots/product_detail.png)
+
+#### Checkout Page
+
+![Checkout Screenshot](/public/screenshots/checkOut.png)
 
 ---
 
@@ -42,9 +44,9 @@ This hackathon was my first experience working under a tight deadline to solve r
 
 #### **Lighthouse Metrics**
 
-- **Performance**: 95/100
+- **Performance**: 56/100
 - **Accessibility**: 98/100
-- **SEO**: 90/100
+- **SEO**: 100/100
 - **Best Practices**: 93/100
 
 #### **Key Optimizations**
@@ -53,9 +55,12 @@ This hackathon was my first experience working under a tight deadline to solve r
 - Optimized API requests to reduce response times.
 - Used static generation and server-side rendering (SSR) for better performance.
 
-![Lighthouse Report Screenshot](/public/screenshots/lighthouse.png)
+![Lighthouse Report Screenshot](/public/screenshots/light_performance.png)
+![Lighthouse Report Screenshot](/public/screenshots/light_practises.png)
+![Lighthouse Report Screenshot](/public/screenshots/light_seo.png)
+![Lighthouse Report Screenshot](/public/screenshots/lighthouseAss.png)
 
-![Performance Giphy](https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif)
+![Performance Giphy](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2d3dGpva21lZzVlbDd3eTgxcWxzMWZsZnY3MmxzNnNocGV0OThhcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8PpFJcG4y8HqsxQumz/giphy.gif)
 
 ---
 
@@ -72,25 +77,19 @@ This hackathon was my first experience working under a tight deadline to solve r
 
 ![Sanity Data Screenshot](/public/screenshots/sanity_data.png)
 
-![Sanity Giphy](https://media.giphy.com/media/fwbzI2VejlE2U/giphy.gif)
+![Sanity Giphy](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXh3Z3IyMDd1aTFyMnF4Y2lndGU2bWU1a3NtYzI4a25xcDYxZDBtbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26tn33aiTi1jkl6H6/giphy.gif)
 
 ---
 
-### **Screenshots**
+### **Project Architecture**
 
-#### Homepage
-
-![Homepage Screenshot](/public/screenshots/homepage.png)
-
-#### Product Details Page
-
-![Product Details Screenshot](/public/screenshots/product_detail.png)
-
-#### Checkout Page
-
-![Checkout Screenshot](/public/screenshots/checkOut.png)
-
-#### Structure Page
+- **Pages Directory**: Contains the main routes and components of the application.
+- **Components Directory**: Contains reusable components used throughout the application.
+- **Utils Directory**: Contains utility functions and helpers.
+- **Styles Directory**: Contains global styles and custom Tailwind CSS classes.
+- **Context Directory**: Manages global application state using Redux.
+- **Sanity Directory**: Contains Sanity API client and GROQ queries.
+- **bun.config.js**: Configuration file for Bun.
 
 ![Structure Screenshot](/public/screenshots/structure.png)
 
@@ -112,7 +111,7 @@ This hackathon was my first experience working under a tight deadline to solve r
 - **Tailwind CSS**: Utility-first CSS framework for styling.
 - **Bun**: Fast JavaScript runtime and package manager.
 
-![Technology Giphy](https://media.giphy.com/media/3o6ZsYKBALH7hxUzmY/giphy.gif)
+![Technology Giphy](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXM0cDg1dGM4ZXo1OGg3d2JjcWFpbm1senFrMDNua3psdW5rbGlyNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/doXBzUFJRxpaUbuaqz/giphy.gif)
 
 ---
 
@@ -202,7 +201,7 @@ Participating in this hackathon was an incredible learning experience. I discove
 ### **Badges**
 
 ![GitHub Repo Stars](https://img.shields.io/github/stars/your-username/your-repo-name?style=social)
-![License](https://img.shields.io/github/license/your-username/your-repo-name)
+![License](https://img.shields.io/github/license/Huzaifa4412/hackaton-Next_js)
 ![Next.js](https://img.shields.io/badge/Next.js-Framework-blue)
 ![Sanity](https://img.shields.io/badge/Sanity-CMS-orange)
 
