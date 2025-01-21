@@ -24,19 +24,19 @@ This hackathon was my first experience working under a tight deadline to solve r
 
 ---
 
-### **Screenshots**
+### **ScreenShots**
 
 #### Homepage
 
-![Homepage Screenshot](/public/screenshots/homepage.png)
+![Homepage Screenshot](/public/screenShots/homepage.png)
 
 #### Product Details Page
 
-![Product Details Screenshot](/public/screenshots/product_detail.png)
+![Product Details Screenshot](/public/screenShots/product_detail.png)
 
 #### Checkout Page
 
-![Checkout Screenshot](/public/screenshots/checkOut.png)
+![Checkout Screenshot](/public/screenShots/checkOut.png)
 
 ---
 
@@ -55,10 +55,10 @@ This hackathon was my first experience working under a tight deadline to solve r
 - Optimized API requests to reduce response times.
 - Used static generation and server-side rendering (SSR) for better performance.
 
-![Lighthouse Report Screenshot](/public/screenshots/light_performance.png)
-![Lighthouse Report Screenshot](/public/screenshots/light_practises.png)
-![Lighthouse Report Screenshot](/public/screenshots/light_seo.png)
-![Lighthouse Report Screenshot](/public/screenshots/lighthouseAss.png)
+![Lighthouse Report Screenshot](/public/screenShots/light_performance.png)
+![Lighthouse Report Screenshot](/public/screenShots/light_practises.png)
+![Lighthouse Report Screenshot](/public/screenShots/light_seo.png)
+![Lighthouse Report Screenshot](/public/screenShots/lighthouseAss.png)
 
 ![Performance Giphy](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2d3dGpva21lZzVlbDd3eTgxcWxzMWZsZnY3MmxzNnNocGV0OThhcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8PpFJcG4y8HqsxQumz/giphy.gif)
 
@@ -71,11 +71,11 @@ This hackathon was my first experience working under a tight deadline to solve r
 - **Product Management**: Easy addition, deletion, and modification of products.
 - **Dynamic Content**: Fetch real-time updates directly from Sanity.
 
-#### **Sanity Screenshots**
+#### **Sanity ScreenShots**
 
-![Sanity Dashboard Screenshot](/public/screenshots/sanity_dashboard.png)
+![Sanity Dashboard Screenshot](/public/screenShots/sanity_dashboard.png)
 
-![Sanity Data Screenshot](/public/screenshots/sanity_data.png)
+![Sanity Data Screenshot](/public/screenShots/sanity_data.png)
 
 ![Sanity Giphy](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXh3Z3IyMDd1aTFyMnF4Y2lndGU2bWU1a3NtYzI4a25xcDYxZDBtbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26tn33aiTi1jkl6H6/giphy.gif)
 
@@ -91,7 +91,7 @@ This hackathon was my first experience working under a tight deadline to solve r
 - **Sanity Directory**: Contains Sanity API client and GROQ queries.
 - **bun.config.js**: Configuration file for Bun.
 
-![Structure Screenshot](/public/screenshots/structure.png)
+![Structure Screenshot](/public/screenShots/structure.png)
 
 ---
 
