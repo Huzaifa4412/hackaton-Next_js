@@ -1,14 +1,22 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Styles from "./Navbar.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/app/store";
+import { ContextType, DataContext } from "@/app/context/ProductContext";
+import { Product } from "../../../Typing";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
+  const router = useRouter();
+  const { data } = useContext(DataContext) as ContextType;
   const { cart } = useSelector((state: RootState) => state.cartReducer);
   const [isMenuOpen, setMenuOpen] = React.useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchData, setSearchData] = useState<Product[]>([]);
+  const [selectedItem, setSelectedItem] = useState<number>(-1);
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -21,6 +29,29 @@ const Navbar = () => {
     };
   }, [isMenuOpen]);
 
+  useEffect(() => {
+    if (searchQuery !== "") {
+      const filteredData = data.filter((product) =>
+        product.category.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setSearchData(filteredData);
+    }
+  }, [searchQuery, data]);
+  const HandlerKeys = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (selectedItem < searchData.length) {
+      if (e.key === "ArrowDown" && selectedItem < searchData.length - 1) {
+        setSelectedItem(selectedItem + 1);
+      } else if (e.key === "ArrowUp" && selectedItem > 0) {
+        setSelectedItem(selectedItem - 1);
+      } else if (e.key === "Enter") {
+        router.push(`/ProductsPage/${searchData[selectedItem]._id}`);
+        setSearchQuery("");
+        setSearchData([]);
+      }
+    } else {
+      setSelectedItem(-1);
+    }
+  };
   return (
     <div className={` ${Styles.Navbar} `}>
       <div
@@ -100,7 +131,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div
-          className={`${Styles.searchBar} order-3 px-[16px] py-[12px] rounded-[62px] xl:w-[577px] h-[full] flex items-center gap-[6px]`}
+          className={`${Styles.searchBar} relative order-3 px-[16px] py-[12px] rounded-[62px] xl:w-[577px] h-[full] flex items-center gap-[6px]`}
           style={{ backgroundColor: "var(--light-gray)" }}
         >
           <Image
@@ -111,9 +142,40 @@ const Navbar = () => {
           />
           <input
             type="text"
-            className="bg-transparent W-full h-full outline-none ml-1"
+            onChange={(e) => setSearchQuery(e.target.value)}
+            value={searchQuery}
+            className="bg-transparent w-full h-full outline-none ml-1"
             placeholder={` Search For Products...`}
+            onKeyDown={(e) => {
+              HandlerKeys(e);
+            }}
           />
+          {searchQuery !== "" && (
+            <div className="searchData bg-white w-full  px-6 py-3 h-max z-[99] shadow-lg absolute top-[150%] rounded-md left-0 overflow-y-auto">
+              {searchData.length > 0 && searchQuery !== "" ? (
+                searchData.slice(0, 6).map((product: Product) => (
+                  <Link
+                    href={`/ProductsPage/${product._id}`}
+                    className={`flex items-center  gap-2 my-3 ${selectedItem === searchData.indexOf(product) ? "bg-[#F5F5F5]" : ""}`}
+                    key={product._id}
+                  >
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      width={80}
+                      height={80}
+                      className="w-[80px] h-[80px] rounded-lg object-cover"
+                    />
+                    <p className="font-medium">{product.name}</p>
+                  </Link>
+                ))
+              ) : (
+                <p className="flex text-xl items-center justify-center w-full h-full">
+                  No Product Found
+                </p>
+              )}
+            </div>
+          )}
         </div>
         <div className="icons flex gap-4 order-4">
           <Link href={"/Cart"} className="flex relative">
