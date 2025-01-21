@@ -1,48 +1,83 @@
 # Shop.co Marketplace
 
-### **Project Overview**
+### **Introduction**
 
-This project is a fully functional, responsive e-commerce marketplace website built during a 7-day hackathon. The website is powered by **Next.js** for the frontend and **Sanity** as the backend/headless CMS. It features seamless data fetching, a dynamic user interface, and optimized performance.
+NextShop Marketplace is a fully functional and responsive e-commerce website designed to provide a seamless online shopping experience. This project was developed during a 7-day hackathon and serves as a complete marketplace solution, featuring advanced functionalities like search, product management, and a dynamic checkout system. Built with **Next.js** and **Sanity**, the project showcases optimized performance and scalability.
 
-This was my first hackathon, and the experience was invaluable. I faced real-world challenges, such as handling complex data-fetching workflows, debugging issues, and implementing scalable solutions—all while adhering to a strict deadline.
+This hackathon was my first experience working under a tight deadline to solve real-world problems. It taught me how to overcome technical challenges, debug complex issues, and implement efficient solutions.
 
 ---
 
 ### **Core Features**
 
-- **Responsive Design**: Works flawlessly on all devices.
-- **Data Fetching**: Products and user data are fetched and managed through **Sanity** CMS.
-- **Search Functionality**: Includes dynamic suggestions to improve user experience.
-- **Product Details Page**: Displays detailed information about each product.
-- **All Products Page**: Showcases the full product catalog.
-- **New Arrivals Section**: Highlights the latest products.
-- **Add-to-Cart Functionality**: Fully functional cart with item management.
-- **Checkout Page**: Collects user data and sends it back to Sanity CMS.
+- **Responsive Design**: Fully optimized for mobile, tablet, and desktop devices.
+- **Data Fetching**: Uses Sanity CMS to fetch and manage products, categories, and user data.
+- **Search Functionality**: Dynamic search bar with suggestions for faster navigation.
+- **Product Details Page**: Comprehensive details for each product, including images and descriptions.
+- **All Products Page**: Displays the complete product catalog with sorting and filtering options.
+- **New Arrivals Section**: Highlights the latest additions to the store.
+- **Add-to-Cart Functionality**: Users can add, update, and remove items from their cart.
+- **Checkout Page**: Collects user data and securely sends it to Sanity CMS.
+- **Optimized Code**: Efficient and clean codebase designed for scalability.
+
+---
+
+### **Screenshots**
+
+#### Homepage
+
+![Homepage Screenshot](/public/screenShots/homepage.png)
+
+#### Product Details Page
+
+![Product Details Screenshot](/public/screenShots/product_detail.png)
+
+#### Checkout Page
+
+![Checkout Screenshot](/public/screenShots/checkOut.png)
+
+#### Structure Page
+
+![Structure Screenshot](/public/screenShots/structure.png)
 
 ---
 
 ### **Challenges Overcome**
 
-- Debugging issues when fetching data from **Sanity** and rendering it dynamically on the frontend, especially for the Product Details page.
-- Ensuring data integrity between the frontend and backend.
-- Optimizing performance and code structure within the time constraints.
+- **Sanity Data Fetching**: Initially faced issues fetching data from Sanity and rendering it dynamically. Solved it by implementing efficient GROQ queries and leveraging Next.js dynamic routes.
+- **Debugging Frontend Issues**: Resolved issues related to state updates on the Product Details page.
+- **Performance Optimization**: Improved load times by optimizing API requests and implementing lazy loading for images.
 
 ---
 
 ### **Technologies Used**
 
 - **Next.js**: Framework for building the frontend.
-- **Sanity**: Headless CMS for data management.
-- **Redux**: State management across the application.
-- _(Include any other libraries or frameworks you used, e.g., Tailwind CSS, Axios, etc.)_
+- **Sanity**: Headless CMS for backend data management.
+- **Redux**: State management for global application state.
+- **Tailwind CSS**: Utility-first CSS framework for styling.
+- **Bun**: Fast JavaScript runtime and package manager.
 
 ---
 
+### **Project Architecture**
+
+- **Pages Directory**: Contains the main routes and components of the application.
+- **Components Directory**: Contains reusable components used throughout the application.
+- **Utils Directory**: Contains utility functions and helpers.
+- **Styles Directory**: Contains global styles and custom Tailwind CSS classes.
+- **Context Directory**: Manages global application state using Redux.
+- **sanity directory**: Contains Sanity API client and GROQ queries.
+- **bun.config.js**: Configuration file for Bun.
+
+![Structure Screenshot](/public/screenShots/structure.png)
+
 ### **Future Enhancements**
 
-- Adding smooth page transitions and animations for a better user experience.
-- Integrating a secure payment gateway.
-- Implementing advanced filters for products (e.g., price range, categories).
+- Adding smooth page transitions and animations.
+- Integrating a secure payment gateway (e.g., Stripe or PayPal).
+- Advanced product filters (e.g., by category, price range, ratings).
+- Live notifications for cart updates and new arrivals.
 
 ---
 
@@ -74,6 +109,10 @@ This was my first hackathon, and the experience was invaluable. I faced real-wor
 
 5. **Configure Sanity CMS**:
 
+   - Initialize a Sanity project:
+     ```bash
+     sanity init
+     ```
    - Update the **Sanity API keys** and dataset settings in the `.env` file.
 
 6. Open the application in your browser at:
@@ -87,6 +126,20 @@ This was my first hackathon, and the experience was invaluable. I faced real-wor
 
 Participating in this hackathon was an incredible learning experience. I discovered how to:
 
-- Tackle real-world problems under tight deadlines.
+- Handle real-world problems under tight deadlines.
 - Debug complex issues and implement optimized solutions.
-- Collaborate effectively within a constrained timeframe.
+- Build scalable and maintainable codebases.
+
+---
+
+### **Credits**
+
+- [Sanity.io Documentation](https://www.sanity.io/docs)
+- [Next.js Official Docs](https://nextjs.org/docs)
+- [Redux Toolkit Documentation](https://redux-toolkit.js.org/introduction/getting-started)
+
+---
+
+### **License**
+
+This project is licensed under the MIT License.
