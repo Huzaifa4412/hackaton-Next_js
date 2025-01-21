@@ -44,9 +44,9 @@ const Navbar = () => {
       } else if (e.key === "ArrowUp" && selectedItem > 0) {
         setSelectedItem(selectedItem - 1);
       } else if (e.key === "Enter") {
-        router.push(`/ProductsPage/${searchData[selectedItem]._id}`);
         setSearchQuery("");
         setSearchData([]);
+        router.push(`/ProductsPage/${searchData[selectedItem]._id}`);
       }
     } else {
       setSelectedItem(-1);
@@ -155,6 +155,10 @@ const Navbar = () => {
               {searchData.length > 0 && searchQuery !== "" ? (
                 searchData.slice(0, 6).map((product: Product) => (
                   <Link
+                    onClick={() => {
+                      setSearchQuery("");
+                      setSearchData([]);
+                    }}
                     href={`/ProductsPage/${product._id}`}
                     className={`flex items-center  gap-2 my-3 ${selectedItem === searchData.indexOf(product) ? "bg-[#F5F5F5]" : ""}`}
                     key={product._id}
