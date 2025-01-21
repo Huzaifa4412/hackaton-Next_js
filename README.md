@@ -56,9 +56,9 @@ This hackathon was my first experience working under a tight deadline to solve r
 - Used static generation and server-side rendering (SSR) for better performance.
 
 ![Lighthouse Performance Screenshot](/public/screenshots/light_performance.png)
-![Lighthouse practices Screenshot](/public/screenShots/light_practises.png)
-![Lighthouse seo Screenshot](/public/screenShots/light_seo.png)
-![Lighthouse accessibility Screenshot](/public/screenShots/lighthouseAss.png)
+![Lighthouse practices ](/public/screenShots/light_practises.png)
+![Lighthouse seo ](/public/screenShots/light_seo.png)
+![Lighthouse accessibility ](/public/screenShots/lighthouseAss.png)
 
 ![Performance Giphy](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2d3dGpva21lZzVlbDd3eTgxcWxzMWZsZnY3MmxzNnNocGV0OThhcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8PpFJcG4y8HqsxQumz/giphy.gif)
 
@@ -73,9 +73,9 @@ This hackathon was my first experience working under a tight deadline to solve r
 
 #### **Sanity ScreenShots**
 
-![Sanity Dashboard Screenshot](/public/screenShots/sanity_dashboard.png)
+![Sanity Dashboard Screenshot](/public/screenshots/sanity_dashboard.png)
 
-![Sanity Data Screenshot](/public/screenShots/sanity_vision.png)
+![Sanity Data Screenshot](/public/screenshots/sanity_vision.png)
 
 ![Sanity Giphy](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXh3Z3IyMDd1aTFyMnF4Y2lndGU2bWU1a3NtYzI4a25xcDYxZDBtbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26tn33aiTi1jkl6H6/giphy.gif)
 
