@@ -73,9 +73,9 @@ This hackathon was my first experience working under a tight deadline to solve r
 
 #### **Sanity ScreenShots**
 
-![Sanity Dashboard Screenshot](/public/screenshots/sanity_dashboard.png)
+![Sanity Dashboard Screenshot](/public/screenShots/sanity_dashboard.png)
 
-![Sanity Data Screenshot](/public/screenshots/sanity_vision.png)
+![Sanity Data Screenshot](/public/screenShots/sanity_vision.png)
 
 ![Sanity Giphy](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXh3Z3IyMDd1aTFyMnF4Y2lndGU2bWU1a3NtYzI4a25xcDYxZDBtbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26tn33aiTi1jkl6H6/giphy.gif)
 
