@@ -6,6 +6,8 @@ NextShop Marketplace is a fully functional and responsive e-commerce website des
 
 This hackathon was my first experience working under a tight deadline to solve real-world problems. It taught me how to overcome technical challenges, debug complex issues, and implement efficient solutions.
 
+![Hackathon Giphy](https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif)
+
 ---
 
 ### **Core Features**
@@ -57,6 +59,23 @@ This hackathon was my first experience working under a tight deadline to solve r
 
 ---
 
+### **Sanity CMS Integration**
+
+#### **Sanity Features**
+
+- **Product Management**: Easy addition, deletion, and modification of products.
+- **Dynamic Content**: Fetch real-time updates directly from Sanity.
+
+#### **Sanity Screenshots**
+
+![Sanity Dashboard Screenshot](/public/screenshots/sanity_dashboard.png)
+
+![Sanity Data Screenshot](/public/screenshots/sanity_data.png)
+
+![Sanity Giphy](https://media.giphy.com/media/fwbzI2VejlE2U/giphy.gif)
+
+---
+
 ### **Screenshots**
 
 #### Homepage
@@ -92,6 +111,8 @@ This hackathon was my first experience working under a tight deadline to solve r
 - **Redux**: State management for global application state.
 - **Tailwind CSS**: Utility-first CSS framework for styling.
 - **Bun**: Fast JavaScript runtime and package manager.
+
+![Technology Giphy](https://media.giphy.com/media/3o6ZsYKBALH7hxUzmY/giphy.gif)
 
 ---
 
