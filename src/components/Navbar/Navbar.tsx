@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/store/app/store";
 import { ContextType, DataContext } from "@/app/context/ProductContext";
 import { Product } from "../../../Typing";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const router = useRouter();
