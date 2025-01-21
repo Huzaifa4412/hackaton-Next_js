@@ -22,23 +22,58 @@ This hackathon was my first experience working under a tight deadline to solve r
 
 ---
 
+### **Project Architecture**
+
+- **Pages Directory**: Contains the main routes and components of the application.
+- **Components Directory**: Contains reusable components used throughout the application.
+- **Utils Directory**: Contains utility functions and helpers.
+- **Styles Directory**: Contains global styles and custom Tailwind CSS classes.
+- **Context Directory**: Manages global application state using Redux.
+- **Sanity Directory**: Contains Sanity API client and GROQ queries.
+- **bun.config.js**: Configuration file for Bun.
+
+![Structure Screenshot](/public/screenshots/structure.png)
+
+---
+
+### **Website Performance**
+
+#### **Lighthouse Metrics**
+
+- **Performance**: 95/100
+- **Accessibility**: 98/100
+- **SEO**: 90/100
+- **Best Practices**: 93/100
+
+#### **Key Optimizations**
+
+- Implemented lazy loading for images and components.
+- Optimized API requests to reduce response times.
+- Used static generation and server-side rendering (SSR) for better performance.
+
+![Lighthouse Report Screenshot](/public/screenshots/lighthouse.png)
+
+![Performance Giphy](https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif)
+
+---
+
 ### **Screenshots**
 
 #### Homepage
 
-![Homepage Screenshot](/public/screenShots/homepage.png)
+![Homepage Screenshot](/public/screenshots/homepage.png)
 
 #### Product Details Page
 
-![Product Details Screenshot](/public/screenShots/product_detail.png)
+![Product Details Screenshot](/public/screenshots/product_detail.png)
 
 #### Checkout Page
 
-![Checkout Screenshot](/public/screenShots/checkOut.png)
+![Checkout Screenshot](/public/screenshots/checkOut.png)
 
 #### Structure Page
 
-![Structure Screenshot](/public/screenShots/structure.png)
+![Structure Screenshot](/public/screenshots/structure.png)
 
 ---
 
@@ -60,17 +95,13 @@ This hackathon was my first experience working under a tight deadline to solve r
 
 ---
 
-### **Project Architecture**
+### **User Flows**
 
-- **Pages Directory**: Contains the main routes and components of the application.
-- **Components Directory**: Contains reusable components used throughout the application.
-- **Utils Directory**: Contains utility functions and helpers.
-- **Styles Directory**: Contains global styles and custom Tailwind CSS classes.
-- **Context Directory**: Manages global application state using Redux.
-- **sanity directory**: Contains Sanity API client and GROQ queries.
-- **bun.config.js**: Configuration file for Bun.
+1. **Searching for Products**: Users can search for products by typing keywords in the search bar.
+2. **Adding to Cart**: Products can be added to the cart with dynamic quantity adjustment.
+3. **Checkout**: Users fill out a form and submit data, which is securely stored in Sanity.
 
-![Structure Screenshot](/public/screenShots/structure.png)
+---
 
 ### **Future Enhancements**
 
@@ -122,6 +153,13 @@ This hackathon was my first experience working under a tight deadline to solve r
 
 ---
 
+### **API Documentation**
+
+- **GET /api/products**: Fetch all products from Sanity.
+- **POST /api/checkout**: Submit checkout data to Sanity.
+
+---
+
 ### **Lessons Learned**
 
 Participating in this hackathon was an incredible learning experience. I discovered how to:
@@ -137,6 +175,33 @@ Participating in this hackathon was an incredible learning experience. I discove
 - [Sanity.io Documentation](https://www.sanity.io/docs)
 - [Next.js Official Docs](https://nextjs.org/docs)
 - [Redux Toolkit Documentation](https://redux-toolkit.js.org/introduction/getting-started)
+
+---
+
+### **Badges**
+
+![GitHub Repo Stars](https://img.shields.io/github/stars/your-username/your-repo-name?style=social)
+![License](https://img.shields.io/github/license/your-username/your-repo-name)
+![Next.js](https://img.shields.io/badge/Next.js-Framework-blue)
+![Sanity](https://img.shields.io/badge/Sanity-CMS-orange)
+
+---
+
+### **Contributor Guidelines**
+
+Contributions are welcome! To contribute:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Commit your changes with clear messages.
+4. Create a pull request and describe your changes.
+
+---
+
+### **Known Issues**
+
+- No payment gateway integration yet.
+- Limited product filtering options.
 
 ---
 
