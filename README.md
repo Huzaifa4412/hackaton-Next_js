@@ -23,7 +23,8 @@ This hackathon was my first experience working under a tight deadline to solve r
 - **Add-to-Cart Functionality**: Users can add, update, and remove items from their cart.
 - **Checkout Page**: Collects user data and securely sends it to Sanity CMS.
 - **Optimized Code**: Efficient and clean codebase designed for scalability.
-- **Storing Cart Data**: Storing cart data in a great user experience.
+- **Storing Cart Data**: Storing cart data on local Storage in a great user experience.
+- **Customer and Order Data**: When the user finishes the checkout process the customer data and order data came to Sanity CMS.
 
 ---
 
@@ -252,3 +253,7 @@ Contributions are welcome! To contribute:
 ### **License**
 
 This project is licensed under the MIT License.
+
+### **Created And Maintained By**
+
+The project is created by Huzaifa Mukhtar and github it is Huzaifa4412 GIAIC roll number is : 499351
