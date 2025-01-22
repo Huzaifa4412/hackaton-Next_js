@@ -64,7 +64,7 @@ This hackathon was my first experience working under a tight deadline to solve r
 
 #### Practices
 
-![Lighthouse Performance](/public/screenshots/light_performance.png)
+![Lighthouse Performance](/public/screenshots/light_practises.png)
 
 #### SEO
 
