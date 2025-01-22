@@ -61,27 +61,27 @@ This hackathon was my first experience working under a tight deadline to solve r
 
 #### Performance
 
-![Lighthouse Performance](/public/screenshots/light_performance.png)
+![Lighthouse Performance](/public/screenshots/l_performance.png)
 
 #### Practices
 
-![Lighthouse Practices](/public/screenshots/light_practises.png)
+![Lighthouse Practices](/public/screenshots/I_seo.png)
 
 #### SEO
 
-![Lighthouse Seo](/public/screenshots/light_seo.png)
+![Lighthouse Seo](/public/screenshots/I_practices.png)
 
 #### Accessibility
 
-![Lighthouse Accessibility](/public/screenshots/lighthouseAss.png)
+![Lighthouse Accessibility](/public/screenshots/I_accessibility.png)
 
 ![Performance Giphy](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2d3dGpva21lZzVlbDd3eTgxcWxzMWZsZnY3MmxzNnNocGV0OThhcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8PpFJcG4y8HqsxQumz/giphy.gif)
 
 #### **For Pdf Download**
 
-![PDF Preview](/public/screenshots/pdf_report.png)
+![PDF Preview](/public/screenshots/l_performance.png)
 
-[Download the Full PDF Report](/public/Docs/download.pdf)
+[Download the Full PDF Report](/public/Docs/report.pdf)
 
 ---
 
