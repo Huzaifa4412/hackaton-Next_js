@@ -27,6 +27,7 @@ export default function NewArrivals() {
 
   return (
     <div
+      id="NewArrival"
       className={`${Styles.NewArrivals} container flex flex-col items-center justify-center gap-10`}
     >
       <Heading text="New Arrivals" />

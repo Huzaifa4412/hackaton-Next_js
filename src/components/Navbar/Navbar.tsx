@@ -119,7 +119,7 @@ const Navbar = () => {
               <TransitionLink href={"/"} label="On Sale" />
             </li>
             <li onClick={() => setMenuOpen(false)}>
-              <Link href={"/"}>New Arrival</Link>
+              <Link href={"/NewArrivals"}>New Arrival</Link>
             </li>
             <li onClick={() => setMenuOpen(false)}>
               <Link href={"/"}>Brands</Link>
@@ -190,7 +190,13 @@ const Navbar = () => {
                   </p>
                 )}
                 <Link href={"/ProductsPage"}>
-                  <div className="mt-10 w-[400px] mx-auto">
+                  <div
+                    className="mt-10 w-[400px] mx-auto"
+                    onClick={() => {
+                      setSearchQuery("");
+                      setSearchData([]);
+                    }}
+                  >
                     <Button dark_variant={true} text="View All Products" />
                   </div>
                 </Link>
@@ -254,7 +260,13 @@ const Navbar = () => {
                     </p>
                   )}
                   <Link href={"/ProductsPage"}>
-                    <div className="w-[200px] mx-auto mt-10">
+                    <div
+                      className="w-[200px] mx-auto mt-10"
+                      onClick={() => {
+                        setSearchQuery("");
+                        setSearchData([]);
+                      }}
+                    >
                       <Button dark_variant={true} text="View All Products" />
                     </div>
                   </Link>

@@ -20,6 +20,14 @@
   overflow-x: hidden;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow: hidden;
+}
+
 @media screen and (max-width: 1270px) {
   .container {
     max-width: 1244px;
