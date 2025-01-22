@@ -64,15 +64,15 @@ This hackathon was my first experience working under a tight deadline to solve r
 
 #### Practices
 
-![Lighthouse practices](/public/screenShots/light_practises.png)
+![Lighthouse Performance](/public/screenshots/light_performance.png)
 
 #### SEO
 
-![Lighthouse seo](/public/screenShots/light_seo.png)
+![Lighthouse Performance](/public/screenshots/light_performance.png)
 
 #### Accessibility
 
-![Lighthouse accessibility](/public/screenShots/lighthouseAss.png)
+![Lighthouse Performance](/public/screenshots/light_performance.png)
 
 ![Performance Giphy](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2d3dGpva21lZzVlbDd3eTgxcWxzMWZsZnY3MmxzNnNocGV0OThhcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8PpFJcG4y8HqsxQumz/giphy.gif)
 
