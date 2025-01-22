@@ -9,7 +9,7 @@ import { ContextType, DataContext } from "@/app/context/ProductContext";
 import { Product } from "../../../Typing";
 import { useRouter } from "next/navigation";
 import Button from "../Button/Button";
-import { TransitionLink } from "../TranistionLink/TranistionLink";
+// import { TransitionLink } from "../TranistionLink/TranistionLink";
 
 const Navbar = () => {
   const router = useRouter();
@@ -107,7 +107,8 @@ const Navbar = () => {
               className="flex items-center gap-1"
               onClick={() => setMenuOpen(false)}
             >
-              <TransitionLink href={"/ProductsPage"} label="Shop" />
+              {/* <TransitionLink href={"/ProductsPage"} label="Shop" /> */}
+              <Link href={"/ProductsPage"}>Shop</Link>
               <Image
                 src={"/dropDown.svg"}
                 alt="Drop Down Icon"
@@ -116,7 +117,8 @@ const Navbar = () => {
               />
             </li>
             <li onClick={() => setMenuOpen(false)}>
-              <TransitionLink href={"/"} label="On Sale" />
+              {/* <TransitionLink href={"/"} label="On Sale" /> */}
+              <Link href={"/"}>On Sale</Link>
             </li>
             <li onClick={() => setMenuOpen(false)}>
               <Link href={"/NewArrivals"}>New Arrival</Link>
