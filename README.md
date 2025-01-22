@@ -15,7 +15,7 @@ This hackathon was my first experience working under a tight deadline to solve r
 - **Responsive Design**: Fully optimized for mobile, tablet, and desktop devices.
 - **Data Fetching**: Uses Sanity CMS to fetch and manage products, categories, and user data.
 - **Search Bar**: Dynamic search bar with suggestions for faster navigation.
-- **Search Functionality**: I also add keyboard navigation support to the search bar.
+- **Search Functionality**: I also add keyboard navigation support to the search bar which is good for user experience.
 - **Product Management**: Users can add, edit, and delete products with ease.
 - **Product Details Page**: Comprehensive details for each product, including images and descriptions.
 - **All Products Page**: Displays the complete product catalog with sorting and filtering options.
@@ -78,7 +78,7 @@ This hackathon was my first experience working under a tight deadline to solve r
 
 #### **For Pdf Download**
 
-![PDF Preview](/public/screenshots/light_practises.png)
+![PDF Preview](/public/screenshots/pdf_report.png)
 
 [Download the Full PDF Report](/public/Docs/download.pdf)
 
