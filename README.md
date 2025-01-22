@@ -14,13 +14,16 @@ This hackathon was my first experience working under a tight deadline to solve r
 
 - **Responsive Design**: Fully optimized for mobile, tablet, and desktop devices.
 - **Data Fetching**: Uses Sanity CMS to fetch and manage products, categories, and user data.
-- **Search Functionality**: Dynamic search bar with suggestions for faster navigation.
+- **Search Bar**: Dynamic search bar with suggestions for faster navigation.
+- **Search Functionality**: I also add keyboard navigation support to the search bar.
+- **Product Management**: Users can add, edit, and delete products with ease.
 - **Product Details Page**: Comprehensive details for each product, including images and descriptions.
 - **All Products Page**: Displays the complete product catalog with sorting and filtering options.
 - **New Arrivals Section**: Highlights the latest additions to the store.
 - **Add-to-Cart Functionality**: Users can add, update, and remove items from their cart.
 - **Checkout Page**: Collects user data and securely sends it to Sanity CMS.
 - **Optimized Code**: Efficient and clean codebase designed for scalability.
+- **Storing Cart Data**: Storing cart data in a great user experience.
 
 ---
 

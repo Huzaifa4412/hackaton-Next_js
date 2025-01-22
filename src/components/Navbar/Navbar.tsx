@@ -8,6 +8,7 @@ import { RootState } from "@/store/app/store";
 import { ContextType, DataContext } from "@/app/context/ProductContext";
 import { Product } from "../../../Typing";
 import { useRouter } from "next/navigation";
+import Button from "../Button/Button";
 
 const Navbar = () => {
   const router = useRouter();
@@ -17,6 +18,7 @@ const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchData, setSearchData] = useState<Product[]>([]);
   const [selectedItem, setSelectedItem] = useState<number>(-1);
+  const [searchBar, setSearchBar] = useState(false);
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -31,8 +33,10 @@ const Navbar = () => {
 
   useEffect(() => {
     if (searchQuery !== "") {
-      const filteredData = data.filter((product) =>
-        product.category.toLowerCase().includes(searchQuery.toLowerCase())
+      const filteredData = data.filter(
+        (product) =>
+          product.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          product.name.toLowerCase().includes(searchQuery.toLowerCase())
       );
       setSearchData(filteredData);
     }
@@ -53,7 +57,7 @@ const Navbar = () => {
     }
   };
   return (
-    <div className={` ${Styles.Navbar} `}>
+    <div className={` ${Styles.Navbar} relative`}>
       <div
         className={`${Styles.updatePart} remove w-full h-[38px] `}
         style={{
@@ -78,7 +82,7 @@ const Navbar = () => {
           />
         </div>
       </div>
-      <nav className="lg:w-[1024px] xl:w-[1240px] h-[48px] xl:gap-[40px] mx-auto my-5 flex items-center justify-evenly md:justify-center  gap-[20px]">
+      <nav className="lg:w-[1024px] xl:w-[1240px] h-[48px] xl:gap-[40px] mx-auto my-5 flex items-center justify-evenly md:justify-center  sm:gap-[20px] gap-[10px]">
         <Image
           src={"/Menu.svg"}
           alt="Menu Icon"
@@ -130,8 +134,10 @@ const Navbar = () => {
             />
           </ul>
         </div>
+
+        {/* For Large Screen Devices */}
         <div
-          className={`${Styles.searchBar} relative order-3 px-[16px] py-[12px] rounded-[62px] xl:w-[577px] h-[full] flex items-center gap-[6px]`}
+          className={`${Styles.searchBar} hidden relative order-3 px-[16px] py-[12px] rounded-[62px] xl:w-[577px] h-[full] md:flex items-center gap-[6px]`}
           style={{ backgroundColor: "var(--light-gray)" }}
         >
           <Image
@@ -140,50 +146,130 @@ const Navbar = () => {
             width={20}
             height={20}
           />
+
           <input
             type="text"
             onChange={(e) => setSearchQuery(e.target.value)}
             value={searchQuery}
-            className="bg-transparent w-full h-full outline-none ml-1"
+            className="bg-transparent w-full h-full outline-none ml-1 duration-500"
             placeholder={` Search For Products...`}
             onKeyDown={(e) => {
               HandlerKeys(e);
             }}
           />
+
           {searchQuery !== "" && (
-            <div className="searchData bg-white w-full  px-6 py-3 h-max z-[99] shadow-lg absolute top-[150%] rounded-md left-0 overflow-y-auto">
-              {searchData.length > 0 && searchQuery !== "" ? (
-                searchData.slice(0, 6).map((product: Product) => (
-                  <Link
-                    onClick={() => {
-                      setSearchQuery("");
-                      setSearchData([]);
-                    }}
-                    href={`/ProductsPage/${product._id}`}
-                    className={`flex items-center  gap-2 my-3 ${selectedItem === searchData.indexOf(product) ? "bg-[#F5F5F5]" : ""}`}
-                    key={product._id}
-                  >
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      width={80}
-                      height={80}
-                      className="w-[80px] h-[80px] rounded-lg object-cover"
-                    />
-                    <p className="font-medium">{product.name}</p>
-                  </Link>
-                ))
-              ) : (
-                <p className="flex text-xl items-center justify-center w-full h-full">
-                  No Product Found
-                </p>
-              )}
-            </div>
+            <>
+              <div className="searchData bg-white w-[330px] lg:w-[400px] xl:w-full  px-6 py-3 h-max z-[99] shadow-lg absolute top-[150%] rounded-md left-0 overflow-y-auto">
+                {searchData.length > 0 && searchQuery !== "" ? (
+                  searchData.slice(0, 6).map((product: Product) => (
+                    <Link
+                      onClick={() => {
+                        setSearchQuery("");
+                        setSearchData([]);
+                      }}
+                      href={`/ProductsPage/${product._id}`}
+                      className={`flex items-center  gap-2 my-3 ${selectedItem === searchData.indexOf(product) ? "bg-[#F5F5F5]" : ""}`}
+                      key={product._id}
+                    >
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        width={80}
+                        height={80}
+                        className="w-[80px] h-[80px] rounded-lg object-cover"
+                      />
+                      <p className="font-medium">{product.name}</p>
+                    </Link>
+                  ))
+                ) : (
+                  <p className="flex text-xl items-center justify-center w-full h-full">
+                    No Product Found
+                  </p>
+                )}
+                <Link href={"/ProductsPage"}>
+                  <div className="mt-10 w-[400px] mx-auto">
+                    <Button dark_variant={true} text="View All Products" />
+                  </div>
+                </Link>
+              </div>
+            </>
           )}
         </div>
+        {/* For Small Screen Devices */}
+        <div className="order-3 md:hidden">
+          <Image
+            src={"/searchIcon.svg"}
+            alt="Search Icon"
+            width={30}
+            height={30}
+            className=" backdrop-invert-0"
+            onClick={() => {
+              setSearchBar(!searchBar);
+            }}
+          />
+        </div>
+        {searchBar && (
+          <div className="absolute top-[100%] z-[99] w-full md:hidden">
+            <input
+              type="text"
+              onChange={(e) => setSearchQuery(e.target.value)}
+              value={searchQuery}
+              autoFocus
+              className=" w-full p-4 text-xl outline-none ml-1 duration-500 h-max"
+              placeholder={` Search For Products...`}
+              onKeyDown={(e) => {
+                HandlerKeys(e);
+              }}
+            />
+            {searchQuery !== "" && (
+              <>
+                <div className="searchData bg-white w-full  px-6 py-3 h-max z-[99] shadow-lg absolute top-[90%] rounded-md left-0 overflow-y-auto">
+                  {searchData.length > 0 && searchQuery !== "" ? (
+                    searchData.slice(0, 6).map((product: Product) => (
+                      <Link
+                        onClick={() => {
+                          setSearchQuery("");
+                          setSearchData([]);
+                        }}
+                        href={`/ProductsPage/${product._id}`}
+                        className={`flex items-center  gap-2 my-3 ${selectedItem === searchData.indexOf(product) ? "bg-[#F5F5F5]" : ""}`}
+                        key={product._id}
+                      >
+                        <Image
+                          src={product.image}
+                          alt={product.name}
+                          width={80}
+                          height={80}
+                          className="w-[80px] h-[80px] rounded-lg object-cover"
+                        />
+                        <p className="font-medium">{product.name}</p>
+                      </Link>
+                    ))
+                  ) : (
+                    <p className="flex text-xl items-center justify-center w-full h-full">
+                      No Product Found
+                    </p>
+                  )}
+                  <Link href={"/ProductsPage"}>
+                    <div className="w-[200px] mx-auto mt-10">
+                      <Button dark_variant={true} text="View All Products" />
+                    </div>
+                  </Link>
+                </div>
+              </>
+            )}
+          </div>
+        )}
         <div className="icons flex gap-4 order-4">
           <Link href={"/Cart"} className="flex relative">
-            <Image src={"/card.svg"} alt="Card" width={25} height={25} />
+            <Image
+              src={"/card.svg"}
+              alt="Card"
+              width={25}
+              height={25}
+              className="w-6 !h-6"
+            />
             <div className="w-5 absolute -bottom-2 -right-2 text-[10px] h-5 rounded-full bg-black text-white flex items-center justify-center">
               {cart.length}
             </div>
