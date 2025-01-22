@@ -3,6 +3,7 @@ import Styles from "./Hero.module.css";
 import Button from "../Button/Button";
 import Image from "next/image";
 import HeroFeatureText from "../HeroFeatureText/HeroFeatureText";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -23,7 +24,9 @@ const Hero = () => {
           style.
         </p>
         <div className="button lg:w-[210px] w-full md:w-max mx-auto md:m-0 ">
-          <Button text="Shop Now" dark_variant={true} />
+          <Link href={"/ProductsPage"}>
+            <Button text="Shop Now" dark_variant={true} />
+          </Link>
         </div>
 
         <div className="featureText flex flex-wrap gap-6 justify-center">

@@ -9,6 +9,7 @@ import { ContextType, DataContext } from "@/app/context/ProductContext";
 import { Product } from "../../../Typing";
 import { useRouter } from "next/navigation";
 import Button from "../Button/Button";
+import { TransitionLink } from "../TranistionLink/TranistionLink";
 
 const Navbar = () => {
   const router = useRouter();
@@ -102,24 +103,25 @@ const Navbar = () => {
               isMenuOpen ? `${Styles.active}` : ""
             } md:flex text-[16px]  gap-[22px] items-center font-medium`}
           >
-            <li>
-              <Link href={"/ProductsPage"} className="flex items-center gap-1">
-                Shop{" "}
-                <Image
-                  src={"/dropDown.svg"}
-                  alt="Drop Down Icon"
-                  width={15}
-                  height={15}
-                />
-              </Link>
+            <li
+              className="flex items-center gap-1"
+              onClick={() => setMenuOpen(false)}
+            >
+              <TransitionLink href={"/ProductsPage"} label="Shop" />
+              <Image
+                src={"/dropDown.svg"}
+                alt="Drop Down Icon"
+                width={15}
+                height={15}
+              />
             </li>
-            <li>
-              <Link href={"/"}>On Sale</Link>
+            <li onClick={() => setMenuOpen(false)}>
+              <TransitionLink href={"/"} label="On Sale" />
             </li>
-            <li>
+            <li onClick={() => setMenuOpen(false)}>
               <Link href={"/"}>New Arrival</Link>
             </li>
-            <li>
+            <li onClick={() => setMenuOpen(false)}>
               <Link href={"/"}>Brands</Link>
             </li>
             <Image
