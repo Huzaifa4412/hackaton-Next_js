@@ -14,8 +14,8 @@ import { useRouter } from "next/navigation";
 import { client } from "@/sanity/lib/client";
 import Rating from "@/components/Rating/Rating";
 import MightLike from "@/components/MightLike/MightLike";
-import InnerImageZoom from "react-inner-image-zoom";
-import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
+// import MightLike from "@/components/MightLike/MightLike";
+
 // Define proper types
 interface ProductResponse {
   name: string;
@@ -153,19 +153,12 @@ const Page = ({ params }: { params: { slug: string } }) => {
       <div className="productDetails flex lg:flex-row flex-col gap-8">
         <div className="productImages flex flex-col items-center lg:flex-row gap-4">
           <div className="mainImage order-1 sm:h-[530px] overflow-hidden w-[330px] h-[290px] sm:w-[444px] bg-[#F0EEED] rounded-[20px]">
-            {/* <Image
+            <Image
               src={image ?? ""}
               alt={name ?? "Product"}
               width={444}
               height={530}
               className="object-cover overflow-hidden w-full h-full"
-            /> */}
-
-            <InnerImageZoom
-              src={image ?? ""}
-              zoomSrc={image ?? ""}
-              zoomType="hover"
-              zoomPreload={true}
             />
           </div>
         </div>
