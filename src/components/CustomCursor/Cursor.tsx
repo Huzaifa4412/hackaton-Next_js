@@ -1,32 +1,59 @@
 "use client";
-// components/CustomCursor.js
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const CustomCursor = () => {
   const [cursorPosition, setCursorPosition] = useState({ x: -100, y: -100 });
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
-  const updateCursorPosition = (event:  MouseEvent) => {
+  const updateCursorPosition = (event: MouseEvent) => {
     const { clientX, clientY } = event;
     setCursorPosition({ x: clientX, y: clientY });
   };
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    // Check screen size and update the state
+    const checkScreenSize = () => {
+      setIsSmallScreen(window.innerWidth <= 768); // Adjust breakpoint as needed
+    };
+
+    // Set the initial screen size
+    checkScreenSize();
+
+    // Add event listener for window resize
+    window.addEventListener("resize", checkScreenSize);
+
+    // Cleanup event listener
+    return () => {
+      window.removeEventListener("resize", checkScreenSize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isSmallScreen && typeof window !== "undefined") {
       window.addEventListener("mousemove", updateCursorPosition);
     }
+
     return () => {
       if (typeof window !== "undefined") {
         window.removeEventListener("mousemove", updateCursorPosition);
       }
     };
-  }, []);
+  }, [isSmallScreen]);
+
+  // Conditionally render the custom cursor for non-small screens
+  if (isSmallScreen) return null;
 
   return (
     <motion.div
-      className="custom-cursor pointer-events-none fixed mix-blend-difference top-0 left-0 w-8 h-8 rounded-full bg-neutral-950 z-[999]"
+      className="custom-cursor pointer-events-none fixed top-0 left-0 w-8 h-8 rounded-full z-[999]"
+      style={{
+        backgroundColor: "black", // Or whatever initial color you want
+        mixBlendMode: "difference",
+        x: cursorPosition.x - 16,
+        y: cursorPosition.y - 16,
+      }}
       transition={{ type: "spring", stiffness: 500, damping: 28 }}
-      style={{ x: cursorPosition.x - 16, y: cursorPosition.y - 16 }}
       animate={{ x: cursorPosition.x - 16, y: cursorPosition.y - 16 }}
     />
   );
