@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Marquee from "react-fast-marquee";
 
 const brands = [
   {
@@ -26,8 +27,32 @@ const brands = [
 
 export default function Brands() {
   return (
-    <div
-      className=" p-5 flex items-center gap-[40px] justify-center lg:justify-evenly flex-wrap md:h-max"
+    // <div
+    //   className=" p-5 flex items-center gap-[40px] justify-center lg:justify-evenly flex-wrap md:h-max"
+    //   style={{ backgroundColor: "var(--foreground)" }}
+    // >
+    //   {brands.map((item, index) => {
+    //     return (
+    //       <Image
+    //         src={item.src}
+    //         alt={`Brand${index}`}
+    //         width={item.w}
+    //         height={120}
+    //         key={index}
+    //         className=" lg:h-[120px] h-[40px] "
+    //       />
+    //     );
+    //   })}
+    // </div>
+    <Marquee
+      className="py-4 h-max overflow-y-hidden"
+      gradient={true}
+      gradientColor={"black"}
+      gradientWidth={200}
+      speed={50}
+      pauseOnHover={true}
+      autoFill={true}
+      direction="left"
       style={{ backgroundColor: "var(--foreground)" }}
     >
       {brands.map((item, index) => {
@@ -38,10 +63,10 @@ export default function Brands() {
             width={item.w}
             height={120}
             key={index}
-            className=" lg:h-[120px] h-[40px] "
+            className=" lg:h-[120px] h-[40px] mx-12"
           />
         );
       })}
-    </div>
+    </Marquee>
   );
 }

@@ -6,6 +6,7 @@ import { Urbanist } from "next/font/google";
 import CartProvider from "./CartProvider";
 import { Flip, ToastContainer } from "react-toastify";
 import DataProvider from "./context/ProductContext";
+import CustomCursor from "@/components/CustomCursor/Cursor";
 
 export const metadata: Metadata = {
   title: "Shop.co",
@@ -43,6 +44,7 @@ export default function RootLayout({
           theme="dark"
           transition={Flip}
         />
+        <CustomCursor />
         <DataProvider>
           <CartProvider>
             <Navbar />

@@ -16,7 +16,6 @@ export const animatePageIn = () => {
             stagger: 0.2
         })
     }
-
 }
 
 export const animatePageOut = (href: string, router: AppRouterInstance) => {

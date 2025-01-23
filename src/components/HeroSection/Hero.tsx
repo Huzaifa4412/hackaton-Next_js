@@ -1,9 +1,11 @@
+"use client";
 import React from "react";
 import Styles from "./Hero.module.css";
 import Button from "../Button/Button";
 import Image from "next/image";
 import HeroFeatureText from "../HeroFeatureText/HeroFeatureText";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
@@ -36,12 +38,22 @@ const Hero = () => {
         </div>
       </div>
       <div className={` ${Styles.rightPart} w-1/2 right-0  relative h-full`}>
-        <Image
-          src={"/HeroSection/vector.svg"}
+        <motion.img
+          src="/HeroSection/vector.svg"
           alt="Vector"
           width={104}
-          className={`${Styles.vector} absolute right-5 top-[10%]`}
           height={104}
+          className="absolute right-5 top-[10%]"
+          style={{ transformOrigin: "50% 50%" }}
+          animate={{ rotate: 360 }}
+          transition={{
+            repeat: Infinity,
+            repeatType: "loop",
+            times: [0.3, 0, 1, 0.7, 1],
+            // ease: "easeIn", // Smooth easing effect
+            duration: 3,
+            ease: ["linear", "easeInOut", "easeOut", "easeIn"],
+          }}
         />
         <Image
           src={"/HeroSection/model1.png"}
