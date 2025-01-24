@@ -30,7 +30,8 @@
     "redux-persist": "^6.0.0",
     "sanity": "^3.70.0",
     "styled-components": "^6.1.14",
-    "swiper": "^11.2.1"
+    "swiper": "^11.2.1",
+    "vanilla-tilt": "^1.8.1"
   },
   "devDependencies": {
     "@types/node": "^20.17.12",

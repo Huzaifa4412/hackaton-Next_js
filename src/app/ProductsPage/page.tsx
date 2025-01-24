@@ -18,28 +18,18 @@ import { ContextType, DataContext } from "../context/ProductContext";
 
 const Page = () => {
   const { data } = useContext(DataContext) as ContextType;
-  // const [, setProducts] = useState([]);
-  // const fetchProductRef = useRef<ProductCard_type[]>([]);
-  // const [products, setProducts] = useState<ProductCard_type[]>([]);
+  const [products, setProducts] = useState<Product[]>(data);
 
-  // const getProduct = useCallback(async () => {
-  //   // try {
-  //   //   const quary = `*[_type == "product"]{name,"image":image.asset -> url,rating, price, discountPercent,_id, discountedPrice }`;
-  //   //   const product = await client.fetch(quary);
-  //   //   setProducts(product);
-  //   //   await getProducts();
-  //   // } catch (error) {
-  //   //   console.log(error);
-  //   // }
-  //   const products = await getProducts();
-  //   fetchProductRef.current = products;
-  //   setProducts(products);
-  // }, []);
+  // Filter by Category
+  const filterByCategory = (category: string) => {
+    setProducts(data.filter((item) => item.category === category));
+  };
 
-  // useEffect(() => {
-  //   getProduct();
-  // }, [getProduct]);
-
+  // State for filtering products based on price range
+  const fetchCategories = Array.from(
+    new Set(data.map((item) => item.category))
+  );
+  const [categories] = useState(fetchCategories);
   const colors = ["red", "yellow", "green", "pink", "blue", "purple", "black"];
   const sizes = [
     "smaller",
@@ -51,11 +41,6 @@ const Page = () => {
   ];
 
   // State for toggling visibility
-  const [showTShirts, setShowTShirts] = useState(false);
-  const [showShorts, setShowShorts] = useState(false);
-  const [showShirts, setShowShirts] = useState(false);
-  const [showHoodies, setShowHoodies] = useState(false);
-  const [showJeans, setShowJeans] = useState(false);
   const [showPrice, setShowPrice] = useState(false);
   const [showColors, setShowColors] = useState(false);
   const [showSizes, setShowSizes] = useState(false);
@@ -71,7 +56,7 @@ const Page = () => {
         </Link>
         <h3>All Outfits</h3>
       </div>
-      <div className="content flex flex-col lg:flex-row gap-6 items-center lg:items-start justify-between h-max mt-8">
+      <div className="content flex flex-col lg:flex-row gap-8 items-center lg:items-start  h-max mt-8">
         <div className="sideBar w-[295px] h-max px-[24px] py-[20px] flex flex-col gap-[24px] border rounded-[20px]">
           <header className="flex w-max items-center gap-6 relative">
             <Heading text="Filter" size={20} />
@@ -91,110 +76,27 @@ const Page = () => {
               <hr />
               <div className="f_category">
                 <div className="categories flex flex-col gap-5">
-                  <div className="t-shirt flex justify-between cursor-pointer">
-                    <h3>T-Shirts</h3>
-                    <Image
-                      src={"/arrow.svg"}
-                      alt="Arrow"
-                      width={16}
-                      height={16}
-                      onClick={() => setShowTShirts(!showTShirts)}
-                      className={`transform transition-transform duration-300 ${
-                        showTShirts ? "rotate-180" : ""
-                      }`}
-                    />
-                  </div>
-                  <div
-                    className={`t-shirt-content transition-all duration-300 ${
-                      showTShirts ? "max-h-screen" : "max-h-0 overflow-hidden"
-                    }`}
-                  >
-                    T-Shirt content here
-                  </div>
-
-                  <div className="shorts flex justify-between cursor-pointer">
-                    <h3>Shorts</h3>
-                    <Image
-                      src={"/arrow.svg"}
-                      alt="Arrow"
-                      width={16}
-                      height={16}
-                      onClick={() => setShowShorts(!showShorts)}
-                      className={`transform transition-transform duration-300 ${
-                        showShorts ? "rotate-180" : ""
-                      }`}
-                    />
-                  </div>
-                  <div
-                    className={`shorts-content transition-all duration-300 ${
-                      showShorts ? "max-h-screen" : "max-h-0 overflow-hidden"
-                    }`}
-                  >
-                    Shorts content here
-                  </div>
-
-                  <div className="shirt flex justify-between cursor-pointer">
-                    <h3>Shirts</h3>
-                    <Image
-                      src={"/arrow.svg"}
-                      alt="Arrow"
-                      width={16}
-                      height={16}
-                      onClick={() => setShowShirts(!showShirts)}
-                      className={`transform transition-transform duration-300 ${
-                        showShirts ? "rotate-180" : ""
-                      }`}
-                    />
-                  </div>
-                  <div
-                    className={`shirt-content transition-all duration-300 ${
-                      showShirts ? "max-h-screen" : "max-h-0 overflow-hidden"
-                    }`}
-                  >
-                    Shirt content here
-                  </div>
-
-                  <div className="hoodies flex justify-between cursor-pointer">
-                    <h3>Hoodie</h3>
-                    <Image
-                      src={"/arrow.svg"}
-                      alt="Arrow"
-                      width={16}
-                      height={16}
-                      onClick={() => setShowHoodies(!showHoodies)}
-                      className={`transform transition-transform duration-300 ${
-                        showHoodies ? "rotate-180" : ""
-                      }`}
-                    />
-                  </div>
-                  <div
-                    className={`hoodies-content transition-all duration-300 ${
-                      showHoodies ? "max-h-screen" : "max-h-0 overflow-hidden"
-                    }`}
-                  >
-                    Hoodies content here
-                  </div>
-
-                  <div className="jeans flex justify-between cursor-pointer">
-                    <h3>Jeans</h3>
-                    <Image
-                      src={"/arrow.svg"}
-                      alt="Arrow"
-                      width={16}
-                      height={16}
-                      onClick={() => setShowJeans(!showJeans)}
-                      className={`transform transition-transform duration-300 ${
-                        showJeans ? "rotate-180" : ""
-                      }`}
-                    />
-                  </div>
-                  <div
-                    className={`jeans-content transition-all duration-300 ${
-                      showJeans ? "max-h-screen" : "max-h-0 overflow-hidden"
-                    }`}
-                  >
-                    Jeans content here
-                  </div>
+                  {categories.map((category) => {
+                    return (
+                      <div
+                        key={category}
+                        onClick={() => {
+                          filterByCategory(category);
+                        }}
+                        className="t-shirt flex justify-between cursor-pointer"
+                      >
+                        <h3 className="capitalize">{category}</h3>
+                        <Image
+                          src={"/arrow.svg"}
+                          alt="Arrow"
+                          width={16}
+                          height={16}
+                          className={`transform transition-transform duration-300 hover:rotate-90
+                          `}
+                        />
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
               <hr />
@@ -292,7 +194,7 @@ const Page = () => {
         </div>
         <div className="products_container flex justify-center flex-wrap gap-5">
           {data.length > 0 &&
-            data.map((item: Product) => {
+            products.map((item: Product) => {
               return <ProductCard key={item._id} item={item} />;
             })}
         </div>
