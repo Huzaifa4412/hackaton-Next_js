@@ -55,7 +55,10 @@ const Page = () => {
   }, [data, filterConfig]);
 
   const updateFilter = (key: keyof Filter, value: string | number) => {
-    toast.info("Filter Applied");
+    if (!(key == "highPrice" || key == "lowPrice")) {
+      setFilterConfig((prev) => ({ ...prev, [key]: value }));
+      return toast.info("Filter Applied");
+    }
     setFilterConfig((prev) => ({ ...prev, [key]: value }));
   };
 
@@ -77,7 +80,7 @@ const Page = () => {
   const [showSideBar, setShowSideBar] = useState(false);
 
   return (
-    <div className="container">
+    <div className="container !px-0">
       <div className="BreadCrams text-[16px] px-5 flex gap-2 items-center">
         <Link href={"/"} className="flex items-center">
           <h3>Home</h3>
@@ -211,8 +214,23 @@ const Page = () => {
                   ))}
                 </div>
               </div>
-              <div onClick={applyFilters}>
+              <div
+                className="mt-5"
+                onClick={() => {
+                  applyFilters();
+                  toast.success("All Filters has been Applied ");
+                }}
+              >
                 <Button text="Apply Filter" dark_variant={true} />
+              </div>
+              <div
+                onClick={() => {
+                  setFilterConfig({ lowPrice: 0, highPrice: 100000 });
+                  setProducts(data);
+                  toast.warning("All Filters has been Cleared ");
+                }}
+              >
+                <Button text="Clear Filter" dark_variant={true} />
               </div>
             </div>
           )}
