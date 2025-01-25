@@ -10,7 +10,8 @@ export interface Product {
     sizes: string[];
     description: string;
     discountedPrice: string;
-    isNew: boolean
+    new: boolean;
+    sale: boolean
 }
 
 export type ProductCard_type = {
