@@ -19,6 +19,13 @@ import { ContextType, DataContext } from "../context/ProductContext";
 const Page = () => {
   const { data } = useContext(DataContext) as ContextType;
   const [products, setProducts] = useState<Product[]>(data);
+  const [filterConfig, setFilterConfig] = useState({
+    category: "",
+    lowPrice: 200,
+    highPrice: 400,
+    color: "",
+    size: "",
+  });
 
   // ! Filter Products
   // Filter by Category
@@ -27,12 +34,17 @@ const Page = () => {
   };
   // Filter by Price
   const filterByPrice = (lowPrice: number, highPrice: number) => {
-    setProducts(
-      data.filter(
-        (item) =>
-          Number(item.price) >= lowPrice && Number(item.price) <= highPrice
-      )
-    );
+    // setProducts(
+    //   data.filter(
+    //     (item) =>
+    //       Number(item.price) >= lowPrice && Number(item.price) <= highPrice
+    //   )
+    // );
+    setFilterConfig({
+      ...filterConfig,
+      lowPrice,
+      highPrice,
+    });
   };
   // Filter by Colors
   const filterByColors = (color: string) => {
@@ -53,6 +65,19 @@ const Page = () => {
     );
   };
 
+  // ! Applying more the one filter
+  function ApplyFilters() {
+    const filteredData = data.filter(
+      (item) =>
+        item.category == filterConfig.category &&
+        Number(item.price) >= filterConfig.lowPrice &&
+        Number(item.price) <= filterConfig.highPrice &&
+        item.colors.some((c) => c.toLowerCase() === filterConfig.color) &&
+        item.sizes.some((c) => c.toLocaleLowerCase() === filterConfig.size)
+    );
+    console.log("Filters has been Applied", filteredData);
+    setProducts(filteredData);
+  }
   // State for filtering products based on price range
   const fetchCategories = Array.from(
     new Set(data.map((item) => item.category))
@@ -114,7 +139,11 @@ const Page = () => {
                       <div
                         key={category}
                         onClick={() => {
-                          filterByCategory(category);
+                          // filterByCategory(category);
+                          setFilterConfig({
+                            ...filterConfig,
+                            category: category,
+                          });
                         }}
                         className="t-shirt flex justify-between cursor-pointer"
                       >
@@ -185,7 +214,13 @@ const Page = () => {
                       className={`color w-[37px] h-[37px] rounded-full hover
                         :border-4 border-[#f2f2f2]`}
                       style={{ backgroundColor: color }}
-                      onClick={() => filterByColors(color)}
+                      onClick={() => {
+                        // filterByColors(color);
+                        setFilterConfig({
+                          ...filterConfig,
+                          color,
+                        });
+                      }}
                     ></div>
                   ))}
                 </div>
@@ -216,7 +251,13 @@ const Page = () => {
                     <div
                       key={size}
                       style={{ fontSize: 16 }}
-                      onClick={() => filterBySizes(size)}
+                      onClick={() => {
+                        // filterBySizes(size);
+                        setFilterConfig({
+                          ...filterConfig,
+                          size,
+                        });
+                      }}
                       className={`size py-[10px] uppercase px-[20px] rounded-[20px] bg-[#F0F0F0] hover:bg-black duration-150 hover:text-white`}
                     >
                       {size}
@@ -224,7 +265,13 @@ const Page = () => {
                   ))}
                 </div>
               </div>
-              <Button text="Apply Filter" dark_variant={true} />
+              <div
+                onClick={() => {
+                  ApplyFilters();
+                }}
+              >
+                <Button text="Apply Filter" dark_variant={true} />
+              </div>
             </div>
           )}
         </div>
