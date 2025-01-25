@@ -49,12 +49,12 @@ function ProductCard({ item }: { item: Product }) {
           {<Rating rating={rating} />}
         </div>
         <div className="price flex gap-[10px]">
-          <h3 className="text-[24px] font-bold">${price}</h3>
+          <h3 className="text-[24px] font-bold">${discountedPrice}</h3>
           {discountPercent > 0 && (
             <div className="discount">
               <div className="DiscountPrice flex gap-[10px]">
                 <h3 className="text-[24px] font-bold text-[#000000]/40">
-                  ${discountedPrice}
+                  ${price}
                 </h3>
                 <div className="discountTag bg-[#FF3333]/10 py-[6px] px-[14px] text-[#FF3333] rounded-[62px]">
                   {discountPercent}%

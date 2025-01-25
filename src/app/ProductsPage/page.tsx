@@ -20,26 +20,59 @@ const Page = () => {
   const { data } = useContext(DataContext) as ContextType;
   const [products, setProducts] = useState<Product[]>(data);
 
+  // ! Filter Products
   // Filter by Category
   const filterByCategory = (category: string) => {
     setProducts(data.filter((item) => item.category === category));
+  };
+  // Filter by Price
+  const filterByPrice = (lowPrice: number, highPrice: number) => {
+    setProducts(
+      data.filter(
+        (item) =>
+          Number(item.price) >= lowPrice && Number(item.price) <= highPrice
+      )
+    );
+  };
+  // Filter by Colors
+  const filterByColors = (color: string) => {
+    setProducts(
+      data.filter((item) =>
+        item.colors.some((c) => c.toLowerCase() === color.toLowerCase())
+      )
+    );
+  };
+  // Filter by Sizes
+  const filterBySizes = (size: string) => {
+    setProducts(
+      data.filter((item) =>
+        item.sizes.some(
+          (c) => c.toLocaleLowerCase() === size.toLocaleLowerCase()
+        )
+      )
+    );
   };
 
   // State for filtering products based on price range
   const fetchCategories = Array.from(
     new Set(data.map((item) => item.category))
   );
+  // ? Fetching Unique Colors
   const [categories] = useState(fetchCategories);
-  const colors = ["red", "yellow", "green", "pink", "blue", "purple", "black"];
-  const sizes = [
-    "smaller",
-    "medium",
-    "large",
-    "X-large",
-    "XX-large",
-    "3X-large",
-  ];
+  const uniqueColors = Array.from(
+    new Set(
+      data.flatMap((item) => item.colors.map((color) => color.toLowerCase()))
+    )
+  );
+  const [colors] = useState(uniqueColors);
 
+  // ? Fetching Unique Sizes
+  const uniqueSizes = Array.from(
+    new Set(
+      data.flatMap((item) => item.sizes.map((size) => size.toLowerCase()))
+    )
+  );
+  const [sizes] = useState(uniqueSizes);
   // State for toggling visibility
   const [showPrice, setShowPrice] = useState(false);
   const [showColors, setShowColors] = useState(false);
@@ -48,7 +81,7 @@ const Page = () => {
   const [showSideBar, setShowSideBar] = useState(false);
 
   return (
-    <div className="container">
+    <div className="container !px-0">
       <div className="BreadCrams text-[16px] px-5 flex gap-2 items-center">
         <Link href={"/"} className="flex items-center">
           <h3>Home</h3>
@@ -121,7 +154,7 @@ const Page = () => {
                     showPrice ? "max-h-screen" : "max-h-0 overflow-hidden"
                   }`}
                 >
-                  <RangeSlider />
+                  <RangeSlider filterByPrice={filterByPrice} />
                 </div>
               </div>
               <hr />
@@ -149,8 +182,10 @@ const Page = () => {
                   {colors.map((color) => (
                     <div
                       key={color}
-                      className={`color w-[37px] h-[37px] rounded-full`}
+                      className={`color w-[37px] h-[37px] rounded-full hover
+                        :border-4 border-[#f2f2f2]`}
                       style={{ backgroundColor: color }}
+                      onClick={() => filterByColors(color)}
                     ></div>
                   ))}
                 </div>
@@ -181,7 +216,8 @@ const Page = () => {
                     <div
                       key={size}
                       style={{ fontSize: 16 }}
-                      className={`size py-[10px] px-[20px] rounded-[20px] bg-[#F0F0F0] hover:bg-black duration-150 hover:text-white`}
+                      onClick={() => filterBySizes(size)}
+                      className={`size py-[10px] uppercase px-[20px] rounded-[20px] bg-[#F0F0F0] hover:bg-black duration-150 hover:text-white`}
                     >
                       {size}
                     </div>

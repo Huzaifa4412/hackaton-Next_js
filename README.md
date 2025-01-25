@@ -49,10 +49,10 @@ This hackathon was my first experience working under a tight deadline to solve r
 
 #### **Lighthouse Metrics**
 
-- **Performance**: 56/100
-- **Accessibility**: 98/100
+- **Performance**: 99/100
+- **Accessibility**: 96/100
 - **SEO**: 100/100
-- **Best Practices**: 93/100
+- **Best Practices**: 100/100
 
 #### **Key Optimizations**
 

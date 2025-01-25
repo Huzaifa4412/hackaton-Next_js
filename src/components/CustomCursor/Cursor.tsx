@@ -46,15 +46,14 @@ const CustomCursor = () => {
 
   return (
     <motion.div
-      className="custom-cursor pointer-events-none !mix-blend-screen fixed top-0 left-0 w-8 h-8 rounded-full z-[999]"
+      className="custom-cursor pointer-events-none !mix-blend-screen fixed top-0 bg-neutral-700 left-0 w-5 h-5 rounded-full z-[999]"
       style={{
-        backgroundColor: "black", // Or whatever initial color you want
         mixBlendMode: "exclusion",
-        x: cursorPosition.x - 16,
-        y: cursorPosition.y - 16,
+        x: cursorPosition.x + 16,
+        y: cursorPosition.y + 16,
       }}
       transition={{ type: "spring", stiffness: 500, damping: 28 }}
-      animate={{ x: cursorPosition.x - 16, y: cursorPosition.y - 16 }}
+      animate={{ x: cursorPosition.x + 8, y: cursorPosition.y + 8 }}
     />
   );
 };

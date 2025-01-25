@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import MultiRangeSlider from "multi-range-slider-react";
-const RangeSlider = () => {
-  const [minValue, setMinValue] = useState(200);
-  const [maxValue, setMaxValue] = useState(350);
+const RangeSlider = ({
+  filterByPrice,
+}: {
+  filterByPrice: (lowPrice: number, highPrice: number) => void;
+}) => {
+  const [minValue, setMinValue] = useState<number>(200);
+  const [maxValue, setMaxValue] = useState<number>(400);
 
   const handleInput = (e: { minValue: number; maxValue: number }) => {
     setMinValue(e.minValue);
@@ -34,6 +38,7 @@ const RangeSlider = () => {
           thumbRightColor="black"
           barLeftColor="white"
           className="multi-range-slider"
+          onChange={() => filterByPrice(minValue, maxValue)}
         />
         <style jsx>{`
           :global(.multi-range-slider .thumb::before) {
@@ -56,8 +61,11 @@ const RangeSlider = () => {
         `}</style>
       </div>
       <p className="text-gray-500">
-        Selected range: <span className="font-bold">${minValue}</span> -{" "}
-        <span className="font-bold">${maxValue}</span>
+        Selected range:{" "}
+        <span className="font-bold">
+          <br />${minValue}
+        </span>{" "}
+        - <span className="font-bold">${maxValue}</span>
       </p>
     </div>
   );

@@ -43,7 +43,7 @@ const Hero = () => {
           alt="Vector"
           width={104}
           height={104}
-          className="absolute right-5 top-[10%]"
+          className="absolute right-5 top-[10%] w-[60px] h-[60px] sm:w-[104px] sm:h-[104px]"
           style={{ transformOrigin: "50% 50%" }}
           animate={{ rotate: 360 }}
           transition={{
