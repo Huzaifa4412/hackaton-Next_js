@@ -139,7 +139,7 @@ const Page = () => {
                       <div
                         key={category}
                         onClick={() => {
-                          // filterByCategory(category);
+                          filterByCategory(category);
                           setFilterConfig({
                             ...filterConfig,
                             category: category,
@@ -215,7 +215,7 @@ const Page = () => {
                         :border-4 border-[#f2f2f2]`}
                       style={{ backgroundColor: color }}
                       onClick={() => {
-                        // filterByColors(color);
+                        filterByColors(color);
                         setFilterConfig({
                           ...filterConfig,
                           color,
@@ -252,7 +252,7 @@ const Page = () => {
                       key={size}
                       style={{ fontSize: 16 }}
                       onClick={() => {
-                        // filterBySizes(size);
+                        filterBySizes(size);
                         setFilterConfig({
                           ...filterConfig,
                           size,
