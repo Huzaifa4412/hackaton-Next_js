@@ -1,25 +1,27 @@
-import React from "react";
+"use client";
+import React, { useContext } from "react";
 import Styles from "./TopSelling.module.css";
 import ProductCard from "../productCard/ProductCard";
 import Button from "../Button/Button";
 import Heading from "../Heading/Heading";
 import Link from "next/link";
-import { client } from "@/sanity/lib/client";
+// import { client } from "@/sanity/lib/client";
 import { Product } from "../../../Typing";
+import { ContextType, DataContext } from "@/app/context/ProductContext";
 
-const getProduct = async () => {
-  try {
-    const quary = `*[_type == "product"]{name,"image":image.asset -> url,rating, price, discountPercent,_id, discountedPrice }[0..3]`;
+// const getProduct = async () => {
+//   try {
+//     const quary = `*[_type == "product"]{name,"image":image.asset -> url,rating, price, discountPercent,_id, discountedPrice }[0..3]`;
 
-    const product = client.fetch(quary);
-    return product;
-  } catch (error) {
-    console.log(error);
-  }
-};
+//     const product = client.fetch(quary);
+//     return product;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
-export default async function TopSelling() {
-  const data = await getProduct();
+export default function TopSelling() {
+  const { data } = useContext(DataContext) as ContextType;
 
   return (
     <div
