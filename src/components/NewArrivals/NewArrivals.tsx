@@ -23,6 +23,7 @@ export default function NewArrivals() {
   // const data = await getProduct();
   let { data } = useContext(DataContext) as ContextType;
   data = data.filter((data) => data.new);
+
   data.splice(4);
 
   return (
