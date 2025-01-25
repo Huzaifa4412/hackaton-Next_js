@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Button from "../Button/Button";
+// import Button from "../Button/Button";
 const Review = () => {
   const testimonials = [
     {
@@ -24,27 +24,29 @@ const Review = () => {
   ];
   return (
     <div className="my-16">
-      <nav className="grid grid-cols-3 my-12 h-max ">
-        <h2 className="text-center font-medium text-[16px] md:text-[20px] border-b-2 pb-3 hover:border-black duration-500">
+      <nav className="grid grid-cols-1 my-12 justify-center h-max ">
+        {/* <h2 className="text-center font-medium text-[16px] md:text-[20px] border-b-2 pb-3 hover:border-black duration-500">
           Product Details
-        </h2>
-        <h2 className="text-center font-medium text-[16px] md:text-[20px] border-b-2 pb-3 hover:border-black duration-500">
+        </h2> */}
+        <h2 className="text-center font-medium text-[20px] md:text-[20px] border-b-2 pb-3 hover:border-black duration-500">
           Rating and Review
         </h2>
-        <h2 className="text-center font-medium text-[16px] md:text-[20px] border-b-2 pb-3 hover:border-black duration-500">
+        {/* <h2 className="text-center font-medium text-[16px] md:text-[20px] border-b-2 pb-3 hover:border-black duration-500">
           FAQs
-        </h2>
+        </h2> */}
       </nav>
       <div className="reviews">
         <div className="flex md:flex-row flex-col gap-3 items-center justify-between py-8">
           <h2 className="text-[24px] font-bold ">
             All Reviews{" "}
-            <span className="text-sm text-slate-400 font-medium">(451)</span>
+            <span className="text-sm text-slate-400 font-medium">
+              ({testimonials.length})
+            </span>
           </h2>
-          <div className="flex gap-5 items-center">
+          {/* <div className="flex gap-5 items-center">
             <Button text="Latest" dark_variant={false} />
             <Button text="Write a Review" dark_variant={true} />
-          </div>
+          </div> */}
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2  gap-5">
           {testimonials.map((item, index) => (

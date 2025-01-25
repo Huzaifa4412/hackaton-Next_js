@@ -8,6 +8,7 @@ import ProductCard from "@/components/productCard/ProductCard";
 import type { Product } from "../../../Typing";
 import Link from "next/link";
 import { type ContextType, DataContext } from "../context/ProductContext";
+import { toast } from "react-toastify";
 
 interface Filter {
   category?: string;
@@ -50,9 +51,11 @@ const Page = () => {
 
   useEffect(() => {
     applyFilters();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, filterConfig]);
 
   const updateFilter = (key: keyof Filter, value: string | number) => {
+    toast.info("Filter Applied");
     setFilterConfig((prev) => ({ ...prev, [key]: value }));
   };
 
@@ -74,7 +77,7 @@ const Page = () => {
   const [showSideBar, setShowSideBar] = useState(false);
 
   return (
-    <div className="container !px-0">
+    <div className="container">
       <div className="BreadCrams text-[16px] px-5 flex gap-2 items-center">
         <Link href={"/"} className="flex items-center">
           <h3>Home</h3>
@@ -82,7 +85,7 @@ const Page = () => {
         </Link>
         <h3>All Outfits</h3>
       </div>
-      <div className="content flex flex-col lg:flex-row gap-8 items-start h-max mt-8">
+      <div className="content flex flex-col lg:flex-row gap-8 items-center lg:items-start h-max mt-8">
         <div className="sideBar w-[295px] h-max px-[24px] py-[20px] flex flex-col gap-[24px] border rounded-[20px]">
           <header className="flex w-max items-center gap-6 relative">
             <Heading text="Filter" size={20} />

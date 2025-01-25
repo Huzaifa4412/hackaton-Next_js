@@ -4,12 +4,11 @@ import Styles from "./Navbar.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { useSelector } from "react-redux";
-import { RootState } from "@/store/app/store";
-import { ContextType, DataContext } from "@/app/context/ProductContext";
-import { Product } from "../../../Typing";
+import type { RootState } from "@/store/app/store";
+import { type ContextType, DataContext } from "@/app/context/ProductContext";
+import type { Product } from "../../../Typing";
 import { useRouter } from "next/navigation";
 import Button from "../Button/Button";
-// import { TransitionLink } from "../TranistionLink/TranistionLink";
 
 const Navbar = () => {
   const router = useRouter();
@@ -20,6 +19,8 @@ const Navbar = () => {
   const [searchData, setSearchData] = useState<Product[]>([]);
   const [selectedItem, setSelectedItem] = useState<number>(-1);
   const [searchBar, setSearchBar] = useState(false);
+  const [isShopDropdownOpen, setIsShopDropdownOpen] = useState(false); // Added state for Shop dropdown
+
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -50,6 +51,7 @@ const Navbar = () => {
         setSelectedItem(selectedItem - 1);
       } else if (e.key === "Enter") {
         setSearchQuery("");
+        setSearchBar(false);
         setSearchData([]);
         router.push(`/ProductsPage/${searchData[selectedItem]._id}`);
       }
@@ -104,17 +106,41 @@ const Navbar = () => {
             } md:flex text-[16px]  gap-[22px] items-center font-medium`}
           >
             <li
-              className="flex items-center gap-1"
-              onClick={() => setMenuOpen(false)}
+              className="flex items-center gap-1 relative"
+              onClick={() => setIsShopDropdownOpen(!isShopDropdownOpen)}
+              onMouseEnter={() => setIsShopDropdownOpen(true)}
+              onMouseLeave={() => setIsShopDropdownOpen(false)}
             >
-              {/* <TransitionLink href={"/ProductsPage"} label="Shop" /> */}
-              <Link href={"/ProductsPage"}>Shop</Link>
+              <Link href="/ProductsPage">Shop</Link>
               <Image
-                src={"/dropDown.svg"}
+                src="/dropDown.svg"
                 alt="Drop Down Icon"
                 width={15}
                 height={15}
+                className={`transform transition-transform duration-300 ${isShopDropdownOpen ? "rotate-180" : ""}`}
               />
+              {isShopDropdownOpen && (
+                <div className="absolute top-full left-1/2 bg-white shadow-md rounded-md py-2 w-60 -translate-x-1/2 z-10">
+                  <Link
+                    href="/ProductsPage/t-shirts"
+                    className="block px-4 py-2 hover:bg-black hover:text-white text-black"
+                  >
+                    T-Shirts
+                  </Link>
+                  <Link
+                    href="/ProductsPage/jeans"
+                    className="block px-4 py-2 hover:bg-black hover:text-white text-black"
+                  >
+                    Jeans
+                  </Link>
+                  <Link
+                    href="/ProductsPage/Hoodies"
+                    className="block px-4 py-2 hover:bg-black hover:text-white text-black"
+                  >
+                    Hoodies
+                  </Link>
+                </div>
+              )}
             </li>
             <li onClick={() => setMenuOpen(false)}>
               {/* <TransitionLink href={"/"} label="On Sale" /> */}
@@ -170,6 +196,7 @@ const Navbar = () => {
                     <Link
                       onClick={() => {
                         setSearchQuery("");
+                        setSearchBar(false);
                         setSearchData([]);
                       }}
                       href={`/ProductsPage/${product._id}`}
@@ -177,7 +204,7 @@ const Navbar = () => {
                       key={product._id}
                     >
                       <Image
-                        src={product.image}
+                        src={product.image || "/placeholder.svg"}
                         alt={product.name}
                         width={80}
                         height={80}
@@ -196,6 +223,7 @@ const Navbar = () => {
                     className="mt-10 w-[400px] mx-auto"
                     onClick={() => {
                       setSearchQuery("");
+                      setSearchBar(false);
                       setSearchData([]);
                     }}
                   >
@@ -240,6 +268,7 @@ const Navbar = () => {
                       <Link
                         onClick={() => {
                           setSearchQuery("");
+                          setSearchBar(false);
                           setSearchData([]);
                         }}
                         href={`/ProductsPage/${product._id}`}
@@ -247,7 +276,7 @@ const Navbar = () => {
                         key={product._id}
                       >
                         <Image
-                          src={product.image}
+                          src={product.image || "/placeholder.svg"}
                           alt={product.name}
                           width={80}
                           height={80}
@@ -266,6 +295,7 @@ const Navbar = () => {
                       className="w-[200px] mx-auto mt-10"
                       onClick={() => {
                         setSearchQuery("");
+                        setSearchBar(false);
                         setSearchData([]);
                       }}
                     >
@@ -291,7 +321,9 @@ const Navbar = () => {
             </div>
           </Link>
 
-          <Image src={"/account.svg"} alt="Account" width={25} height={25} />
+          <Link href={"/studio"}>
+            <Image src={"/account.svg"} alt="Account" width={25} height={25} />
+          </Link>
         </div>
       </nav>
       <hr className=" h-[1px] mx-auto max-w-[1440px]" />
