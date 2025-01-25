@@ -45,10 +45,35 @@ export default defineType({
             type: 'number',
         },
         {
+            name: "discountedPrice",
+            title: "Discounted Price",
+            type: 'number',
+            readOnly: true,
+            calculate: (obj: any) => obj.price - (obj.price * obj.discountPercent / 100),
+        } as any,
+        {
             name: "new",
             type: 'boolean',
             title: "New",
         },
+        {
+            name: "sale",
+            type: 'boolean',
+            title: "On Sale",
+        },
+        {
+            name: "rating",
+            type: 'number',
+            title: "Rating",
+            description: "Rating from 1 to 5",
+        },
+        {
+            name: "quantity",
+            type: 'number',
+            title: "Quantity",
+            description: "Quantity in stock",
+        },
+
         {
             name: "colors",
             title: "Colors",
