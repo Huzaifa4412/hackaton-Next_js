@@ -125,7 +125,7 @@ const Navbar = () => {
                 className={`transform transition-transform duration-300 ${isShopDropdownOpen ? "rotate-180" : ""}`}
               />
               {isShopDropdownOpen && (
-                <div className="absolute top-[120%] left-1/2 bg-white shadow-md rounded-md py-2 w-60 -translate-x-1/2 z-10">
+                <div className="absolute top-[120%] left-1/2 bg-white shadow-md rounded-md py-2 w-60 -translate-x-1/2 z-[9999]">
                   {categories.map((category, index) => (
                     <Link
                       key={index}
