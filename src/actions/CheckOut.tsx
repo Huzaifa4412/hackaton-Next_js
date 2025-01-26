@@ -22,7 +22,7 @@ const createCustomerInSanity = async (customerInfo: customerInfo) => {
 
 const createOrderInSanity = async (cartData: Cart[], customerId: string) => {
   try {
-    const customerObject = {
+    const orderObject = {
       _type: "order",
       customer: {
         _type: "reference",
@@ -46,8 +46,8 @@ const createOrderInSanity = async (cartData: Cart[], customerId: string) => {
         0
       ),
     };
-    const sanityResponse = await client.create(customerObject);
-    console.log("Customer Created in Sanity Successfully");
+    const sanityResponse = await client.create(orderObject);
+    console.log("Order Created in Sanity Successfully");
     return sanityResponse;
   } catch (err) {
     console.log(err);

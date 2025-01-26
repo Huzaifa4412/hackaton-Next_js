@@ -64,7 +64,7 @@ const Navbar = () => {
     }
   };
   return (
-    <div className={` ${Styles.Navbar} relative`}>
+    <div className={` ${Styles.Navbar} relative bg-white`}>
       <div
         className={`${Styles.updatePart} remove w-full h-[38px] `}
         style={{

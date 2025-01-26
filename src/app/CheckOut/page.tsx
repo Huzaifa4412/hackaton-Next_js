@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/store/app/store";
 import { Cart } from "../../../Typing";
 import CheckOut from "@/actions/CheckOut";
+import { toast } from "react-toastify";
 
 export default function CheckoutPage() {
   const { cart } = useSelector((state: RootState) => state.cartReducer);
@@ -44,6 +45,8 @@ export default function CheckoutPage() {
           className="space-y-8"
           onSubmit={(e) => {
             e.preventDefault();
+            CheckOut(formData, cart);
+            toast.success("Order Placed Successfully 🎉");
             setFormData({
               firstName: "",
               lastName: "",
@@ -305,12 +308,7 @@ export default function CheckoutPage() {
                   </label>
                 </div>
               </div>
-              <button
-                className="w-full bg-black text-white py-4 rounded-md font-semibold text-lg hover:bg-gray-800 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50"
-                onClick={() => {
-                  CheckOut(formData, cart);
-                }}
-              >
+              <button className="w-full bg-black text-white py-4 rounded-md font-semibold text-lg hover:bg-gray-800 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50">
                 Place Order
               </button>
               <div className="mt-8 flex justify-center space-x-6">
