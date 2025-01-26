@@ -21,6 +21,11 @@ const Navbar = () => {
   const [searchBar, setSearchBar] = useState(false);
   const [isShopDropdownOpen, setIsShopDropdownOpen] = useState(false); // Added state for Shop dropdown
 
+  const fetchCategories = Array.from(
+    new Set(data.map((product) => product.category))
+  );
+  const [categories] = useState<string[]>(fetchCategories);
+
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -75,7 +80,7 @@ const Navbar = () => {
           </p>
           <Image
             src={"/cross.svg"}
-            className="absolute right-3"
+            className="absolute right-3 cursor-pointer"
             alt="Cross Icon"
             width={20}
             height={20}
@@ -120,25 +125,16 @@ const Navbar = () => {
                 className={`transform transition-transform duration-300 ${isShopDropdownOpen ? "rotate-180" : ""}`}
               />
               {isShopDropdownOpen && (
-                <div className="absolute top-full left-1/2 bg-white shadow-md rounded-md py-2 w-60 -translate-x-1/2 z-10">
-                  <Link
-                    href="/ProductsPage/t-shirts"
-                    className="block px-4 py-2 hover:bg-black hover:text-white text-black"
-                  >
-                    T-Shirts
-                  </Link>
-                  <Link
-                    href="/ProductsPage/jeans"
-                    className="block px-4 py-2 hover:bg-black hover:text-white text-black"
-                  >
-                    Jeans
-                  </Link>
-                  <Link
-                    href="/ProductsPage/Hoodies"
-                    className="block px-4 py-2 hover:bg-black hover:text-white text-black"
-                  >
-                    Hoodies
-                  </Link>
+                <div className="absolute top-[120%] left-1/2 bg-white shadow-md rounded-md py-2 w-60 -translate-x-1/2 z-10">
+                  {categories.map((category, index) => (
+                    <Link
+                      key={index}
+                      href={`/${category}`}
+                      className="block px-4 capitalize py-2 text-lg hover:bg-black hover:text-white text-black"
+                    >
+                      {category}
+                    </Link>
+                  ))}
                 </div>
               )}
             </li>

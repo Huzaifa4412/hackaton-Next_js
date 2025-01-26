@@ -29,7 +29,7 @@ export default function TopSelling() {
     >
       <Heading text="Top Selling" />
       <div className="productsContainer flex flex-wrap flex-shrink-0 justify-center  gap-[8px]">
-        {data.map((item: Product) => {
+        {data.slice(2, 6).map((item: Product) => {
           return <ProductCard item={item} key={item._id} />;
         })}
       </div>
