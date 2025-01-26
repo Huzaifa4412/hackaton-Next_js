@@ -140,7 +140,7 @@ const Navbar = () => {
             </li>
             <li onClick={() => setMenuOpen(false)}>
               {/* <TransitionLink href={"/"} label="On Sale" /> */}
-              <Link href={"/"}>On Sale</Link>
+              <Link href={"/OnSale"}>On Sale</Link>
             </li>
             <li onClick={() => setMenuOpen(false)}>
               <Link href={"/NewArrivals"}>New Arrival</Link>
