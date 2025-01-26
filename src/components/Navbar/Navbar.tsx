@@ -169,8 +169,8 @@ const Navbar = () => {
           <Image
             src={"/searchIcon.svg"}
             alt="Search Icon"
-            width={20}
-            height={20}
+            width={21}
+            height={21}
           />
 
           <input
