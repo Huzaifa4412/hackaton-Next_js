@@ -8,11 +8,6 @@ import ProductCard from "@/components/productCard/ProductCard";
 
 const Page = () => {
   const { data } = useContext(DataContext) as ContextType;
-  console.log(
-    data.filter(
-      (product: Product) => product.sale && product.discountPercent > 0
-    )
-  );
   return (
     <div className="container">
       <div className="breadCrams py-4 flex gap-1 items-center">
