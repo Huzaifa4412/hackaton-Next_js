@@ -45,6 +45,7 @@ export default function RootLayout({
           transition={Flip}
         />
         <CustomCursor />
+
         <DataProvider>
           <CartProvider>
             <Navbar />

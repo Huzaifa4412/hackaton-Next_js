@@ -2,14 +2,26 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/app/store";
 import { Cart } from "../../../Typing";
 import CheckOut from "@/actions/CheckOut";
 import { toast } from "react-toastify";
+import { createCheckoutSession } from "@/actions/StripeCheckOut";
+import { clearCart } from "@/store/features/cartSlice";
 
 export default function CheckoutPage() {
+  const HandleCheckOut = async (cart: Cart[]) => {
+    const sessionUrl = await createCheckoutSession(cart);
+    toast.success("Payment Successful! Your order is being processed.");
+    if (sessionUrl) {
+      window.location.href = sessionUrl;
+    } else {
+      toast.error("Failed to create Stripe session.");
+    }
+  };
   const { cart } = useSelector((state: RootState) => state.cartReducer);
+  const dispatch = useDispatch();
   const total = cart.reduce(
     (total, curr: Cart) => total + Number(curr.price) * curr.qty,
     0
@@ -310,6 +322,15 @@ export default function CheckoutPage() {
               </div>
               <button className="w-full bg-black text-white py-4 rounded-md font-semibold text-lg hover:bg-gray-800 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50">
                 Place Order
+              </button>
+              <button
+                onClick={() => {
+                  HandleCheckOut(cart);
+                  dispatch(clearCart());
+                }}
+                className="w-full bg-black mt-3 text-white py-4 rounded-md font-semibold text-lg hover:bg-gray-800 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50"
+              >
+                Pay Now
               </button>
               <div className="mt-8 flex justify-center space-x-6">
                 <Image

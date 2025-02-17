@@ -32,10 +32,13 @@ const cartSlice = createSlice({
             if (state.cart[idx].qty >= 1) {
                 state.cart[idx].qty -= 1
             }
+        },
+        clearCart: (state) => {
+            state.cart = []
         }
     }
 })
 
-export const { addToCart, delFromCart, descQty } = cartSlice.actions
+export const { addToCart, delFromCart, descQty, clearCart } = cartSlice.actions
 
 export default cartSlice.reducer
