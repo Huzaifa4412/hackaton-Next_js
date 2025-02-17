@@ -328,7 +328,7 @@ export default function CheckoutPage() {
                   HandleCheckOut(cart);
                   dispatch(clearCart());
                 }}
-                className="w-full bg-black mt-3 text-white py-4 rounded-md font-semibold text-lg hover:bg-gray-800 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50"
+                className="w-full bg-black mt-3 text-white py-4 rounded-md font-semibold text-lg hover:bg-gray-800 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50"
               >
                 Pay Now
               </button>
