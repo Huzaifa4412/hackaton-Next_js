@@ -17,7 +17,7 @@ export async function createCheckoutSession(cart: Cart[]) {
     }));
 
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ["card"],
+      payment_method_types: ["card", "paypal", "amazon_pay", "pay_by_bank"],
       line_items,
       mode: "payment",
       success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/payment/success`,
