@@ -71,7 +71,7 @@ const CommentList = ({ postID }: { postID: string }) => {
               <Testimonials
                 key={index}
                 item={item}
-                createdData={item._createdAt}
+                createdData={item._createdAt!}
               />
             ))}
           </div>
