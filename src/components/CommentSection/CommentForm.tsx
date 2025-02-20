@@ -125,10 +125,12 @@ const CommentForm = ({ postID }: { postID: string }) => {
               value={selectedValue}
               onChange={handleChange}
             />
-            <p className="my-8">
-              Selected Value :{" "}
-              <span className="font-bold text-lg">{selectedValue}</span>
-            </p>
+            {selectedValue && (
+              <p className="my-8">
+                Selected Value :{" "}
+                <span className="font-bold text-lg">{selectedValue}</span>
+              </p>
+            )}
           </div>
           <Button text={loading ? "Submitting ..." : "Submit"} dark_variant />
         </form>
