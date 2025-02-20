@@ -32,7 +32,7 @@ const CommentForm = ({ postID }: { postID: string }) => {
   const [selectedValue, setSelectedValue] = useState("");
 
   const options = [
-    // { value: "5", label: "⭐⭐⭐⭐⭐" },
+    { value: "5", label: "⭐⭐⭐⭐⭐" },
     { value: "4", label: "⭐⭐⭐⭐" },
     { value: "3", label: "⭐⭐⭐" },
     { value: "2", label: "⭐⭐" },
