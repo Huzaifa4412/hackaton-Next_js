@@ -30,8 +30,7 @@ export async function addComments(comment: formData, postId: string) {
 export async function getComments(postId: string) {
   try {
     const comments = await client.fetch(
-      `*[_type == "comment" && product._ref == $postId] | order(_createdAt desc)`,
-      { postId }
+      `*[_type == "comment" && product._ref == "${postId}"] | order(_createdAt desc)`
     );
     return comments;
   } catch (error) {

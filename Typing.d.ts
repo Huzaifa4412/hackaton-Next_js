@@ -20,6 +20,7 @@ export interface formData {
     message: string;
     email: string;
     _createdAt?: string
+    _id?: string
 }
 
 export type ProductCard_type = {

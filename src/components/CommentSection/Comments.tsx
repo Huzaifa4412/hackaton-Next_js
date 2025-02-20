@@ -1,35 +1,41 @@
 "use client";
-import React, { useEffect, useState, useTransition } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { formData } from "../../../Typing";
-// import Button from "../Button/Button";
 import { getComments } from "@/actions/Comments";
 import { client } from "@/sanity/lib/client";
 
 const CommentList = ({ postID }: { postID: string }) => {
   const [testimonials, setTestimonials] = useState<formData[]>([]);
-  const [loading, startTransition] = useTransition();
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchComments = async () => {
-      startTransition(() => {
-        getComments(postID).then((fetchComment) =>
-          setTestimonials(fetchComment)
-        );
-      });
+      try {
+        const fetchComment = await getComments(postID);
+        setTestimonials(fetchComment);
+      } catch (error) {
+        console.error("Error fetching comments:", error);
+      } finally {
+        setLoading(false);
+      }
     };
 
-    fetchComments();
+    fetchComments(); // Fetch initial comments
 
+    // Subscribe to real-time updates
     const subscription = client
-      .listen(
-        `*[_type == "comment" && post._ref == $postID] | order(_createdAt desc)`,
-        { postID }
+      .listen<formData>(
+        `*[_type == "comment" && post._ref == "${postID}"] | order(_createdAt desc)`
       )
       .subscribe((update) => {
-        if (update.result) {
-          fetchComments();
-        }
+        setTestimonials((prevTestimonials) => {
+          const newTestimonial = update.result;
+          if (newTestimonial) {
+            return [...prevTestimonials, newTestimonial];
+          }
+          return prevTestimonials;
+        });
       });
 
     return () => subscription.unsubscribe(); // Cleanup on unmount
@@ -37,16 +43,10 @@ const CommentList = ({ postID }: { postID: string }) => {
 
   return (
     <div className="my-16">
-      <nav className="grid grid-cols-1 my-12 justify-center h-max ">
-        {/* <h2 className="text-center font-medium text-[16px] md:text-[20px] border-b-2 pb-3 hover:border-black duration-500">
-          Product Details
-        </h2> */}
+      <nav className="grid grid-cols-1 my-12 justify-center h-max">
         <h2 className="text-center font-medium text-[20px] md:text-[20px] border-b-2 pb-3 hover:border-black duration-500">
           Rating and Review
         </h2>
-        {/* <h2 className="text-center font-medium text-[16px] md:text-[20px] border-b-2 pb-3 hover:border-black duration-500">
-          FAQs
-        </h2> */}
       </nav>
       {loading ? (
         <h2 className="text-xl text-center font-semibold">
@@ -55,21 +55,17 @@ const CommentList = ({ postID }: { postID: string }) => {
       ) : (
         <div className="reviews">
           <div className="flex md:flex-row flex-col gap-3 items-center justify-center py-8">
-            <h2 className="text-[24px] font-bold ">
+            <h2 className="text-[24px] font-bold">
               All Reviews{" "}
               <span className="text-sm text-slate-400 font-medium">
                 ({testimonials.length})
               </span>
             </h2>
-            {/* <div className="flex gap-5 items-center">
-            <Button text="Latest" dark_variant={false} />
-            <Button text="Write a Review" dark_variant={true} />
-          </div> */}
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 w-max  gap-5">
-            {testimonials.map((item: formData, index) => (
+          <div className="flex flex-wrap justify-start w-full gap-4">
+            {testimonials.map((item) => (
               <Testimonials
-                key={index}
+                key={item._id}
                 item={item}
                 createdData={item._createdAt!}
               />
@@ -91,7 +87,7 @@ function Testimonials({
   createdData: string;
 }) {
   return (
-    <div className="testimonial cursor-grab justify-evenly min-w-[310px]  flex-shrink-0 mx-auto flex flex-col gap-2 px-[32px] py-[24px]  border-2 rounded-[20px]">
+    <div className="testimonial cursor-grab justify-evenly min-w-[340px] flex-shrink-0 mx-auto flex flex-col gap-2 px-[32px] py-[24px] border-2 rounded-[20px]">
       <Image
         src={"/Testimonials/startsFrame.svg"}
         alt="Rating"
@@ -114,9 +110,9 @@ function Testimonials({
         <span className="text-sm text-slate-500 font-medium">
           Posted on{" "}
           {new Date(createdData).toLocaleDateString("en-US", {
-            month: "short", // "Oct"
-            day: "2-digit", // "15"
-            year: "numeric", // "2022"
+            month: "short",
+            day: "2-digit",
+            year: "numeric",
           })}
         </span>
       </div>
