@@ -66,11 +66,7 @@ const Navbar = () => {
   return (
     <div className={` ${Styles.Navbar} relative bg-white`}>
       <div
-        className={`${Styles.updatePart} remove w-full h-[38px] `}
-        style={{
-          backgroundColor: "var(--foreground)",
-          color: "var(--background)",
-        }}
+        className={`${Styles.updatePart} bg-black remove w-full h-[38px] text-white`}
       >
         <div className="flex items-center md:text-[14px] text-[11px] relative justify-center h-full max-w-[1440px] mx-auto">
           <p className="font-medium">

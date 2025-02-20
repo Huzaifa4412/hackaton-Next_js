@@ -4,7 +4,7 @@ import Button from "../Button/Button";
 export default function NewsLetter() {
   return (
     <div
-      className={`${Styles.NewsLetter} lg:w-[1020px] xl:w-[1240px] mt-52 md:mt-36 mx-auto rounded-[20px] flex flex-col sm:flex-row  md:px-[64px] py-[36px] px-3 justify-between gap-8 items-center text-white`}
+      className={`${Styles.NewsLetter} !bg-black lg:w-[1020px] xl:w-[1240px] mt-52 md:mt-36 mx-auto rounded-[20px] flex flex-col sm:flex-row  md:px-[64px] py-[36px] px-3 justify-between gap-8 items-center text-white`}
       style={{ backgroundColor: "var(--foreground)" }}
     >
       <div className={`${Styles.heading} w-full `}>

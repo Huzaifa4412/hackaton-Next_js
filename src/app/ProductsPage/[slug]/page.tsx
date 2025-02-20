@@ -5,7 +5,6 @@ import Image from "next/image";
 import Heading from "@/components/Heading/Heading";
 import Button from "@/components/Button/Button";
 import { Cart } from "../../../../Typing";
-import Review from "@/components/Review/Review";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/store/features/cartSlice";
@@ -14,6 +13,9 @@ import { useRouter } from "next/navigation";
 import { client } from "@/sanity/lib/client";
 import Rating from "@/components/Rating/Rating";
 import MightLike from "@/components/MightLike/MightLike";
+import CommentForm from "@/components/CommentSection/CommentForm";
+import CommentList from "@/components/CommentSection/Comments";
+
 // import MightLike from "@/components/MightLike/MightLike";
 
 // Define proper types
@@ -265,7 +267,9 @@ const Page = ({ params }: { params: { slug: string } }) => {
           </div>
         </div>
       </div>
-      <Review />
+      <CommentForm postID={product._id} />
+      {/* <Review /> */}
+      <CommentList postID={product._id} />
       <MightLike category={category} />
     </div>
   );

@@ -45,7 +45,7 @@ export default function Brands() {
     //   })}
     // </div>
     <Marquee
-      className="py-4 h-max overflow-y-hidden"
+      className="py-4 h-max overflow-y-hidden bg-black"
       gradient={true}
       gradientColor={"black"}
       gradientWidth={200}
@@ -53,7 +53,7 @@ export default function Brands() {
       pauseOnHover={true}
       autoFill={true}
       direction="left"
-      style={{ backgroundColor: "var(--foreground)" }}
+      // style={{ backgroundColor: "var(--foreground)" }}
     >
       {brands.map((item, index) => {
         return (

@@ -9,23 +9,23 @@
 }
 
 .dark_variant {
-  background-color: var(--foreground);
-  color: var(--background);
+  background-color: black;
+  color: #f0f0f0;
 }
 
 .dark_variant:hover {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: #f0f0f0;
+  color: black;
 }
 
 .light_variant {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: #f0f0f0;
+  color: black;
 }
 
 .light_variant:hover {
-  background-color: var(--foreground);
-  color: var(--background);
+  background-color: black;
+  color: #f0f0f0;
 }
 
 @media screen and (max-width: 1024px) {

@@ -14,6 +14,14 @@ export interface Product {
     sale: boolean
 }
 
+
+export interface formData {
+    name: string;
+    message: string;
+    email: string;
+    _createdAt?: string
+}
+
 export type ProductCard_type = {
     image: string,
     name: string,
