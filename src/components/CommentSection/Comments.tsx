@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { formData } from "../../../Typing";
-import { getComments } from "@/actions/Comments";
+// import { getComments } from "@/actions/Comments";
 import { client } from "@/sanity/lib/client";
 
 const CommentList = ({ postID }: { postID: string }) => {
@@ -12,7 +12,9 @@ const CommentList = ({ postID }: { postID: string }) => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const fetchComment = await getComments(postID);
+        const fetchComment = await client.fetch(
+          `*[_type == "comment" && product._ref == "${postID}"] | order(_createdAt desc)`
+        );
         setTestimonials(fetchComment);
       } catch (error) {
         console.error("Error fetching comments:", error);
@@ -26,13 +28,14 @@ const CommentList = ({ postID }: { postID: string }) => {
     // Subscribe to real-time updates
     const subscription = client
       .listen<formData>(
-        `*[_type == "comment" && post._ref == "${postID}"] | order(_createdAt desc)`
+        `*[_type == "comment" && product._ref == "${postID}"] | order(_createdAt desc)`
       )
       .subscribe((update) => {
+        console.log("Sanity Update:", update); // 🔹 Debugging: Check if updates are received
         setTestimonials((prevTestimonials) => {
           const newTestimonial = update.result;
           if (newTestimonial) {
-            return [...prevTestimonials, newTestimonial];
+            return [newTestimonial, ...prevTestimonials];
           }
           return prevTestimonials;
         });

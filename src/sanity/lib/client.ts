@@ -9,3 +9,8 @@ export const client = createClient({
   token,
   useCdn: false, // Set to false if statically generating pages, using ISR or tag-based revalidation
 })
+
+
+// client
+//   .listen('*[_type == "comment"]')
+// .subscribe(update => console.log("Live update:", update))
