@@ -35,7 +35,10 @@ const CommentForm = ({ postID }: { postID: string }) => {
     defaultValues: { name: "", email: "", message: "" },
   });
 
-  const onSubmit = (values: formData, e?: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = (
+    values: formData,
+    e?: React.BaseSyntheticEvent<object, EventTarget, Event> | undefined
+  ) => {
     e?.preventDefault();
     startTransition(async () => {
       await addComments(values, postID);
