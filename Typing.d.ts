@@ -21,6 +21,7 @@ export interface formData {
     email: string;
     _createdAt?: string
     _id?: string
+    rating?: number
 }
 
 export type ProductCard_type = {

@@ -3,7 +3,11 @@
 import { client } from "@/sanity/lib/client";
 import { formData } from "../../Typing";
 
-export async function addComments(comment: formData, postId: string) {
+export async function addComments(
+  comment: formData,
+  postId: string,
+  rating: string
+) {
   const { name, email, message } = comment;
   if (!name || !email || !message || !postId) {
     return { error: "All fields are required" };
@@ -15,6 +19,7 @@ export async function addComments(comment: formData, postId: string) {
       name,
       email,
       message,
+      rating,
       product: {
         _type: "reference",
         _ref: postId,

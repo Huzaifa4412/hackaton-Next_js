@@ -4,6 +4,7 @@ import Image from "next/image";
 import { formData } from "../../../Typing";
 // import { getComments } from "@/actions/Comments";
 import { client } from "@/sanity/lib/client";
+import Rating from "../Rating/Rating";
 
 const CommentList = ({ postID }: { postID: string }) => {
   const [testimonials, setTestimonials] = useState<formData[]>([]);
@@ -31,7 +32,7 @@ const CommentList = ({ postID }: { postID: string }) => {
         `*[_type == "comment" && product._ref == "${postID}"] | order(_createdAt desc)`
       )
       .subscribe((update) => {
-        console.log("Sanity Update:", update); // 🔹 Debugging: Check if updates are received
+        // console.log("Sanity Update:", update); // 🔹 Debugging: Check if updates are received
         setTestimonials((prevTestimonials) => {
           const newTestimonial = update.result;
           if (newTestimonial) {
@@ -91,12 +92,7 @@ function Testimonials({
 }) {
   return (
     <div className="testimonial cursor-grab justify-evenly min-w-[340px] flex-shrink-0 mx-auto flex flex-col gap-2 px-[32px] py-[24px] border-2 rounded-[20px]">
-      <Image
-        src={"/Testimonials/startsFrame.svg"}
-        alt="Rating"
-        width={139}
-        height={23}
-      />
+      <Rating rating={Number(item.rating) || 0} />
       <div className="intro flex gap-2">
         <div className="name text-xl font-semibold">{item.name}</div>
         <Image

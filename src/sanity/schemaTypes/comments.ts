@@ -18,6 +18,12 @@ export default defineType({
             validation: (Rule) => Rule.required().email(),
         }),
         defineField({
+            name: 'rating',
+            title: 'Rating',
+            type: 'string',
+            validation: (Rule) => Rule.required().min(1).max(5),
+        }),
+        defineField({
             name: 'review',
             title: 'review',
             type: 'text',
